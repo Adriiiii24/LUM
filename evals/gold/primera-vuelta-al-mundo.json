@@ -1,0 +1,37 @@
+{
+  "id": "primera-vuelta-al-mundo",
+  "reviewed": false,
+  "text": "En septiembre de 1519, cinco naves partieron de Sanlúcar de Barrameda al mando de Fernando de Magallanes, un navegante portugués al servicio de Carlos I. La expedición buscaba una ruta hacia las islas Molucas navegando hacia el oeste. Tras cruzar el Atlántico y bordear la costa de América del Sur, la flota atravesó en 1520 el estrecho que hoy lleva el nombre de Magallanes y entró en el océano Pacífico. Magallanes murió en 1521 en la batalla de Mactán, en Filipinas, frente a los hombres de Lapulapu. Tras su muerte, Juan Sebastián Elcano acabó al mando de la nao Victoria y completó la vuelta al mundo al regresar a Sanlúcar en septiembre de 1522 con dieciocho supervivientes.",
+  "entities": [
+    { "name": "expedición", "type": "evento", "aliases": ["flota"] },
+    { "name": "Fernando de Magallanes", "type": "persona", "aliases": ["Magallanes"] },
+    { "name": "Sanlúcar de Barrameda", "type": "lugar", "aliases": ["Sanlúcar"] },
+    { "name": "Carlos I", "type": "persona", "aliases": [] },
+    { "name": "islas Molucas", "type": "lugar", "aliases": ["Molucas"] },
+    { "name": "Atlántico", "type": "lugar", "aliases": ["océano Atlántico"] },
+    { "name": "América del Sur", "type": "lugar", "aliases": [] },
+    { "name": "estrecho de Magallanes", "type": "lugar", "aliases": [] },
+    { "name": "océano Pacífico", "type": "lugar", "aliases": ["Pacífico"] },
+    { "name": "batalla de Mactán", "type": "evento", "aliases": [] },
+    { "name": "Filipinas", "type": "lugar", "aliases": [] },
+    { "name": "Lapulapu", "type": "persona", "aliases": [] },
+    { "name": "Juan Sebastián Elcano", "type": "persona", "aliases": ["Elcano"] },
+    { "name": "nao Victoria", "type": "artefacto", "aliases": ["Victoria"] }
+  ],
+  "relations": [
+    { "source": "expedición", "target": "Sanlúcar de Barrameda", "predicate": "partió de" },
+    { "source": "Fernando de Magallanes", "target": "expedición", "predicate": "estaba al mando de" },
+    { "source": "Fernando de Magallanes", "target": "Carlos I", "predicate": "estaba al servicio de" },
+    { "source": "expedición", "target": "islas Molucas", "predicate": "buscaba una ruta hacia" },
+    { "source": "expedición", "target": "Atlántico", "predicate": "cruzó" },
+    { "source": "expedición", "target": "América del Sur", "predicate": "bordeó la costa de" },
+    { "source": "expedición", "target": "estrecho de Magallanes", "predicate": "atravesó" },
+    { "source": "expedición", "target": "océano Pacífico", "predicate": "entró en" },
+    { "source": "estrecho de Magallanes", "target": "Fernando de Magallanes", "predicate": "lleva el nombre de" },
+    { "source": "Fernando de Magallanes", "target": "batalla de Mactán", "predicate": "murió en" },
+    { "source": "batalla de Mactán", "target": "Filipinas", "predicate": "tuvo lugar en" },
+    { "source": "Fernando de Magallanes", "target": "Lapulapu", "predicate": "luchó frente a" },
+    { "source": "Juan Sebastián Elcano", "target": "nao Victoria", "predicate": "estuvo al mando de" },
+    { "source": "Juan Sebastián Elcano", "target": "Sanlúcar de Barrameda", "predicate": "regresó a" }
+  ]
+}

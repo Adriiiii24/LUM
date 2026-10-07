@@ -1,0 +1,33 @@
+{
+  "status": "ok",
+  "generatedAt": "2026-10-07T22:22:38+00:00",
+  "goldReviewed": false,
+  "documents": 3,
+  "runs": [
+    {
+      "label": "gemini-3.5-flash-medium",
+      "model": "gemini-3.5-flash",
+      "thinking": "medium",
+      "documents": 3,
+      "entities": {
+        "precision": 0.8205,
+        "recall": 0.9143,
+        "f1": 0.8649
+      },
+      "entityTypeAccuracy": 0.9688,
+      "relationsLenient": {
+        "precision": 0.6842,
+        "recall": 0.7647,
+        "f1": 0.7222
+      },
+      "relationsStrict": {
+        "precision": 0.5526,
+        "recall": 0.6176,
+        "f1": 0.5833
+      },
+      "grounding": 1.0,
+      "schemaValid": 1.0,
+      "medianLatencyMs": 14886
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "manual-riego",
+  "reviewed": false,
+  "text": "El controlador de riego R-40 de Hidrotec se instala en la pared del garaje y se conecta a la válvula principal mediante un cable de dos hilos. Antes de encenderlo, el instalador debe colocar el sensor de humedad SH-2 a diez centímetros de profundidad, en la zona más soleada del jardín. El R-40 lee el sensor cada quince minutos y cancela el riego si la humedad supera el umbral fijado. Para configurar los turnos se usa la aplicación Riegala, que se comunica con el controlador a través del módulo Wi-Fi integrado. Si la aplicación no encuentra el equipo, el manual recomienda reiniciar el módulo desde el botón de servicio. Hidrotec ofrece dos años de garantía, siempre que la instalación la realice un distribuidor autorizado como Aguaverde.",
+  "entities": [
+    { "name": "controlador de riego R-40", "type": "artefacto", "aliases": ["R-40"] },
+    { "name": "Hidrotec", "type": "organizacion", "aliases": [] },
+    { "name": "válvula principal", "type": "artefacto", "aliases": [] },
+    { "name": "sensor de humedad SH-2", "type": "artefacto", "aliases": ["SH-2"] },
+    { "name": "Riegala", "type": "artefacto", "aliases": ["aplicación Riegala"] },
+    { "name": "módulo Wi-Fi", "type": "artefacto", "aliases": [] },
+    { "name": "botón de servicio", "type": "artefacto", "aliases": [] },
+    { "name": "garantía", "type": "concepto", "aliases": [] },
+    { "name": "Aguaverde", "type": "organizacion", "aliases": [] }
+  ],
+  "relations": [
+    { "source": "controlador de riego R-40", "target": "Hidrotec", "predicate": "es de" },
+    { "source": "controlador de riego R-40", "target": "válvula principal", "predicate": "se conecta a" },
+    { "source": "controlador de riego R-40", "target": "sensor de humedad SH-2", "predicate": "lee" },
+    { "source": "controlador de riego R-40", "target": "módulo Wi-Fi", "predicate": "integra" },
+    { "source": "Riegala", "target": "controlador de riego R-40", "predicate": "se comunica con" },
+    { "source": "módulo Wi-Fi", "target": "botón de servicio", "predicate": "se reinicia desde" },
+    { "source": "Hidrotec", "target": "garantía", "predicate": "ofrece" },
+    { "source": "Aguaverde", "target": "Hidrotec", "predicate": "es distribuidor autorizado de" }
+  ]
+}

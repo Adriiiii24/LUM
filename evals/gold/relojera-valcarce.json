@@ -1,0 +1,33 @@
+{
+  "id": "relojera-valcarce",
+  "reviewed": false,
+  "text": "Inés Arrieta heredó de su abuelo el taller El Péndulo, en la calle Mayor de Valcarce. Durante años nadie se atrevió a tocar el reloj de la torre del ayuntamiento, parado desde la riada de 1962. Cuando el alcalde Tomás Ferrer anunció que la feria de San Andrés se celebraría bajo la torre, Inés le propuso repararlo a cambio de una sola condición: que la campana volviera a sonar a las doce, como en tiempos de su abuelo. Ferrer aceptó. Con la ayuda de Bruno, el herrero del pueblo, Inés desmontó la maquinaria, sustituyó el escape gastado por uno fundido en la herrería y, la víspera de la feria, el reloj volvió a dar la hora.",
+  "entities": [
+    { "name": "Inés Arrieta", "type": "persona", "aliases": ["Inés"] },
+    { "name": "El Péndulo", "type": "organizacion", "aliases": ["taller El Péndulo"] },
+    { "name": "calle Mayor", "type": "lugar", "aliases": [] },
+    { "name": "Valcarce", "type": "lugar", "aliases": [] },
+    { "name": "reloj de la torre", "type": "artefacto", "aliases": ["reloj"] },
+    { "name": "torre del ayuntamiento", "type": "lugar", "aliases": ["torre"] },
+    { "name": "riada de 1962", "type": "evento", "aliases": ["riada"] },
+    { "name": "Tomás Ferrer", "type": "persona", "aliases": ["Ferrer"] },
+    { "name": "feria de San Andrés", "type": "evento", "aliases": ["feria"] },
+    { "name": "Bruno", "type": "persona", "aliases": [] },
+    { "name": "escape", "type": "artefacto", "aliases": [] },
+    { "name": "herrería", "type": "lugar", "aliases": [] }
+  ],
+  "relations": [
+    { "source": "Inés Arrieta", "target": "El Péndulo", "predicate": "heredó" },
+    { "source": "El Péndulo", "target": "calle Mayor", "predicate": "está en" },
+    { "source": "calle Mayor", "target": "Valcarce", "predicate": "está en" },
+    { "source": "reloj de la torre", "target": "torre del ayuntamiento", "predicate": "está en" },
+    { "source": "reloj de la torre", "target": "riada de 1962", "predicate": "está parado desde" },
+    { "source": "Tomás Ferrer", "target": "feria de San Andrés", "predicate": "anunció" },
+    { "source": "feria de San Andrés", "target": "torre del ayuntamiento", "predicate": "se celebraría bajo" },
+    { "source": "Inés Arrieta", "target": "reloj de la torre", "predicate": "propuso reparar" },
+    { "source": "Tomás Ferrer", "target": "Inés Arrieta", "predicate": "aceptó la propuesta de" },
+    { "source": "Bruno", "target": "Inés Arrieta", "predicate": "ayudó a" },
+    { "source": "Inés Arrieta", "target": "escape", "predicate": "sustituyó" },
+    { "source": "escape", "target": "herrería", "predicate": "se fundió en" }
+  ]
+}

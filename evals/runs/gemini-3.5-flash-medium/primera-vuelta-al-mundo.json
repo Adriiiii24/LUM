@@ -1,0 +1,341 @@
+{
+ "docId": "primera-vuelta-al-mundo",
+ "model": "gemini-3.5-flash",
+ "thinking": "medium",
+ "latencyMs": 14886,
+ "ok": true,
+ "error": null,
+ "text": "En septiembre de 1519, cinco naves partieron de Sanlúcar de Barrameda al mando de Fernando de Magallanes, un navegante portugués al servicio de Carlos I. La expedición buscaba una ruta hacia las islas Molucas navegando hacia el oeste. Tras cruzar el Atlántico y bordear la costa de América del Sur, la flota atravesó en 1520 el estrecho que hoy lleva el nombre de Magallanes y entró en el océano Pacífico. Magallanes murió en 1521 en la batalla de Mactán, en Filipinas, frente a los hombres de Lapulapu. Tras su muerte, Juan Sebastián Elcano acabó al mando de la nao Victoria y completó la vuelta al mundo al regresar a Sanlúcar en septiembre de 1522 con dieciocho supervivientes.",
+ "graph": {
+  "entities": [
+   {
+    "id": "n1",
+    "key": "sanlucar_de_barrameda",
+    "name": "Sanlúcar de Barrameda",
+    "type": "lugar",
+    "aliases": [
+     "Sanlúcar"
+    ],
+    "description": "Puerto español desde donde partió la expedición en septiembre de 1519 y al que regresó Juan Sebastián Elcano en septiembre de 1522.",
+    "evidence": {
+     "start": 23,
+     "end": 104
+    },
+    "degree": 2
+   },
+   {
+    "id": "n2",
+    "key": "fernando_de_magallanes",
+    "name": "Fernando de Magallanes",
+    "type": "persona",
+    "aliases": [
+     "Magallanes"
+    ],
+    "description": "Navegante portugués al servicio de Carlos I que comandó la expedición inicial y falleció en 1521 en Filipinas.",
+    "evidence": {
+     "start": 82,
+     "end": 152
+    },
+    "degree": 3
+   },
+   {
+    "id": "n3",
+    "key": "carlos_i",
+    "name": "Carlos I",
+    "type": "persona",
+    "aliases": [],
+    "description": "Monarca a cuyo servicio se encontraba el navegante Fernando de Magallanes.",
+    "evidence": {
+     "start": 129,
+     "end": 152
+    },
+    "degree": 1
+   },
+   {
+    "id": "n4",
+    "key": "expedicion",
+    "name": "expedición",
+    "type": "concepto",
+    "aliases": [
+     "flota",
+     "cinco naves"
+    ],
+    "description": "Flota inicial de cinco naves que partió de Sanlúcar en 1519 en busca de una ruta hacia las islas Molucas.",
+    "evidence": {
+     "start": 154,
+     "end": 233
+    },
+    "degree": 7
+   },
+   {
+    "id": "n5",
+    "key": "islas_molucas",
+    "name": "islas Molucas",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Destino de la expedición que buscaba una ruta navegando hacia el oeste.",
+    "evidence": {
+     "start": 154,
+     "end": 208
+    },
+    "degree": 1
+   },
+   {
+    "id": "n6",
+    "key": "atlantico",
+    "name": "Atlántico",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Océano que cruzó la expedición en su viaje hacia el oeste.",
+    "evidence": {
+     "start": 235,
+     "end": 259
+    },
+    "degree": 1
+   },
+   {
+    "id": "n7",
+    "key": "america_del_sur",
+    "name": "América del Sur",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Continente cuya costa bordeó la flota de Magallanes.",
+    "evidence": {
+     "start": 262,
+     "end": 297
+    },
+    "degree": 1
+   },
+   {
+    "id": "n8",
+    "key": "estrecho_de_magallanes",
+    "name": "estrecho de Magallanes",
+    "type": "lugar",
+    "aliases": [
+     "estrecho que hoy lleva el nombre de Magallanes"
+    ],
+    "description": "Estrecho atravesado por la flota en 1520 para cruzar al océano Pacífico.",
+    "evidence": {
+     "start": 299,
+     "end": 374
+    },
+    "degree": 1
+   },
+   {
+    "id": "n9",
+    "key": "oceano_pacifico",
+    "name": "océano Pacífico",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Océano en el que entró la expedición tras cruzar el estrecho.",
+    "evidence": {
+     "start": 377,
+     "end": 404
+    },
+    "degree": 1
+   },
+   {
+    "id": "n10",
+    "key": "batalla_de_mactan",
+    "name": "batalla de Mactán",
+    "type": "evento",
+    "aliases": [],
+    "description": "Enfrentamiento en 1521 donde murió Magallanes frente a los hombres de Lapulapu.",
+    "evidence": {
+     "start": 406,
+     "end": 502
+    },
+    "degree": 3
+   },
+   {
+    "id": "n11",
+    "key": "filipinas",
+    "name": "Filipinas",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Lugar geográfico donde ocurrió la batalla de Mactán en 1521.",
+    "evidence": {
+     "start": 434,
+     "end": 468
+    },
+    "degree": 1
+   },
+   {
+    "id": "n12",
+    "key": "lapulapu",
+    "name": "Lapulapu",
+    "type": "persona",
+    "aliases": [],
+    "description": "Líder local en Filipinas cuyos hombres se enfrentaron a Magallanes en la batalla de Mactán.",
+    "evidence": {
+     "start": 470,
+     "end": 502
+    },
+    "degree": 1
+   },
+   {
+    "id": "n13",
+    "key": "juan_sebastian_elcano",
+    "name": "Juan Sebastián Elcano",
+    "type": "persona",
+    "aliases": [],
+    "description": "Navegante que asumió el mando de la nao Victoria tras la muerte de Magallanes y completó la vuelta al mundo.",
+    "evidence": {
+     "start": 520,
+     "end": 605
+    },
+    "degree": 2
+   },
+   {
+    "id": "n14",
+    "key": "nao_victoria",
+    "name": "nao Victoria",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Embarcación comandada por Elcano que logró completar la vuelta al mundo.",
+    "evidence": {
+     "start": 520,
+     "end": 605
+    },
+    "degree": 1
+   }
+  ],
+  "relations": [
+   {
+    "id": "e1",
+    "source": "n4",
+    "target": "n1",
+    "predicate": "partió de",
+    "evidence": {
+     "start": 23,
+     "end": 69
+    }
+   },
+   {
+    "id": "e2",
+    "source": "n4",
+    "target": "n2",
+    "predicate": "al mando de",
+    "evidence": {
+     "start": 23,
+     "end": 104
+    }
+   },
+   {
+    "id": "e3",
+    "source": "n2",
+    "target": "n3",
+    "predicate": "al servicio de",
+    "evidence": {
+     "start": 82,
+     "end": 152
+    }
+   },
+   {
+    "id": "e4",
+    "source": "n4",
+    "target": "n5",
+    "predicate": "buscaba una ruta hacia",
+    "evidence": {
+     "start": 154,
+     "end": 208
+    }
+   },
+   {
+    "id": "e5",
+    "source": "n4",
+    "target": "n6",
+    "predicate": "cruzó",
+    "evidence": {
+     "start": 235,
+     "end": 259
+    }
+   },
+   {
+    "id": "e6",
+    "source": "n4",
+    "target": "n7",
+    "predicate": "bordeó la costa de",
+    "evidence": {
+     "start": 262,
+     "end": 297
+    }
+   },
+   {
+    "id": "e7",
+    "source": "n4",
+    "target": "n8",
+    "predicate": "atravesó",
+    "evidence": {
+     "start": 299,
+     "end": 336
+    }
+   },
+   {
+    "id": "e8",
+    "source": "n4",
+    "target": "n9",
+    "predicate": "entró en",
+    "evidence": {
+     "start": 377,
+     "end": 404
+    }
+   },
+   {
+    "id": "e9",
+    "source": "n2",
+    "target": "n10",
+    "predicate": "murió en",
+    "evidence": {
+     "start": 406,
+     "end": 454
+    }
+   },
+   {
+    "id": "e10",
+    "source": "n10",
+    "target": "n11",
+    "predicate": "ocurrió en",
+    "evidence": {
+     "start": 434,
+     "end": 468
+    }
+   },
+   {
+    "id": "e11",
+    "source": "n10",
+    "target": "n12",
+    "predicate": "fue frente a",
+    "evidence": {
+     "start": 434,
+     "end": 502
+    }
+   },
+   {
+    "id": "e12",
+    "source": "n13",
+    "target": "n14",
+    "predicate": "acabó al mando de",
+    "evidence": {
+     "start": 520,
+     "end": 575
+    }
+   },
+   {
+    "id": "e13",
+    "source": "n13",
+    "target": "n1",
+    "predicate": "regresó a",
+    "evidence": {
+     "start": 609,
+     "end": 650
+    }
+   }
+  ],
+  "meta": {
+   "model": "gemini-3.5-flash",
+   "createdAt": "2026-10-07T22:14:56.244Z",
+   "sourceChars": 680
+  }
+ }
+}

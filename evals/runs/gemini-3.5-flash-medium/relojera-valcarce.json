@@ -1,0 +1,346 @@
+{
+ "docId": "relojera-valcarce",
+ "model": "gemini-3.5-flash",
+ "thinking": "medium",
+ "latencyMs": 16166,
+ "ok": true,
+ "error": null,
+ "text": "Inés Arrieta heredó de su abuelo el taller El Péndulo, en la calle Mayor de Valcarce. Durante años nadie se atrevió a tocar el reloj de la torre del ayuntamiento, parado desde la riada de 1962. Cuando el alcalde Tomás Ferrer anunció que la feria de San Andrés se celebraría bajo la torre, Inés le propuso repararlo a cambio de una sola condición: que la campana volviera a sonar a las doce, como en tiempos de su abuelo. Ferrer aceptó. Con la ayuda de Bruno, el herrero del pueblo, Inés desmontó la maquinaria, sustituyó el escape gastado por uno fundido en la herrería y, la víspera de la feria, el reloj volvió a dar la hora.",
+ "graph": {
+  "entities": [
+   {
+    "id": "n1",
+    "key": "ines_arrieta",
+    "name": "Inés Arrieta",
+    "type": "persona",
+    "aliases": [],
+    "description": "Heredera del taller El Péndulo que se ofreció a reparar el reloj de la torre de Valcarce",
+    "evidence": {
+     "start": 0,
+     "end": 53
+    },
+    "degree": 6
+   },
+   {
+    "id": "n2",
+    "key": "abuelo_de_ines",
+    "name": "abuelo",
+    "type": "persona",
+    "aliases": [],
+    "description": "Abuelo de Inés Arrieta, antiguo dueño del taller El Péndulo",
+    "evidence": {
+     "start": 0,
+     "end": 53
+    },
+    "degree": 2
+   },
+   {
+    "id": "n3",
+    "key": "el_pendulo",
+    "name": "El Péndulo",
+    "type": "organizacion",
+    "aliases": [],
+    "description": "Taller heredado por Inés Arrieta, situado en la calle Mayor de Valcarce",
+    "evidence": {
+     "start": 33,
+     "end": 84
+    },
+    "degree": 2
+   },
+   {
+    "id": "n4",
+    "key": "calle_mayor",
+    "name": "calle Mayor",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Calle de Valcarce donde se ubica el taller El Péndulo",
+    "evidence": {
+     "start": 33,
+     "end": 84
+    },
+    "degree": 2
+   },
+   {
+    "id": "n5",
+    "key": "valcarce",
+    "name": "Valcarce",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Pueblo donde transcurre la historia y se sitúa el taller El Péndulo",
+    "evidence": {
+     "start": 33,
+     "end": 84
+    },
+    "degree": 1
+   },
+   {
+    "id": "n6",
+    "key": "reloj_de_la_torre",
+    "name": "reloj de la torre",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Reloj del ayuntamiento parado desde la riada de 1962",
+    "evidence": {
+     "start": 124,
+     "end": 192
+    },
+    "degree": 3
+   },
+   {
+    "id": "n7",
+    "key": "ayuntamiento",
+    "name": "ayuntamiento",
+    "type": "organizacion",
+    "aliases": [],
+    "description": "Ayuntamiento de Valcarce en cuya torre se encuentra el reloj",
+    "evidence": {
+     "start": 124,
+     "end": 161
+    },
+    "degree": 1
+   },
+   {
+    "id": "n8",
+    "key": "riada_de_1962",
+    "name": "riada de 1962",
+    "type": "evento",
+    "aliases": [],
+    "description": "Inundación que provocó la parada del reloj de la torre",
+    "evidence": {
+     "start": 163,
+     "end": 192
+    },
+    "degree": 1
+   },
+   {
+    "id": "n9",
+    "key": "tomas_ferrer",
+    "name": "Tomás Ferrer",
+    "type": "persona",
+    "aliases": [
+     "Ferrer"
+    ],
+    "description": "Alcalde de Valcarce que organizó la feria de San Andrés",
+    "evidence": {
+     "start": 201,
+     "end": 259
+    },
+    "degree": 3
+   },
+   {
+    "id": "n10",
+    "key": "feria_de_san_andres",
+    "name": "feria de San Andrés",
+    "type": "evento",
+    "aliases": [],
+    "description": "Feria del pueblo que se celebraría bajo la torre del ayuntamiento",
+    "evidence": {
+     "start": 237,
+     "end": 287
+    },
+    "degree": 2
+   },
+   {
+    "id": "n11",
+    "key": "campana",
+    "name": "campana",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Campana que debía volver a sonar a las doce como condición de Inés",
+    "evidence": {
+     "start": 347,
+     "end": 389
+    },
+    "degree": 1
+   },
+   {
+    "id": "n12",
+    "key": "bruno",
+    "name": "Bruno",
+    "type": "persona",
+    "aliases": [
+     "el herrero del pueblo"
+    ],
+    "description": "Herrero del pueblo que ayudó a Inés a reparar el reloj",
+    "evidence": {
+     "start": 436,
+     "end": 480
+    },
+    "degree": 1
+   },
+   {
+    "id": "n13",
+    "key": "herreria",
+    "name": "herrería",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Lugar donde se fundió el nuevo escape para la maquinaria del reloj",
+    "evidence": {
+     "start": 511,
+     "end": 569
+    },
+    "degree": 1
+   },
+   {
+    "id": "n14",
+    "key": "escape_gastado",
+    "name": "escape gastado",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Pieza gastada de la maquinaria del reloj que fue sustituida",
+    "evidence": {
+     "start": 511,
+     "end": 554
+    },
+    "degree": 2
+   }
+  ],
+  "relations": [
+   {
+    "id": "e1",
+    "source": "n1",
+    "target": "n2",
+    "predicate": "heredó de",
+    "evidence": {
+     "start": 0,
+     "end": 32
+    }
+   },
+   {
+    "id": "e2",
+    "source": "n1",
+    "target": "n3",
+    "predicate": "heredó",
+    "evidence": {
+     "start": 0,
+     "end": 53
+    }
+   },
+   {
+    "id": "e3",
+    "source": "n3",
+    "target": "n4",
+    "predicate": "en la",
+    "evidence": {
+     "start": 33,
+     "end": 72
+    }
+   },
+   {
+    "id": "e4",
+    "source": "n4",
+    "target": "n5",
+    "predicate": "de",
+    "evidence": {
+     "start": 61,
+     "end": 84
+    }
+   },
+   {
+    "id": "e5",
+    "source": "n6",
+    "target": "n7",
+    "predicate": "de la torre del",
+    "evidence": {
+     "start": 124,
+     "end": 161
+    }
+   },
+   {
+    "id": "e6",
+    "source": "n6",
+    "target": "n8",
+    "predicate": "parado desde la",
+    "evidence": {
+     "start": 163,
+     "end": 192
+    }
+   },
+   {
+    "id": "e7",
+    "source": "n9",
+    "target": "n10",
+    "predicate": "anunció la celebración de la",
+    "evidence": {
+     "start": 201,
+     "end": 273
+    }
+   },
+   {
+    "id": "e8",
+    "source": "n1",
+    "target": "n9",
+    "predicate": "propuso reparar el reloj a",
+    "evidence": {
+     "start": 289,
+     "end": 314
+    }
+   },
+   {
+    "id": "e9",
+    "source": "n9",
+    "target": "n1",
+    "predicate": "aceptó la propuesta de",
+    "evidence": {
+     "start": 421,
+     "end": 434
+    }
+   },
+   {
+    "id": "e10",
+    "source": "n11",
+    "target": "n2",
+    "predicate": "debía sonar como en tiempos de",
+    "evidence": {
+     "start": 391,
+     "end": 419
+    }
+   },
+   {
+    "id": "e11",
+    "source": "n12",
+    "target": "n1",
+    "predicate": "ayudó a",
+    "evidence": {
+     "start": 436,
+     "end": 486
+    }
+   },
+   {
+    "id": "e12",
+    "source": "n1",
+    "target": "n14",
+    "predicate": "sustituyó el",
+    "evidence": {
+     "start": 511,
+     "end": 538
+    }
+   },
+   {
+    "id": "e13",
+    "source": "n14",
+    "target": "n13",
+    "predicate": "fue sustituido por uno fundido en la",
+    "evidence": {
+     "start": 511,
+     "end": 569
+    }
+   },
+   {
+    "id": "e14",
+    "source": "n6",
+    "target": "n10",
+    "predicate": "volvió a dar la hora la víspera de la",
+    "evidence": {
+     "start": 573,
+     "end": 626
+    }
+   }
+  ],
+  "meta": {
+   "model": "gemini-3.5-flash",
+   "createdAt": "2026-10-07T22:15:27.413Z",
+   "sourceChars": 627
+  }
+ }
+}

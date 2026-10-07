@@ -1,0 +1,285 @@
+{
+ "docId": "manual-riego",
+ "model": "gemini-3.5-flash",
+ "thinking": "medium",
+ "latencyMs": 11661,
+ "ok": true,
+ "error": null,
+ "text": "El controlador de riego R-40 de Hidrotec se instala en la pared del garaje y se conecta a la válvula principal mediante un cable de dos hilos. Antes de encenderlo, el instalador debe colocar el sensor de humedad SH-2 a diez centímetros de profundidad, en la zona más soleada del jardín. El R-40 lee el sensor cada quince minutos y cancela el riego si la humedad supera el umbral fijado. Para configurar los turnos se usa la aplicación Riegala, que se comunica con el controlador a través del módulo Wi-Fi integrado. Si la aplicación no encuentra el equipo, el manual recomienda reiniciar el módulo desde el botón de servicio. Hidrotec ofrece dos años de garantía, siempre que la instalación la realice un distribuidor autorizado como Aguaverde.",
+ "graph": {
+  "entities": [
+   {
+    "id": "n1",
+    "key": "r_40",
+    "name": "controlador de riego R-40",
+    "type": "artefacto",
+    "aliases": [
+     "R-40",
+     "el controlador",
+     "el equipo"
+    ],
+    "description": "Controlador de riego fabricado por Hidrotec que se conecta a la válvula principal y lee el sensor de humedad.",
+    "evidence": {
+     "start": 0,
+     "end": 40
+    },
+    "degree": 6
+   },
+   {
+    "id": "n2",
+    "key": "hidrotec",
+    "name": "Hidrotec",
+    "type": "organizacion",
+    "aliases": [],
+    "description": "Empresa fabricante del controlador de riego R-40 que ofrece dos años de garantía.",
+    "evidence": {
+     "start": 0,
+     "end": 40
+    },
+    "degree": 2
+   },
+   {
+    "id": "n3",
+    "key": "garaje",
+    "name": "garaje",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Lugar en cuya pared se realiza la instalación del controlador de riego R-40.",
+    "evidence": {
+     "start": 41,
+     "end": 74
+    },
+    "degree": 1
+   },
+   {
+    "id": "n4",
+    "key": "valvula_principal",
+    "name": "válvula principal",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Válvula a la que se conecta el controlador R-40 mediante un cable de dos hilos.",
+    "evidence": {
+     "start": 77,
+     "end": 110
+    },
+    "degree": 1
+   },
+   {
+    "id": "n5",
+    "key": "sh_2",
+    "name": "sensor de humedad SH-2",
+    "type": "artefacto",
+    "aliases": [
+     "SH-2",
+     "el sensor"
+    ],
+    "description": "Sensor que mide la humedad del jardín y es leído por el R-40 cada quince minutos.",
+    "evidence": {
+     "start": 191,
+     "end": 250
+    },
+    "degree": 2
+   },
+   {
+    "id": "n6",
+    "key": "jardin",
+    "name": "jardín",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Zona donde debe colocarse el sensor de humedad SH-2 para la correcta medición.",
+    "evidence": {
+     "start": 252,
+     "end": 285
+    },
+    "degree": 1
+   },
+   {
+    "id": "n7",
+    "key": "riegala",
+    "name": "aplicación Riegala",
+    "type": "artefacto",
+    "aliases": [
+     "Riegala",
+     "la aplicación"
+    ],
+    "description": "Aplicación utilizada para configurar los turnos de riego y comunicarse con el controlador.",
+    "evidence": {
+     "start": 414,
+     "end": 442
+    },
+    "degree": 2
+   },
+   {
+    "id": "n8",
+    "key": "modulo_wifi",
+    "name": "módulo Wi-Fi",
+    "type": "artefacto",
+    "aliases": [
+     "el módulo"
+    ],
+    "description": "Módulo de comunicación integrado en el controlador R-40.",
+    "evidence": {
+     "start": 492,
+     "end": 514
+    },
+    "degree": 4
+   },
+   {
+    "id": "n9",
+    "key": "manual",
+    "name": "manual",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Documentación de instrucciones del equipo que recomienda reiniciar el módulo si no se conecta.",
+    "evidence": {
+     "start": 557,
+     "end": 587
+    },
+    "degree": 1
+   },
+   {
+    "id": "n10",
+    "key": "boton_servicio",
+    "name": "botón de servicio",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Botón físico desde el cual se realiza el reinicio del módulo de comunicación.",
+    "evidence": {
+     "start": 598,
+     "end": 624
+    },
+    "degree": 1
+   },
+   {
+    "id": "n11",
+    "key": "aguaverde",
+    "name": "Aguaverde",
+    "type": "organizacion",
+    "aliases": [],
+    "description": "Distribuidor autorizado de Hidrotec que realiza instalaciones del equipo de riego.",
+    "evidence": {
+     "start": 705,
+     "end": 743
+    },
+    "degree": 1
+   }
+  ],
+  "relations": [
+   {
+    "id": "e1",
+    "source": "n1",
+    "target": "n2",
+    "predicate": "es de",
+    "evidence": {
+     "start": 0,
+     "end": 40
+    }
+   },
+   {
+    "id": "e2",
+    "source": "n1",
+    "target": "n3",
+    "predicate": "se instala en",
+    "evidence": {
+     "start": 41,
+     "end": 74
+    }
+   },
+   {
+    "id": "e3",
+    "source": "n1",
+    "target": "n4",
+    "predicate": "se conecta a",
+    "evidence": {
+     "start": 77,
+     "end": 110
+    }
+   },
+   {
+    "id": "e4",
+    "source": "n5",
+    "target": "n6",
+    "predicate": "se coloca en",
+    "evidence": {
+     "start": 183,
+     "end": 285
+    }
+   },
+   {
+    "id": "e5",
+    "source": "n1",
+    "target": "n5",
+    "predicate": "lee",
+    "evidence": {
+     "start": 287,
+     "end": 308
+    }
+   },
+   {
+    "id": "e6",
+    "source": "n7",
+    "target": "n1",
+    "predicate": "se comunica con",
+    "evidence": {
+     "start": 421,
+     "end": 478
+    }
+   },
+   {
+    "id": "e7",
+    "source": "n7",
+    "target": "n8",
+    "predicate": "se comunica a través de",
+    "evidence": {
+     "start": 448,
+     "end": 504
+    }
+   },
+   {
+    "id": "e8",
+    "source": "n8",
+    "target": "n1",
+    "predicate": "está integrado en",
+    "evidence": {
+     "start": 492,
+     "end": 514
+    }
+   },
+   {
+    "id": "e9",
+    "source": "n9",
+    "target": "n8",
+    "predicate": "recomienda reiniciar",
+    "evidence": {
+     "start": 557,
+     "end": 597
+    }
+   },
+   {
+    "id": "e10",
+    "source": "n8",
+    "target": "n10",
+    "predicate": "se reinicia desde",
+    "evidence": {
+     "start": 578,
+     "end": 624
+    }
+   },
+   {
+    "id": "e11",
+    "source": "n11",
+    "target": "n2",
+    "predicate": "es distribuidor autorizado de",
+    "evidence": {
+     "start": 705,
+     "end": 743
+    }
+   }
+  ],
+  "meta": {
+   "model": "gemini-3.5-flash",
+   "createdAt": "2026-10-07T22:14:26.340Z",
+   "sourceChars": 744
+  }
+ }
+}

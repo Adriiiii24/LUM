@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T00:00:00Z",
+  "title": "Design System: Neural Canvas",
+  "extensions": {
+    "colorMeta": {
+      "markup": { "role": "primary", "displayName": "Lima de revisión", "canonical": "#7fff00", "tonalRamp": ["#1a3300", "#2e5900", "#448000", "#5aa600", "#6fd900", "#7fff00", "#b0ff66", "#e0ffc2"] },
+      "paper": { "role": "neutral", "displayName": "Papel de lámina", "canonical": "#ede8d0", "tonalRamp": ["#2b2920", "#474434", "#65614b", "#858066", "#a7a184", "#c9c3a6", "#e4dfc8", "#ede8d0"] },
+      "paper-2": { "role": "neutral", "displayName": "Papel de banda", "canonical": "#e4dfc8", "tonalRamp": ["#2b2920", "#474434", "#65614b", "#858066", "#a7a184", "#c9c3a6", "#e4dfc8", "#ede8d0"] },
+      "ink": { "role": "neutral", "displayName": "Tinta", "canonical": "#1a1a1a", "tonalRamp": ["#1a1a1a", "#333331", "#4d4b46", "#5e5c54", "#77756a", "#9a978a", "#c4c0ad", "#ede8d0"] },
+      "ink-2": { "role": "neutral", "displayName": "Tinta segunda (76 %, 7,1:1 sobre papel)", "canonical": "#4d4b46", "tonalRamp": ["#1a1a1a", "#333331", "#4d4b46", "#5e5c54", "#77756a", "#9a978a", "#c4c0ad", "#ede8d0"] },
+      "ink-3": { "role": "neutral", "displayName": "Tinta tercera (68 %, 5,4:1 sobre papel, 5,0:1 sobre paper-2)", "canonical": "#5e5c54", "tonalRamp": ["#1a1a1a", "#333331", "#4d4b46", "#5e5c54", "#77756a", "#9a978a", "#c4c0ad", "#ede8d0"] },
+      "line": { "role": "neutral", "displayName": "Filete (tinta al 24 %)", "canonical": "rgb(26 26 26 / 0.24)", "tonalRamp": ["rgb(26 26 26 / 0.08)", "rgb(26 26 26 / 0.14)", "rgb(26 26 26 / 0.24)", "rgb(26 26 26 / 0.42)"] },
+      "line-strong": { "role": "neutral", "displayName": "Filete de control (3,8:1)", "canonical": "#77756a", "tonalRamp": ["#1a1a1a", "#333331", "#4d4b46", "#5e5c54", "#77756a", "#9a978a", "#c4c0ad", "#ede8d0"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Títulos de las secciones de lectura, en mayúsculas; 2,25 rem que sube a 3,75 rem desde md." },
+      "title": { "displayName": "Title", "purpose": "Nombre del producto en cabecera y pie, títulos de paso; mayúsculas." },
+      "body": { "displayName": "Body", "purpose": "Fuente, respuestas y preguntas sugeridas en la herramienta." },
+      "body-read": { "displayName": "Body (lectura)", "purpose": "Prosa de las secciones de lectura, 56-60 ch." },
+      "label": { "displayName": "Label de banda", "purpose": "Títulos de banda de celda y pestañas de móvil, mayúsculas." },
+      "label-field": { "displayName": "Label de campo", "purpose": "Nombre de campo en cajetín, pie, columnas de tabla y formularios, en ink-3." },
+      "mono": { "displayName": "Mono de dato", "purpose": "Ids, zonas, cifras, predicados, modelos y números de cita, con cifras tabulares." }
+    },
+    "shadows": [
+      { "name": "float", "value": "0.6rem 0.6rem 0 rgb(26 26 26 / 0.06)", "purpose": "Única sombra: dura, sin desenfoque, solo en lo que flota (leyenda desplegada, ficha de entidad, aviso de extracción, cajón de fuente en tableta)." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Curva de todos los cambios de estado." },
+      { "name": "control", "value": "150ms", "purpose": "Hover de botones y chips; hundimiento de 1 px al pulsar." },
+      { "name": "halo", "value": "220ms", "purpose": "Entrada del halo lima de un nodo marcado (escala 0,4 a 1)." },
+      { "name": "edge-band", "value": "280ms", "purpose": "Dibujo de la banda lima bajo una arista, desde el nodo visitado antes; instantánea con movimiento reducido." },
+      { "name": "scan", "value": "1.4s infinite", "purpose": "Línea de espera de la extracción: un tercio de tinta cruza el filete superior." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "48rem" },
+      { "name": "xl", "value": "80rem" },
+      { "name": "title-block-full (container)", "value": "38rem" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal: tinta; al pasar, la lima con la tinta encima.",
+      "html": "<button class=\"ds-btn-primary\">Extraer grafo</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; padding: 0 14px; border: 0; border-radius: 3px; background: var(--color-ink, #1a1a1a); color: var(--color-paper, #ede8d0); font: 500 14px/20px var(--font-sans, Geist, system-ui, sans-serif); cursor: pointer; transition: background-color 150ms ease-out, color 150ms ease-out, transform 150ms ease-out; } .ds-btn-primary:hover { background: var(--color-markup, #7fff00); color: var(--color-ink, #1a1a1a); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; } .ds-btn-primary:disabled { background: var(--color-paper-2, #e4dfc8); color: var(--color-ink-3, #5e5c54); cursor: not-allowed; transform: none; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Acción secundaria: transparente con filete de control.",
+      "html": "<button class=\"ds-btn-secondary\">Reintentar</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 12px; border: 1px solid var(--color-line-strong, #77756a); border-radius: 3px; background: transparent; color: var(--color-ink, #1a1a1a); font: 500 14px/20px var(--font-sans, Geist, system-ui, sans-serif); cursor: pointer; transition: background-color 150ms ease-out, transform 150ms ease-out; } .ds-btn-secondary:hover { background: var(--color-paper-2, #e4dfc8); } .ds-btn-secondary:active { transform: translateY(1px); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; }"
+    },
+    {
+      "name": "Band Toggle",
+      "kind": "nav",
+      "refersTo": "toggle-band",
+      "description": "Conmutador cuadrado de las bandas de cabecera (Lámina / Lista); pulsado en tinta.",
+      "html": "<div class=\"ds-toggle\" role=\"group\" aria-label=\"Vista\"><button aria-pressed=\"true\">Lámina</button><button aria-pressed=\"false\">Lista</button></div>",
+      "css": ".ds-toggle { display: inline-flex; border: 1px solid var(--color-line-strong, #77756a); } .ds-toggle button { height: 28px; padding: 0 8px; border: 0; border-radius: 0; background: transparent; color: var(--color-ink-2, #4d4b46); font: 500 11px/1 var(--font-sans, Geist, system-ui, sans-serif); letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; } .ds-toggle button + button { border-left: 1px solid var(--color-line-strong, #77756a); } .ds-toggle button:hover { background: var(--color-paper, #ede8d0); } .ds-toggle button[aria-pressed=\"true\"] { background: var(--color-ink, #1a1a1a); color: var(--color-paper, #ede8d0); } .ds-toggle button:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; }"
+    },
+    {
+      "name": "Citation Chip",
+      "kind": "chip",
+      "refersTo": "chip-citation",
+      "description": "Nota de cita en la respuesta: número en tinta sobre lima; sin respaldo, borde discontinuo y «?».",
+      "html": "<p class=\"ds-answer\">Armstrong pisó la Luna<button class=\"ds-cite\">2</button> y Collins quedó en órbita<button class=\"ds-cite ds-cite--unbacked\">5?</button>.</p>",
+      "css": ".ds-answer { font: 400 14px/1.65 var(--font-sans, Geist, system-ui, sans-serif); color: var(--color-ink, #1a1a1a); } .ds-cite { display: inline-flex; align-items: center; justify-content: center; height: 1.2rem; min-width: 1.2rem; margin: 0 0.15em; padding: 0 4px; border: 0; border-radius: 3px; background: var(--color-markup, #7fff00); color: var(--color-ink, #1a1a1a); font: 600 11px/1 var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; vertical-align: 0.08em; cursor: pointer; transition: transform 150ms ease-out; } .ds-cite:hover { transform: translateY(-1px); } .ds-cite:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; } .ds-cite--unbacked { background: transparent; border: 1px dashed var(--color-ink, #1a1a1a); }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "Campo de texto: papel, filete de control, esquinas vivas y etiqueta de campo encima.",
+      "html": "<label class=\"ds-field\"><span>Tu pregunta</span><textarea rows=\"2\" placeholder=\"Pregunta sobre el texto\"></textarea></label>",
+      "css": ".ds-field { display: block; } .ds-field span { display: block; font: 400 11px/1.4 var(--font-sans, Geist, system-ui, sans-serif); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3, #5e5c54); } .ds-field textarea { display: block; width: 100%; margin-top: 4px; padding: 8px 10px; resize: none; border: 1px solid var(--color-line-strong, #77756a); border-radius: 0; background: var(--color-paper, #ede8d0); color: var(--color-ink, #1a1a1a); caret-color: var(--color-ink, #1a1a1a); font: 400 14px/1.375 var(--font-sans, Geist, system-ui, sans-serif); } .ds-field textarea::placeholder { color: var(--color-ink-3, #5e5c54); } .ds-field textarea:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 0; }"
+    },
+    {
+      "name": "Panel Header",
+      "kind": "card",
+      "refersTo": "panel-header",
+      "description": "Banda de 40 px que abre cada celda: título en mayúsculas, dato en mono y herramientas.",
+      "html": "<div class=\"ds-band\"><h2>Grafo</h2><p>31 entidades · 38 relaciones</p></div>",
+      "css": ".ds-band { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 6px 0 12px; background: var(--color-paper-2, #e4dfc8); border-bottom: 1px solid var(--color-line, rgb(26 26 26 / 0.24)); } .ds-band h2 { margin: 0; font: 600 11px/1 var(--font-sans, Geist, system-ui, sans-serif); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink, #1a1a1a); } .ds-band p { margin: 0; font: 400 11px/1 var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; color: var(--color-ink-3, #5e5c54); }"
+    },
+    {
+      "name": "Title Block",
+      "kind": "custom",
+      "refersTo": "title-block-status-active",
+      "description": "Cajetín del plano; la celda ESTADO se rellena de lima mientras la IA trabaja, con la palabra en tinta.",
+      "html": "<section class=\"ds-cajetin\" aria-label=\"Cajetín\"><div class=\"ds-c ds-c--doc\"><span>Documento</span><b>Apolo 11 (muestra grabada)</b></div><div class=\"ds-c ds-c--status\" role=\"status\"><span>Estado</span><b>RECORRIENDO</b></div><div class=\"ds-c\"><span>Entidades</span><b class=\"ds-mono\">31</b></div><div class=\"ds-c\"><span>Relaciones</span><b class=\"ds-mono\">38</b></div><div class=\"ds-c\"><span>Modelo</span><b class=\"ds-mono\">gemini-3.5-flash</b></div><div class=\"ds-c\"><span>Revisión</span><b class=\"ds-mono\">R1</b></div></section>",
+      "css": ".ds-cajetin { display: grid; grid-template-columns: 4.5rem 5rem minmax(0,1fr) 7.25rem; width: 28rem; max-width: 100%; border: 1px solid var(--color-line-strong, #77756a); background: var(--color-paper, #ede8d0); font-family: var(--font-sans, Geist, system-ui, sans-serif); } .ds-c { min-width: 0; padding: 4px 8px; border-right: 1px solid var(--color-line, rgb(26 26 26 / 0.24)); } .ds-c:last-child { border-right: 0; } .ds-c--doc { grid-column: span 3; border-bottom: 1px solid var(--color-line, rgb(26 26 26 / 0.24)); } .ds-c--status { border-right: 0; border-bottom: 1px solid var(--color-line, rgb(26 26 26 / 0.24)); background: var(--color-markup, #7fff00); } .ds-c span { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3, #5e5c54); } .ds-c--status span { color: var(--color-ink, #1a1a1a); } .ds-c b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 500; color: var(--color-ink, #1a1a1a); } .ds-c--status b { font-weight: 600; letter-spacing: 0.04em; } .ds-mono { font-family: var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-weight: 400 !important; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Node State Rings",
+      "kind": "custom",
+      "refersTo": "markup",
+      "description": "Estados del nodo por tipo de línea: doble = semilla, discontinuo = recorrido, continuo grueso = citado (con halo lima).",
+      "html": "<div class=\"ds-rings\"><svg width=\"40\" height=\"40\" viewBox=\"-20 -20 40 40\"><g fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"1\"><circle r=\"10.5\"/><circle r=\"13.5\"/></g><circle r=\"6\" fill=\"#1a1a1a\"/></svg><svg width=\"40\" height=\"40\" viewBox=\"-20 -20 40 40\"><circle r=\"11.5\" fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"1.25\" stroke-dasharray=\"2.5 2\"/><circle r=\"6\" fill=\"#1a1a1a\"/></svg><svg width=\"40\" height=\"40\" viewBox=\"-20 -20 40 40\"><circle r=\"15\" fill=\"#7fff00\"/><circle r=\"11.5\" fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"2\"/><circle r=\"6\" fill=\"#1a1a1a\"/></svg></div>",
+      "css": ".ds-rings { display: flex; gap: 16px; padding: 12px; background: var(--color-paper, #ede8d0); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Plano técnico (Heron real)",
+    "overview": "La interfaz es una lámina de delineante: papel beige, tinta casi negra y una sola marca de revisión en lima. El grafo se dibuja como un plano, con reglas A-H por 1-6 en el borde, retícula de zonas muy tenue, símbolos de entidad por forma y un cajetín abajo a la derecha. La IA actúa como el revisor que marca la lámina: la lima solo aparece donde el recuperador pasó o donde la respuesta cita, igual que la marca en rojo de un revisor de planos.\n\nLa densidad es la de una herramienta de trabajo: la primera pantalla es la herramienta entera, enmarcada a 0,8 rem del borde de la ventana y dividida en celdas por filetes de 1 px. Debajo, la lámina de lectura («Cómo funciona», «Lo que se mide», «Límites» y el pie) reutiliza la misma retícula de filetes con más aire y títulos grandes en mayúsculas. Todo es plano, de esquinas vivas y tinta sobre papel; la profundidad solo existe para lo que flota.\n\nRechazos confirmados en la dirección: el bento redondeado de SaaS y la constelación oscura con neón y cristal.",
+    "keyCharacteristics": [
+      "Papel, tinta y una sola marca lima que nunca es texto.",
+      "El estado se dibuja con tipos de línea (doble, discontinua, continua gruesa), no con color.",
+      "Celdas separadas por filetes de 1 px; esquinas a 0 px en paneles y campos, 3 px en botones y chips.",
+      "Geist en mayúsculas apretadas para títulos; Geist Mono con cifras tabulares para ids, zonas y cifras.",
+      "Una sola sombra dura, sin desenfoque, solo en lo que flota.",
+      "Solo tema claro."
+    ],
+    "rules": [
+      { "name": "The Lime-Under-Ink Rule", "body": "La lima nunca es texto ni la única señal de un estado: es un relleno bajo o tras la tinta (chips con texto en tinta, la celda ESTADO, halos, bandas bajo aristas, marcas de evidencia en la fuente y el hover del botón principal). Todo lo que la lima marca lleva además una señal en tinta: anillo, palabra, número o tipo de línea.", "section": "colors" },
+      { "name": "The Reviewer's Mark Rule", "body": "En reposo, solo lo citado conserva la lima. Mientras se traza un recorrido, todo lo visitado (semilla, recorrido y citado) se marca en lima; al terminar, la lima se retira de lo que no se citó.", "section": "colors" },
+      { "name": "The Measured Tint Rule", "body": "Los grises son tinta con alfa resuelta sobre el papel, con contraste medido: ink-2 7,1:1, ink-3 5,4:1. Un gris nuevo entra solo con su contraste medido sobre paper y paper-2.", "section": "colors" },
+      { "name": "The Data Is Mono Rule", "body": "Lo que es un identificador, una zona o una cifra va en Geist Mono con cifras tabulares; la prosa nunca.", "section": "typography" },
+      { "name": "The Field Label Rule", "body": "Las etiquetas en mayúsculas pequeñas existen solo como nombre de un campo o de una celda (cajetín, pie, columnas de tabla, campos de formulario), nunca como titular encima de un título.", "section": "typography" },
+      { "name": "The Only Floating Shadow Rule", "body": "Una sola sombra, dura y desplazada 0,6 rem al 6 %, y solo en elementos flotantes. Nada que forme parte de la lámina lleva sombra.", "section": "elevation" },
+      { "name": "The State Is A Line Type Rule", "body": "El estado de un nodo lo lleva el anillo: doble de 1 px para la semilla, discontinuo (1,25 px, trazo 2,5/2) para lo recorrido y continuo grueso (2 px) para lo citado. Las aristas siguen la misma gramática: discontinuas (4/3) cuando se recorren y continuas más gruesas (1,6 px) cuando unen dos citadas. La lima acompaña, nunca sustituye.", "section": "shapes" },
+      { "name": "The Hairline Rule", "body": "Los paneles se separan con filetes de 1 px de tinta al 24 %; los controles se bordean con el filete de control. Solo el pie usa un filete de 2 px de tinta para cerrar la lámina.", "section": "shapes" }
+    ],
+    "dos": [
+      "**Do** poner la lima solo como relleno bajo texto o líneas en tinta (#1a1a1a sobre #7fff00, 14,8:1).",
+      "**Do** acompañar cada marca lima con una señal en tinta: anillo doble, discontinuo o continuo grueso, palabra de estado o número.",
+      "**Do** separar celdas con filetes de 1 px de tinta al 24 % y bordear controles con #77756a.",
+      "**Do** dejar paneles y campos a 0 px y botones y chips a 3 px.",
+      "**Do** escribir ids, zonas y cifras en Geist Mono con cifras tabulares.",
+      "**Do** limitar el movimiento a cambios de estado, con la curva cubic-bezier(0.16, 1, 0.3, 1)."
+    ],
+    "donts": [
+      "**Don't** usar la lima como color de texto, de icono o de borde fino sobre el papel: da 1,05:1.",
+      "**Don't** dejar en lima, en reposo, nada que no esté citado.",
+      "**Don't** usar otra sombra que `0.6rem 0.6rem 0 rgb(26 26 26 / 0.06)`, ni ponerla en algo que no flote.",
+      "**Don't** añadir un tema oscuro: el papel beige está fijado.",
+      "**Don't** distinguir tipos de entidad por color; el tipo es la forma del símbolo.",
+      "**Don't** redondear paneles ni montar tarjetas tipo bento.",
+      "**Don't** poner etiquetas en mayúsculas encima de los títulos de sección."
+    ]
+  }
+}

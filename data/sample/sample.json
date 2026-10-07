@@ -1,0 +1,1342 @@
+{
+ "provenance": "gemini",
+ "recordedAt": "2026-10-07T21:36:48.150Z",
+ "title": "Apolo 11",
+ "attribution": {
+  "label": "«Apolo 11», Wikipedia en español",
+  "url": "https://es.wikipedia.org/w/index.php?oldid=175585557",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.es"
+ },
+ "settings": {
+  "extractModel": "gemini-3.5-flash",
+  "thinking": "medium",
+  "chatModels": [
+   "gemini-3.5-flash"
+  ]
+ },
+ "text": "El Apolo 11 (16 de julio - 24 de julio de 1969) fue la misión espacial estadounidense que logró el primer alunizaje de seres humanos en la Luna, así como el quinto vuelo tripulado del programa Apolo de la NASA. La tripulación estaba integrada por el comandante Neil Armstrong, el piloto del módulo de mando Michael Collins y el piloto del módulo lunar Edwin «Buzz» Aldrin; para los tres astronautas, esta supuso su segunda y última incursión en el espacio.\nTras despegar el 16 de julio a las 13:32 UTC desde el Centro Espacial Kennedy, en Florida, a bordo de un cohete Saturno V, la nave espacial Apolo se componía de tres secciones: el módulo de mando (CM), que albergaba a los tres astronautas y fue la única parte que regresó a la Tierra; el módulo de servicio (SM), encargado de suministrar propulsión, energía eléctrica, oxígeno y agua al módulo de mando; y el módulo lunar (LM), dividido en dos etapas: una de descenso, equipada con un gran motor y tanques de combustible para el alunizaje, y una etapa de ascenso, más ligera, que contenía la cabina para dos tripulantes y un motor de menor tamaño para reintegrarlos a la órbita lunar. Después de tres días de tránsito, Armstrong y Aldrin descendieron a la superficie en el LM Eagle y alunizaron en el Mar de la Tranquilidad el 20 de julio a las 20:17 UTC, mientras Collins permanecía en órbita lunar a bordo del CM Columbia. Armstrong se convirtió en el primer ser humano en caminar sobre la Luna aproximadamente seis horas después del aterrizaje, seguido por Aldrin diecinueve minutos más tarde. Ambos permanecieron cerca de dos horas y media recorriendo la superficie, tiempo durante el cual plantaron una bandera estadounidense, conversaron telefónicamente con el presidente Richard Nixon, desplegaron instrumentos científicos y recolectaron 21,5 kg de material lunar. Tras pasar más de veintiún horas en la superficie, se reunieron con Collins en la órbita lunar y la tripulación regresó a salvo a la Tierra el 24 de julio, donde amerizaron en el océano Pacífico.\nEl Apolo 11 representó la culminación de la carrera espacial, una competición geopolítica entre Estados Unidos y la Unión Soviética enmarcada en la rivalidad de la Guerra Fría. La misión cumplió el objetivo nacional establecido por el presidente John F. Kennedy en mayo de 1961, quien desafió al país a llevar a un hombre a la Luna y devolverlo a salvo antes de que finalizara la década. El programa logró superar un grave revés tras el fatal incendio del Apolo 1 en la plataforma de lanzamiento en enero de 1967, en el que se apoyó en las tecnologías desarrolladas durante los programas precedentes Mercury y Gemini. Por su parte, la Unión Soviética, pese a su liderazgo inicial en los vuelos espaciales, no fue capaz de igualar la potencia del cohete Saturno V; de hecho, su sonda lunar no tripulada Luna 15 se estrelló contra la superficie lunar el 21 de julio, mientras Neil Armstrong y Buzz Aldrin todavía se encontraban en ella.\nLa caminata lunar de Armstrong se transmitió en directo a una audiencia estimada de seiscientos millones de espectadores —aproximadamente una quinta parte de la población mundial de la época—, lo que la convirtió en uno de los eventos televisivos más vistos de la historia. Al pisar la superficie lunar, Armstrong declaró: «Es un pequeño paso para \"un\" hombre, pero un gran salto para la humanidad». Las muestras lunares traídas por la misión permitieron identificar tres minerales desconocidos hasta entonces, mientras que los instrumentos científicos instalados en la superficie continuaron enviando datos durante años. La tripulación recibió diversos honores, como desfiles multitudinarios, una gira mundial de buena voluntad y la Medalla Presidencial de la Libertad. El módulo de mando Columbia se conserva en el Museo Nacional del Aire y el Espacio en Washington D. C., mientras que la etapa de descenso del Eagle permanece en la superficie de la Luna.\n",
+ "graph": {
+  "entities": [
+   {
+    "id": "n1",
+    "key": "apolo_11",
+    "name": "Apolo 11",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Misión espacial estadounidense que logró el primer alunizaje de seres humanos en la Luna en julio de 1969.",
+    "evidence": {
+     "start": 0,
+     "end": 143
+    },
+    "degree": 9
+   },
+   {
+    "id": "n2",
+    "key": "luna",
+    "name": "Luna",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Satélite natural de la Tierra donde se produjo el primer alunizaje humano.",
+    "evidence": {
+     "start": 90,
+     "end": 143
+    },
+    "degree": 5
+   },
+   {
+    "id": "n3",
+    "key": "programa_apolo",
+    "name": "programa Apolo",
+    "type": "concepto",
+    "aliases": [],
+    "description": "Programa de vuelos espaciales de la NASA del cual el Apolo 11 fue la quinta misión tripulada.",
+    "evidence": {
+     "start": 154,
+     "end": 209
+    },
+    "degree": 5
+   },
+   {
+    "id": "n4",
+    "key": "nasa",
+    "name": "NASA",
+    "type": "organizacion",
+    "aliases": [],
+    "description": "Agencia espacial estadounidense responsable del programa Apolo.",
+    "evidence": {
+     "start": 184,
+     "end": 209
+    },
+    "degree": 1
+   },
+   {
+    "id": "n5",
+    "key": "neil_armstrong",
+    "name": "Neil Armstrong",
+    "type": "persona",
+    "aliases": [],
+    "description": "Comandante de la misión Apolo 11 y el primer ser humano en caminar sobre la Luna.",
+    "evidence": {
+     "start": 247,
+     "end": 275
+    },
+    "degree": 5
+   },
+   {
+    "id": "n6",
+    "key": "michael_collins",
+    "name": "Michael Collins",
+    "type": "persona",
+    "aliases": [],
+    "description": "Piloto del módulo de mando de la misión Apolo 11 que permaneció en órbita lunar.",
+    "evidence": {
+     "start": 277,
+     "end": 322
+    },
+    "degree": 3
+   },
+   {
+    "id": "n7",
+    "key": "buzz_aldrin",
+    "name": "Edwin «Buzz» Aldrin",
+    "type": "persona",
+    "aliases": [
+     "Buzz Aldrin"
+    ],
+    "description": "Piloto del módulo lunar del Apolo 11 y el segundo hombre en caminar sobre la Luna.",
+    "evidence": {
+     "start": 325,
+     "end": 371
+    },
+    "degree": 5
+   },
+   {
+    "id": "n8",
+    "key": "centro_espacial_kennedy",
+    "name": "Centro Espacial Kennedy",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Centro espacial en Florida desde donde despegó la misión Apolo 11.",
+    "evidence": {
+     "start": 502,
+     "end": 546
+    },
+    "degree": 1
+   },
+   {
+    "id": "n9",
+    "key": "saturno_v",
+    "name": "Saturno V",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Cohete de lanzamiento gigante utilizado para enviar la nave Apolo al espacio.",
+    "evidence": {
+     "start": 548,
+     "end": 578
+    },
+    "degree": 2
+   },
+   {
+    "id": "n10",
+    "key": "modulo_de_mando",
+    "name": "módulo de mando",
+    "type": "artefacto",
+    "aliases": [
+     "CM"
+    ],
+    "description": "Sección de la nave que albergaba a los astronautas y única parte que regresó a la Tierra.",
+    "evidence": {
+     "start": 634,
+     "end": 740
+    },
+    "degree": 4
+   },
+   {
+    "id": "n11",
+    "key": "modulo_de_servicio",
+    "name": "módulo de servicio",
+    "type": "artefacto",
+    "aliases": [
+     "SM"
+    ],
+    "description": "Sección que suministraba propulsión, energía, oxígeno y agua al módulo de mando.",
+    "evidence": {
+     "start": 742,
+     "end": 859
+    },
+    "degree": 1
+   },
+   {
+    "id": "n12",
+    "key": "modulo_lunar",
+    "name": "módulo lunar",
+    "type": "artefacto",
+    "aliases": [
+     "LM"
+    ],
+    "description": "Sección de la nave dividida en una etapa de descenso para el alunizaje y una etapa de ascenso.",
+    "evidence": {
+     "start": 863,
+     "end": 907
+    },
+    "degree": 0
+   },
+   {
+    "id": "n13",
+    "key": "eagle",
+    "name": "Eagle",
+    "type": "artefacto",
+    "aliases": [
+     "LM Eagle"
+    ],
+    "description": "Nombre del módulo lunar en el que Armstrong y Aldrin descendieron a la superficie de la Luna.",
+    "evidence": {
+     "start": 1176,
+     "end": 1238
+    },
+    "degree": 4
+   },
+   {
+    "id": "n14",
+    "key": "mar_de_la_tranquilidad",
+    "name": "Mar de la Tranquilidad",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Lugar de la superficie lunar donde alunizó el módulo Eagle.",
+    "evidence": {
+     "start": 1241,
+     "end": 1280
+    },
+    "degree": 1
+   },
+   {
+    "id": "n15",
+    "key": "columbia",
+    "name": "Columbia",
+    "type": "artefacto",
+    "aliases": [
+     "CM Columbia"
+    ],
+    "description": "Nombre del módulo de mando en el que Collins orbitó la Luna y que se conserva en Washington D. C.",
+    "evidence": {
+     "start": 1313,
+     "end": 1380
+    },
+    "degree": 2
+   },
+   {
+    "id": "n16",
+    "key": "richard_nixon",
+    "name": "Richard Nixon",
+    "type": "persona",
+    "aliases": [],
+    "description": "Presidente de los Estados Unidos que conversó telefónicamente con los astronautas en la Luna.",
+    "evidence": {
+     "start": 1689,
+     "end": 1748
+    },
+    "degree": 2
+   },
+   {
+    "id": "n17",
+    "key": "estados_unidos",
+    "name": "Estados Unidos",
+    "type": "lugar",
+    "aliases": [
+     "EE. UU."
+    ],
+    "description": "País que compitió en la carrera espacial y financió el programa Apolo.",
+    "evidence": {
+     "start": 2091,
+     "end": 2156
+    },
+    "degree": 1
+   },
+   {
+    "id": "n18",
+    "key": "union_sovietica",
+    "name": "Unión Soviética",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Nación que compitió contra Estados Unidos en la carrera espacial de la Guerra Fría.",
+    "evidence": {
+     "start": 2091,
+     "end": 2156
+    },
+    "degree": 3
+   },
+   {
+    "id": "n19",
+    "key": "guerra_fria",
+    "name": "Guerra Fría",
+    "type": "concepto",
+    "aliases": [],
+    "description": "Rivalidad geopolítica global que sirvió de marco para la carrera espacial.",
+    "evidence": {
+     "start": 2157,
+     "end": 2200
+    },
+    "degree": 1
+   },
+   {
+    "id": "n20",
+    "key": "carrera_espacial",
+    "name": "carrera espacial",
+    "type": "concepto",
+    "aliases": [],
+    "description": "Competición geopolítica por el dominio del espacio exterior en la que el Apolo 11 fue la culminación.",
+    "evidence": {
+     "start": 2025,
+     "end": 2085
+    },
+    "degree": 4
+   },
+   {
+    "id": "n21",
+    "key": "john_f_kennedy",
+    "name": "John F. Kennedy",
+    "type": "persona",
+    "aliases": [],
+    "description": "Presidente de EE. UU. que en 1961 propuso el objetivo nacional de llevar a un hombre a la Luna antes de fin de la década.",
+    "evidence": {
+     "start": 2241,
+     "end": 2302
+    },
+    "degree": 1
+   },
+   {
+    "id": "n22",
+    "key": "apolo_1",
+    "name": "Apolo 1",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Misión espacial que sufrió un trágico incendio en su plataforma en enero de 1967.",
+    "evidence": {
+     "start": 2459,
+     "end": 2520
+    },
+    "degree": 1
+   },
+   {
+    "id": "n23",
+    "key": "mercury",
+    "name": "Mercury",
+    "type": "concepto",
+    "aliases": [],
+    "description": "Programa espacial estadounidense previo que aportó tecnologías al programa Apolo.",
+    "evidence": {
+     "start": 2603,
+     "end": 2641
+    },
+    "degree": 1
+   },
+   {
+    "id": "n24",
+    "key": "gemini",
+    "name": "Gemini",
+    "type": "concepto",
+    "aliases": [],
+    "description": "Programa espacial de la NASA que desarrolló tecnologías precursoras para el programa Apolo.",
+    "evidence": {
+     "start": 2603,
+     "end": 2641
+    },
+    "degree": 1
+   },
+   {
+    "id": "n25",
+    "key": "luna_15",
+    "name": "Luna 15",
+    "type": "artefacto",
+    "aliases": [],
+    "description": "Sonda espacial no tripulada soviética que se estrelló contra la Luna en julio de 1969.",
+    "evidence": {
+     "start": 2799,
+     "end": 2873
+    },
+    "degree": 2
+   },
+   {
+    "id": "n26",
+    "key": "museo_nacional_del_aire_y_el_espacio",
+    "name": "Museo Nacional del Aire y el Espacio",
+    "type": "lugar",
+    "aliases": [],
+    "description": "Institución en Washington D. C. donde se expone el módulo de mando Columbia.",
+    "evidence": {
+     "start": 3759,
+     "end": 3832
+    },
+    "degree": 1
+   }
+  ],
+  "relations": [
+   {
+    "id": "e1",
+    "source": "n1",
+    "target": "n2",
+    "predicate": "logró el primer alunizaje en",
+    "evidence": {
+     "start": 0,
+     "end": 143
+    }
+   },
+   {
+    "id": "e2",
+    "source": "n1",
+    "target": "n3",
+    "predicate": "fue el quinto vuelo tripulado de",
+    "evidence": {
+     "start": 154,
+     "end": 198
+    }
+   },
+   {
+    "id": "e3",
+    "source": "n3",
+    "target": "n4",
+    "predicate": "pertenece a la",
+    "evidence": {
+     "start": 184,
+     "end": 209
+    }
+   },
+   {
+    "id": "e4",
+    "source": "n1",
+    "target": "n5",
+    "predicate": "tuvo como comandante a",
+    "evidence": {
+     "start": 211,
+     "end": 275
+    }
+   },
+   {
+    "id": "e5",
+    "source": "n1",
+    "target": "n6",
+    "predicate": "tuvo como piloto de módulo de mando a",
+    "evidence": {
+     "start": 277,
+     "end": 322
+    }
+   },
+   {
+    "id": "e6",
+    "source": "n1",
+    "target": "n7",
+    "predicate": "tuvo como piloto de módulo lunar a",
+    "evidence": {
+     "start": 325,
+     "end": 371
+    }
+   },
+   {
+    "id": "e7",
+    "source": "n1",
+    "target": "n8",
+    "predicate": "despegó desde",
+    "evidence": {
+     "start": 457,
+     "end": 534
+    }
+   },
+   {
+    "id": "e8",
+    "source": "n1",
+    "target": "n9",
+    "predicate": "despegó a bordo de",
+    "evidence": {
+     "start": 548,
+     "end": 578
+    }
+   },
+   {
+    "id": "e9",
+    "source": "n10",
+    "target": "n5",
+    "predicate": "albergó a",
+    "evidence": {
+     "start": 634,
+     "end": 695
+    }
+   },
+   {
+    "id": "e10",
+    "source": "n10",
+    "target": "n6",
+    "predicate": "albergó a",
+    "evidence": {
+     "start": 634,
+     "end": 695
+    }
+   },
+   {
+    "id": "e11",
+    "source": "n10",
+    "target": "n7",
+    "predicate": "albergó a",
+    "evidence": {
+     "start": 634,
+     "end": 695
+    }
+   },
+   {
+    "id": "e12",
+    "source": "n11",
+    "target": "n10",
+    "predicate": "suministró recursos a",
+    "evidence": {
+     "start": 742,
+     "end": 859
+    }
+   },
+   {
+    "id": "e13",
+    "source": "n5",
+    "target": "n13",
+    "predicate": "descendió en el",
+    "evidence": {
+     "start": 1176,
+     "end": 1238
+    }
+   },
+   {
+    "id": "e14",
+    "source": "n7",
+    "target": "n13",
+    "predicate": "descendió en el",
+    "evidence": {
+     "start": 1176,
+     "end": 1238
+    }
+   },
+   {
+    "id": "e15",
+    "source": "n13",
+    "target": "n14",
+    "predicate": "alunizó en el",
+    "evidence": {
+     "start": 1241,
+     "end": 1280
+    }
+   },
+   {
+    "id": "e16",
+    "source": "n6",
+    "target": "n15",
+    "predicate": "permaneció a bordo de",
+    "evidence": {
+     "start": 1313,
+     "end": 1380
+    }
+   },
+   {
+    "id": "e17",
+    "source": "n5",
+    "target": "n2",
+    "predicate": "caminó sobre la",
+    "evidence": {
+     "start": 1382,
+     "end": 1453
+    }
+   },
+   {
+    "id": "e18",
+    "source": "n7",
+    "target": "n2",
+    "predicate": "caminó sobre la",
+    "evidence": {
+     "start": 1505,
+     "end": 1552
+    }
+   },
+   {
+    "id": "e19",
+    "source": "n5",
+    "target": "n16",
+    "predicate": "conversó con",
+    "evidence": {
+     "start": 1689,
+     "end": 1748
+    }
+   },
+   {
+    "id": "e20",
+    "source": "n7",
+    "target": "n16",
+    "predicate": "conversó con",
+    "evidence": {
+     "start": 1689,
+     "end": 1748
+    }
+   },
+   {
+    "id": "e21",
+    "source": "n1",
+    "target": "n20",
+    "predicate": "culminó la",
+    "evidence": {
+     "start": 2025,
+     "end": 2085
+    }
+   },
+   {
+    "id": "e22",
+    "source": "n20",
+    "target": "n17",
+    "predicate": "enfrentó a",
+    "evidence": {
+     "start": 2091,
+     "end": 2156
+    }
+   },
+   {
+    "id": "e23",
+    "source": "n20",
+    "target": "n18",
+    "predicate": "enfrentó a",
+    "evidence": {
+     "start": 2091,
+     "end": 2156
+    }
+   },
+   {
+    "id": "e24",
+    "source": "n20",
+    "target": "n19",
+    "predicate": "se enmarcó en",
+    "evidence": {
+     "start": 2157,
+     "end": 2200
+    }
+   },
+   {
+    "id": "e25",
+    "source": "n1",
+    "target": "n21",
+    "predicate": "cumplió el objetivo de",
+    "evidence": {
+     "start": 2202,
+     "end": 2286
+    }
+   },
+   {
+    "id": "e26",
+    "source": "n3",
+    "target": "n22",
+    "predicate": "superó el revés del incendio del",
+    "evidence": {
+     "start": 2413,
+     "end": 2488
+    }
+   },
+   {
+    "id": "e27",
+    "source": "n3",
+    "target": "n23",
+    "predicate": "se apoyó en tecnologías de",
+    "evidence": {
+     "start": 2549,
+     "end": 2641
+    }
+   },
+   {
+    "id": "e28",
+    "source": "n3",
+    "target": "n24",
+    "predicate": "se apoyó en tecnologías de",
+    "evidence": {
+     "start": 2549,
+     "end": 2641
+    }
+   },
+   {
+    "id": "e29",
+    "source": "n18",
+    "target": "n9",
+    "predicate": "no pudo igualar la potencia de",
+    "evidence": {
+     "start": 2657,
+     "end": 2787
+    }
+   },
+   {
+    "id": "e30",
+    "source": "n25",
+    "target": "n2",
+    "predicate": "se estrelló contra la",
+    "evidence": {
+     "start": 2799,
+     "end": 2873
+    }
+   },
+   {
+    "id": "e31",
+    "source": "n18",
+    "target": "n25",
+    "predicate": "era propietaria de",
+    "evidence": {
+     "start": 2799,
+     "end": 2834
+    }
+   },
+   {
+    "id": "e32",
+    "source": "n15",
+    "target": "n26",
+    "predicate": "se conserva en",
+    "evidence": {
+     "start": 3731,
+     "end": 3832
+    }
+   },
+   {
+    "id": "e33",
+    "source": "n13",
+    "target": "n2",
+    "predicate": "permanece en la",
+    "evidence": {
+     "start": 3848,
+     "end": 3916
+    }
+   }
+  ],
+  "meta": {
+   "model": "gemini-3.5-flash",
+   "createdAt": "2026-10-07T21:36:34.166Z",
+   "sourceChars": 3917
+  }
+ },
+ "layout": {
+  "positions": {
+   "n1": {
+    "x": 146.7,
+    "y": -94.5
+   },
+   "n2": {
+    "x": 112.4,
+    "y": -47.4
+   },
+   "n3": {
+    "x": 283.2,
+    "y": -122.6
+   },
+   "n4": {
+    "x": 295.7,
+    "y": -199.7
+   },
+   "n5": {
+    "x": 40.4,
+    "y": -77.8
+   },
+   "n6": {
+    "x": -41.9,
+    "y": -2.3
+   },
+   "n7": {
+    "x": 78.7,
+    "y": 41.1
+   },
+   "n8": {
+    "x": 33.8,
+    "y": -214.8
+   },
+   "n9": {
+    "x": 167.9,
+    "y": -20.4
+   },
+   "n10": {
+    "x": -28.2,
+    "y": 111.9
+   },
+   "n11": {
+    "x": -165.7,
+    "y": -19.2
+   },
+   "n12": {
+    "x": -10.1,
+    "y": 231.8
+   },
+   "n13": {
+    "x": 99.5,
+    "y": -129.7
+   },
+   "n14": {
+    "x": 196.4,
+    "y": -232.6
+   },
+   "n15": {
+    "x": -106.2,
+    "y": 63.4
+   },
+   "n16": {
+    "x": 67.8,
+    "y": 162.2
+   },
+   "n17": {
+    "x": 284,
+    "y": 124.4
+   },
+   "n18": {
+    "x": 172.8,
+    "y": 135.5
+   },
+   "n19": {
+    "x": 358,
+    "y": 59.5
+   },
+   "n20": {
+    "x": 264.7,
+    "y": 11.1
+   },
+   "n21": {
+    "x": -65,
+    "y": -114.9
+   },
+   "n22": {
+    "x": 331.4,
+    "y": -52.2
+   },
+   "n23": {
+    "x": 217.7,
+    "y": -67.9
+   },
+   "n24": {
+    "x": 201.2,
+    "y": -124.4
+   },
+   "n25": {
+    "x": 180.3,
+    "y": 47.2
+   },
+   "n26": {
+    "x": -205.6,
+    "y": 125.8
+   }
+  },
+  "bounds": {
+   "minX": -205.6,
+   "minY": -232.6,
+   "maxX": 358,
+   "maxY": 231.8
+  }
+ },
+ "replays": [
+  {
+   "question": "¿Quién pisó primero la Luna y desde qué nave descendió?",
+   "chunks": [
+    {
+     "t": 85,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-0",
+      "data": {
+       "step": 0,
+       "kind": "seed",
+       "nodes": [
+        "n2"
+       ],
+       "edges": [],
+       "reason": "Coinciden con la pregunta: Luna."
+      }
+     }
+    },
+    {
+     "t": 85,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-1",
+      "data": {
+       "step": 1,
+       "kind": "hop",
+       "nodes": [
+        "n1",
+        "n5",
+        "n7",
+        "n13",
+        "n25"
+       ],
+       "edges": [
+        "e1",
+        "e17",
+        "e18",
+        "e33",
+        "e30"
+       ],
+       "reason": "Salto 1: 5 entidades nuevas por «logró el primer alunizaje en», «caminó sobre la», «permanece en la»."
+      }
+     }
+    },
+    {
+     "t": 85,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-2",
+      "data": {
+       "step": 2,
+       "kind": "hop",
+       "nodes": [
+        "n10",
+        "n9",
+        "n3",
+        "n20",
+        "n6",
+        "n18",
+        "n16",
+        "n8",
+        "n21",
+        "n14"
+       ],
+       "edges": [
+        "e13",
+        "e14",
+        "e9",
+        "e11",
+        "e8",
+        "e4",
+        "e6",
+        "e2",
+        "e21",
+        "e5",
+        "e31",
+        "e19",
+        "e20",
+        "e7",
+        "e25",
+        "e15"
+       ],
+       "reason": "Salto 2: 10 entidades nuevas por «descendió en el», «albergó a», «despegó a bordo de»."
+      }
+     }
+    },
+    {
+     "t": 1585,
+     "chunk": {
+      "type": "start-step"
+     }
+    },
+    {
+     "t": 1585,
+     "chunk": {
+      "type": "text-start",
+      "id": "0"
+     }
+    },
+    {
+     "t": 1585,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "El primer ser humano en caminar sobre la Luna fue Neil Armstrong [[n5]] ["
+     }
+    },
+    {
+     "t": 1672,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "[n2]]. Para lograrlo, descendió a la superficie lunar desde el módulo lunar Eagle [[n13]]."
+     }
+    },
+    {
+     "t": 1685,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "",
+      "providerMetadata": {
+       "google": {
+        "thoughtSignature": "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"
+       }
+      }
+     }
+    },
+    {
+     "t": 1689,
+     "chunk": {
+      "type": "text-end",
+      "id": "0"
+     }
+    },
+    {
+     "t": 1689,
+     "chunk": {
+      "type": "finish-step"
+     }
+    },
+    {
+     "t": 1689,
+     "chunk": {
+      "type": "finish",
+      "finishReason": "stop",
+      "messageMetadata": {
+       "model": "gemini-3.5-flash",
+       "retrieved": 16,
+       "fallback": false
+      }
+     }
+    }
+   ]
+  },
+  {
+   "question": "¿Qué hizo Michael Collins mientras sus compañeros estaban en la superficie?",
+   "chunks": [
+    {
+     "t": 31,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-0",
+      "data": {
+       "step": 0,
+       "kind": "seed",
+       "nodes": [
+        "n6"
+       ],
+       "edges": [],
+       "reason": "Coinciden con la pregunta: Michael Collins."
+      }
+     }
+    },
+    {
+     "t": 31,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-1",
+      "data": {
+       "step": 1,
+       "kind": "hop",
+       "nodes": [
+        "n1",
+        "n10",
+        "n15"
+       ],
+       "edges": [
+        "e5",
+        "e10",
+        "e16"
+       ],
+       "reason": "Salto 1: 3 entidades nuevas por «tuvo como piloto de módulo de mando a», «albergó a», «permaneció a bordo de»."
+      }
+     }
+    },
+    {
+     "t": 31,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-2",
+      "data": {
+       "step": 2,
+       "kind": "hop",
+       "nodes": [
+        "n2",
+        "n3",
+        "n5",
+        "n7",
+        "n20",
+        "n9",
+        "n8",
+        "n21",
+        "n11",
+        "n26"
+       ],
+       "edges": [
+        "e1",
+        "e2",
+        "e4",
+        "e6",
+        "e9",
+        "e11",
+        "e21",
+        "e8",
+        "e7",
+        "e25",
+        "e12",
+        "e32"
+       ],
+       "reason": "Salto 2: 10 entidades nuevas por «logró el primer alunizaje en», «fue el quinto vuelo tripulado de», «tuvo como comandante a»."
+      }
+     }
+    },
+    {
+     "t": 1531,
+     "chunk": {
+      "type": "start-step"
+     }
+    },
+    {
+     "t": 1531,
+     "chunk": {
+      "type": "text-start",
+      "id": "0"
+     }
+    },
+    {
+     "t": 1531,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "Durante la misión del Apolo 11 [[n1]], el piloto Michael"
+     }
+    },
+    {
+     "t": 1598,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": " Collins [[n6]] permaneció en órbita alrededor de la Luna [[n2]]. Collins [[n6]]"
+     }
+    },
+    {
+     "t": 1655,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": " realizó esta tarea a bordo del módulo de mando Columbia [[n15]] mientras se producía el alunizaje de sus"
+     }
+    },
+    {
+     "t": 1683,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": " compañeros."
+     }
+    },
+    {
+     "t": 1698,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "",
+      "providerMetadata": {
+       "google": {
+        "thoughtSignature": "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"
+       }
+      }
+     }
+    },
+    {
+     "t": 1700,
+     "chunk": {
+      "type": "text-end",
+      "id": "0"
+     }
+    },
+    {
+     "t": 1700,
+     "chunk": {
+      "type": "finish-step"
+     }
+    },
+    {
+     "t": 1700,
+     "chunk": {
+      "type": "finish",
+      "finishReason": "stop",
+      "messageMetadata": {
+       "model": "gemini-3.5-flash",
+       "retrieved": 14,
+       "fallback": false
+      }
+     }
+    }
+   ]
+  },
+  {
+   "question": "¿Por qué fue importante el Apolo 11 en la Guerra Fría?",
+   "chunks": [
+    {
+     "t": 15,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-0",
+      "data": {
+       "step": 0,
+       "kind": "seed",
+       "nodes": [
+        "n1",
+        "n19"
+       ],
+       "edges": [],
+       "reason": "Coinciden con la pregunta: Apolo 11, Guerra Fría."
+      }
+     }
+    },
+    {
+     "t": 15,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-1",
+      "data": {
+       "step": 1,
+       "kind": "hop",
+       "nodes": [
+        "n2",
+        "n3",
+        "n5",
+        "n7",
+        "n20",
+        "n6",
+        "n9",
+        "n8",
+        "n21"
+       ],
+       "edges": [
+        "e1",
+        "e2",
+        "e4",
+        "e6",
+        "e21",
+        "e24",
+        "e5",
+        "e8",
+        "e7",
+        "e25"
+       ],
+       "reason": "Salto 1: 9 entidades nuevas por «logró el primer alunizaje en», «fue el quinto vuelo tripulado de», «tuvo como comandante a»."
+      }
+     }
+    },
+    {
+     "t": 15,
+     "chunk": {
+      "type": "data-trace",
+      "id": "trace-2",
+      "data": {
+       "step": 2,
+       "kind": "hop",
+       "nodes": [
+        "n13",
+        "n10",
+        "n18",
+        "n25",
+        "n16",
+        "n15",
+        "n4",
+        "n22",
+        "n23",
+        "n24",
+        "n17"
+       ],
+       "edges": [
+        "e17",
+        "e18",
+        "e33",
+        "e9",
+        "e13",
+        "e11",
+        "e14",
+        "e10",
+        "e23",
+        "e29",
+        "e30",
+        "e19",
+        "e20",
+        "e16",
+        "e3",
+        "e26",
+        "e27",
+        "e28",
+        "e22"
+       ],
+       "reason": "Salto 2: 11 entidades nuevas por «caminó sobre la», «permanece en la», «albergó a»."
+      }
+     }
+    },
+    {
+     "t": 1515,
+     "chunk": {
+      "type": "start-step"
+     }
+    },
+    {
+     "t": 1515,
+     "chunk": {
+      "type": "text-start",
+      "id": "0"
+     }
+    },
+    {
+     "t": 1515,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "El Apolo 11 [[n1]] representó la culminación de la carrera espacial [[n20]],"
+     }
+    },
+    {
+     "t": 1561,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": " una competición geopolítica enmarcada en la rivalidad de la Guerra Fría [[n19]]. Esta disputa enfrent"
+     }
+    },
+    {
+     "t": 1668,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "ó directamente a los Estados Unidos [[n17]] y a la Unión Soviética [[n18]]. La misión consolid"
+     }
+    },
+    {
+     "t": 1776,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "ó el éxito estadounidense, especialmente debido a que la Unión Soviética [[n18]] no fue capaz de igualar la"
+     }
+    },
+    {
+     "t": 1869,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": " potencia del cohete Saturno V [[n9]] para concretar el alunizaje en la Luna [[n2]]."
+     }
+    },
+    {
+     "t": 1882,
+     "chunk": {
+      "type": "text-delta",
+      "id": "0",
+      "delta": "",
+      "providerMetadata": {
+       "google": {
+        "thoughtSignature": "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"
+       }
+      }
+     }
+    },
+    {
+     "t": 1885,
+     "chunk": {
+      "type": "text-end",
+      "id": "0"
+     }
+    },
+    {
+     "t": 1885,
+     "chunk": {
+      "type": "finish-step"
+     }
+    },
+    {
+     "t": 1885,
+     "chunk": {
+      "type": "finish",
+      "finishReason": "stop",
+      "messageMetadata": {
+       "model": "gemini-3.5-flash",
+       "retrieved": 22,
+       "fallback": false
+      }
+     }
+    }
+   ]
+  }
+ ]
+}
