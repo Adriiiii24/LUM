@@ -192,7 +192,8 @@ Son provisionales: la referencia no está revisada y la web no los publica (`gol
 
 - **Job web:** `npm ci`, lint, typecheck, tests y build.
 - **Job evals:** `uv sync --locked`, pytest y `nc-evals score --check`, que falla si falta una ejecución.
-- **Pendiente:** comprobar en la primera CI que `npm ci` funciona en Linux con el lockfile generado en Windows con npm 11.17.
+- **Tipos en CI:** `npm run typecheck` ejecuta antes `next typegen`, que genera `PageProps` y `LayoutProps` sin compilar; sin ese paso, `tsc` falla en un clon limpio.
+- **Comprobado en la primera CI (2026-10-14):** `npm ci` funciona en Linux con el lockfile generado en Windows.
 
 ## 13. Hallazgos de la implementación
 

@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "node --test \"lib/**/*.test.ts\"",
     "record:sample": "node --env-file=.env.local scripts/record-sample.ts",
     "evals:export": "node --env-file=.env.local scripts/export-eval-runs.ts",
