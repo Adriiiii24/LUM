@@ -14,8 +14,11 @@ export type Point = { x: number; y: number };
 export type Bounds = { minX: number; minY: number; maxX: number; maxY: number };
 export type GraphLayout = { positions: Record<NodeId, Point>; bounds: Bounds };
 
-/** Tres tamaños de símbolo según el grado, como las magnitudes de una carta: el hub se ve sin color. */
-export const SYMBOL_SIZES = [9, 12, 15] as const;
+/**
+ * Tres diámetros de ficha según el grado, como las magnitudes de una carta: el hub se ve sin color.
+ * Caben en la colisión del layout, que reserva al menos 24 px de radio por nodo.
+ */
+export const SYMBOL_SIZES = [18, 22, 26] as const;
 export function degreeTier(degree: number): 0 | 1 | 2 {
   return degree >= 5 ? 2 : degree >= 2 ? 1 : 0;
 }

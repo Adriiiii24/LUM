@@ -1,146 +1,206 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-08T00:00:00Z",
-  "title": "Design System: Neural Canvas",
+  "generatedAt": "2026-10-13T12:00:00Z",
+  "title": "Design System: LUM",
   "extensions": {
     "colorMeta": {
-      "markup": { "role": "primary", "displayName": "Lima de revisión", "canonical": "#7fff00", "tonalRamp": ["#1a3300", "#2e5900", "#448000", "#5aa600", "#6fd900", "#7fff00", "#b0ff66", "#e0ffc2"] },
-      "paper": { "role": "neutral", "displayName": "Papel de lámina", "canonical": "#ede8d0", "tonalRamp": ["#2b2920", "#474434", "#65614b", "#858066", "#a7a184", "#c9c3a6", "#e4dfc8", "#ede8d0"] },
-      "paper-2": { "role": "neutral", "displayName": "Papel de banda", "canonical": "#e4dfc8", "tonalRamp": ["#2b2920", "#474434", "#65614b", "#858066", "#a7a184", "#c9c3a6", "#e4dfc8", "#ede8d0"] },
-      "ink": { "role": "neutral", "displayName": "Tinta", "canonical": "#1a1a1a", "tonalRamp": ["#1a1a1a", "#333331", "#4d4b46", "#5e5c54", "#77756a", "#9a978a", "#c4c0ad", "#ede8d0"] },
-      "ink-2": { "role": "neutral", "displayName": "Tinta segunda (76 %, 7,1:1 sobre papel)", "canonical": "#4d4b46", "tonalRamp": ["#1a1a1a", "#333331", "#4d4b46", "#5e5c54", "#77756a", "#9a978a", "#c4c0ad", "#ede8d0"] },
-      "ink-3": { "role": "neutral", "displayName": "Tinta tercera (68 %, 5,4:1 sobre papel, 5,0:1 sobre paper-2)", "canonical": "#5e5c54", "tonalRamp": ["#1a1a1a", "#333331", "#4d4b46", "#5e5c54", "#77756a", "#9a978a", "#c4c0ad", "#ede8d0"] },
-      "line": { "role": "neutral", "displayName": "Filete (tinta al 24 %)", "canonical": "rgb(26 26 26 / 0.24)", "tonalRamp": ["rgb(26 26 26 / 0.08)", "rgb(26 26 26 / 0.14)", "rgb(26 26 26 / 0.24)", "rgb(26 26 26 / 0.42)"] },
-      "line-strong": { "role": "neutral", "displayName": "Filete de control (3,8:1)", "canonical": "#77756a", "tonalRamp": ["#1a1a1a", "#333331", "#4d4b46", "#5e5c54", "#77756a", "#9a978a", "#c4c0ad", "#ede8d0"] }
+      "markup": { "role": "primary", "displayName": "Lima rotulador (igual en los dos temas; 1,20:1 sobre hueso, 14,1:1 sobre fondo oscuro)", "canonical": "#7fff00", "tonalRamp": ["#1a3300", "#2e5900", "#448000", "#5aa600", "#6fd900", "#7fff00", "#b0ff66", "#e0ffc2"] },
+      "on-markup": { "role": "primary", "displayName": "Tinta sobre lima (fija, 13,4:1)", "canonical": "#1a1a1a", "tonalRamp": ["#0b0b0b", "#1a1a1a", "#404040", "#5d5d5d", "#7d7d7d", "#9e9e9e", "#c4c4c4", "#eeeeee"] },
+      "bone": { "role": "neutral", "displayName": "Hueso fijo (fichas sobre el halo lima)", "canonical": "#f9f6ee", "tonalRamp": ["#0d0b06", "#26241e", "#424039", "#605d57", "#807d76", "#a19e97", "#c7c4bc", "#f9f6ee"] },
+      "paper": { "role": "neutral", "displayName": "Blanco hueso", "canonical": "#f9f6ee", "tonalRamp": ["#0d0b06", "#26241e", "#424039", "#605d57", "#807d76", "#a19e97", "#c7c4bc", "#f9f6ee"] },
+      "paper-2": { "role": "neutral", "displayName": "Hueso de banda", "canonical": "#f0ece2", "tonalRamp": ["#0d0b06", "#26241e", "#424039", "#605d57", "#807d76", "#a19e97", "#c7c4bc", "#f0ece2"] },
+      "ink": { "role": "neutral", "displayName": "Tinta (16,1:1 sobre hueso)", "canonical": "#1a1a1a", "tonalRamp": ["#0b0b0b", "#1a1a1a", "#404040", "#5d5d5d", "#7d7d7d", "#9e9e9e", "#c4c4c4", "#eeeeee"] },
+      "ink-2": { "role": "neutral", "displayName": "Tinta segunda (8,1:1; 7,4:1 sobre banda)", "canonical": "#4d4b46", "tonalRamp": ["#0d0b06", "#26241e", "#4d4b46", "#605d57", "#807d76", "#a19e97", "#c7c4bc", "#f1eee6"] },
+      "ink-3": { "role": "neutral", "displayName": "Tinta tercera (6,2:1; 5,7:1 sobre banda)", "canonical": "#5e5c54", "tonalRamp": ["#0d0b04", "#26241b", "#424036", "#5e5c54", "#807e72", "#a19f93", "#c7c4b8", "#f1efe2"] },
+      "line": { "role": "neutral", "displayName": "Filete (tinta al 20 %, decorativo)", "canonical": "rgb(26 26 26 / 0.2)", "tonalRamp": ["rgb(26 26 26 / 0.06)", "rgb(26 26 26 / 0.13)", "rgb(26 26 26 / 0.2)", "rgb(26 26 26 / 0.42)"] },
+      "line-strong": { "role": "neutral", "displayName": "Filete de control (4,3:1; 3,9:1 sobre banda)", "canonical": "#77756a", "tonalRamp": ["#0d0b04", "#26241b", "#424036", "#605e53", "#77756a", "#a19f93", "#c7c4b8", "#f1efe2"] },
+      "grid": { "role": "neutral", "displayName": "Trama de puntos (tinta al 13 %)", "canonical": "rgb(26 26 26 / 0.13)", "tonalRamp": ["rgb(26 26 26 / 0.06)", "rgb(26 26 26 / 0.13)", "rgb(26 26 26 / 0.2)"] },
+      "paper-dark": { "role": "neutral", "displayName": "Fondo (tema oscuro)", "canonical": "#151514", "tonalRamp": ["#0b0b0a", "#151514", "#1f1f1d", "#2c2b28", "#3f3d38", "#5c5a52", "#85837a", "#a19e93"] },
+      "paper-2-dark": { "role": "neutral", "displayName": "Banda (tema oscuro)", "canonical": "#1f1f1d", "tonalRamp": ["#0b0b0a", "#151514", "#1f1f1d", "#2c2b28", "#3f3d38", "#5c5a52", "#85837a", "#a19e93"] },
+      "ink-dark": { "role": "neutral", "displayName": "Tinta (tema oscuro, 16,2:1)", "canonical": "#f4f1e8", "tonalRamp": ["#0d0b06", "#26241d", "#424038", "#605d56", "#807d75", "#a19e96", "#c7c4bb", "#f4f1e8"] },
+      "ink-2-dark": { "role": "neutral", "displayName": "Tinta segunda (tema oscuro, 10,7:1)", "canonical": "#c9c6bb", "tonalRamp": ["#0d0b06", "#26241d", "#424038", "#605d56", "#807d75", "#a19e96", "#c9c6bb", "#f4f1e8"] },
+      "ink-3-dark": { "role": "neutral", "displayName": "Tinta tercera (tema oscuro, 6,8:1)", "canonical": "#a19e93", "tonalRamp": ["#0d0b06", "#26241d", "#424038", "#605d56", "#807d75", "#a19e93", "#c7c4bb", "#f4f1e8"] },
+      "line-dark": { "role": "neutral", "displayName": "Filete (tema oscuro, hueso al 18 %)", "canonical": "rgb(244 241 232 / 0.18)", "tonalRamp": ["rgb(244 241 232 / 0.06)", "rgb(244 241 232 / 0.1)", "rgb(244 241 232 / 0.18)", "rgb(244 241 232 / 0.4)"] },
+      "line-strong-dark": { "role": "neutral", "displayName": "Filete de control (tema oscuro, 4,8:1)", "canonical": "#85837a", "tonalRamp": ["#0d0b06", "#26241d", "#424038", "#605d56", "#85837a", "#a19e96", "#c7c4bb", "#f4f1e8"] },
+      "grid-dark": { "role": "neutral", "displayName": "Trama (tema oscuro, hueso al 10 %)", "canonical": "rgb(244 241 232 / 0.1)", "tonalRamp": ["rgb(244 241 232 / 0.05)", "rgb(244 241 232 / 0.1)", "rgb(244 241 232 / 0.18)"] }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Títulos de las secciones de lectura, en mayúsculas; 2,25 rem que sube a 3,75 rem desde md." },
-      "title": { "displayName": "Title", "purpose": "Nombre del producto en cabecera y pie, títulos de paso; mayúsculas." },
-      "body": { "displayName": "Body", "purpose": "Fuente, respuestas y preguntas sugeridas en la herramienta." },
-      "body-read": { "displayName": "Body (lectura)", "purpose": "Prosa de las secciones de lectura, 56-60 ch." },
-      "label": { "displayName": "Label de banda", "purpose": "Títulos de banda de celda y pestañas de móvil, mayúsculas." },
-      "label-field": { "displayName": "Label de campo", "purpose": "Nombre de campo en cajetín, pie, columnas de tabla y formularios, en ink-3." },
-      "mono": { "displayName": "Mono de dato", "purpose": "Ids, zonas, cifras, predicados, modelos y números de cita, con cifras tabulares." }
+      "wordmark": { "displayName": "Marca", "purpose": "Solo «lum» con su punto-nodo: portada (letras que suben), cabecera 1,7-1,9 rem, cajón y pie a -0,06 em." },
+      "statement": { "displayName": "Frase fija", "purpose": "«Lo que se ilumina es verdad.» en el pie lima." },
+      "headline": { "displayName": "Titular", "purpose": "Titular de sección en una frase con punto y una palabra marcada; 2,6 rem, 3,75 rem en md, 4,5 rem en lg; máx. 17 ch." },
+      "lede": { "displayName": "Promesa", "purpose": "La frase de la portada, máx. 15 ch." },
+      "figure": { "displayName": "Cifra", "purpose": "Cifras tabulares a dos dígitos del banco de evals y de la muestra; 3,75 a 6 rem." },
+      "title": { "displayName": "Título de celda", "purpose": "Pasos del pipeline, métricas y límites; 1,5 rem, 1,875 rem en md." },
+      "intro": { "displayName": "Entrada", "purpose": "Párrafo bajo el titular de sección en ink-2, máx. 56 ch; 1,25 rem en md." },
+      "body-read": { "displayName": "Lectura", "purpose": "Prosa de celdas en ink-2, 42-46 ch." },
+      "body": { "displayName": "Cuerpo de la herramienta", "purpose": "Fuente, respuestas, ficha y campos; 13-14 px." },
+      "button-caps": { "displayName": "Versal de botón", "purpose": "Botones-enlace (0,75 rem), navegación (0,72 rem) y botones de la herramienta (0,7 rem)." },
+      "eyebrow": { "displayName": "Nombre de sección", "purpose": "Nombre junto al índice lima, títulos de banda de paneles, cabeceras de columna del pie y pestañas móviles." },
+      "caps": { "displayName": "Versal fina", "purpose": "Etiquetas de cifra, pies de figura, etiquetas del pipeline, lectura de la cabecera, colofón." },
+      "label-field": { "displayName": "Etiqueta de campo", "purpose": "Campos del cajetín, cabeceras de la lista y etiquetas de formulario en ink-3; 10-11 px." },
+      "mono": { "displayName": "Mono de dato", "purpose": "Índices, zonas, modelos, revisiones, recuentos, rutas de código y números de cita; cifras tabulares." }
     },
     "shadows": [
-      { "name": "float", "value": "0.6rem 0.6rem 0 rgb(26 26 26 / 0.06)", "purpose": "Única sombra: dura, sin desenfoque, solo en lo que flota (leyenda desplegada, ficha de entidad, aviso de extracción, cajón de fuente en tableta)." }
+      { "name": "float", "value": "0.6rem 0.6rem 0 rgb(26 26 26 / 0.06)", "purpose": "Única sombra, tema claro: dura y sin desenfoque, solo en lo que flota (ficha de entidad, leyenda abierta, aviso de extracción, cajón de la fuente en tableta, cajón de navegación móvil)." },
+      { "name": "float-dark", "value": "0.6rem 0.6rem 0 rgb(0 0 0 / 0.35)", "purpose": "La misma sombra en el tema oscuro." }
     ],
     "motion": [
-      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Curva de todos los cambios de estado." },
-      { "name": "control", "value": "150ms", "purpose": "Hover de botones y chips; hundimiento de 1 px al pulsar." },
-      { "name": "halo", "value": "220ms", "purpose": "Entrada del halo lima de un nodo marcado (escala 0,4 a 1)." },
-      { "name": "edge-band", "value": "280ms", "purpose": "Dibujo de la banda lima bajo una arista, desde el nodo visitado antes; instantánea con movimiento reducido." },
-      { "name": "scan", "value": "1.4s infinite", "purpose": "Línea de espera de la extracción: un tercio de tinta cruza el filete superior." }
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Entradas: titulares, rotulador, letras de la marca, halos, bandas de arista, raya de navegación, flechas de botón." },
+      { "name": "ease-roll", "value": "cubic-bezier(0.65, 0, 0.35, 1)", "purpose": "Barridos simétricos; hoy solo lo usa el vídeo de Remotion (el token CSS no tiene uso en el sitio)." },
+      { "name": "reveal", "value": "0.8s, sube 0,35 em", "purpose": "Titular que entra al aparecer; solo se esconde con el observador montado." },
+      { "name": "mark", "value": "background-size 0.9s tras 0.25s; color 0.3s tras 0.35s", "purpose": "Trazo del rotulador lima en la palabra clave." },
+      { "name": "rise-letter", "value": "0.9s, +80ms por letra, tras 1500ms (120ms sin precargador)", "purpose": "Letras de «lum» en la portada." },
+      { "name": "preloader", "value": "draw 0.5s escalonado 70ms; light 0.25s; fade-out 0.5s a los 1.4s", "purpose": "Recorrido en miniatura; una vez por sesión, nunca con movimiento reducido." },
+      { "name": "scroll-progress", "value": "animation-timeline: scroll(root)", "purpose": "Barra lima de lectura bajo la cabecera; sigue al desplazamiento también con movimiento reducido." },
+      { "name": "control", "value": "150-200ms", "purpose": "Hover de botones y celdas; hundimiento de 1 px al pulsar." },
+      { "name": "nav-underline", "value": "300ms ease-out-expo", "purpose": "Raya lima de 3 px de la navegación." },
+      { "name": "halo", "value": "220ms", "purpose": "Entrada del halo lima de un nodo encendido." },
+      { "name": "edge-band", "value": "280ms", "purpose": "Banda lima que se traza bajo una arista desde el nodo que llegó antes; instantánea con movimiento reducido." },
+      { "name": "away", "value": "200ms", "purpose": "Fundido del resto del grafo al 16 % cuando un nodo está en foco." },
+      { "name": "scan", "value": "1.4s infinite", "purpose": "Línea de espera de la extracción." },
+      { "name": "reduced-motion", "value": "duraciones a 0.01ms; sin precargador; 3D sin giro; el vídeo sigue con su botón de pausa", "purpose": "prefers-reduced-motion: reduce." }
     ],
     "breakpoints": [
       { "name": "md", "value": "48rem" },
+      { "name": "lg", "value": "64rem" },
       { "name": "xl", "value": "80rem" },
       { "name": "title-block-full (container)", "value": "38rem" }
     ]
   },
   "components": [
     {
-      "name": "Primary Button",
+      "name": "Link Button Primary",
+      "kind": "button",
+      "refersTo": "link-button-primary",
+      "description": "Acción principal del sitio: lima llena con la tinta fija y flecha; al pasar, tinta llena.",
+      "html": "<a class=\"ds-lb ds-lb--primary\" href=\"#\">Probar la muestra<svg width=\"15\" height=\"15\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M40 128h176M144 56l72 72-72 72\"/></svg></a>",
+      "css": ".ds-lb { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; border: 1px solid; border-radius: 0; font: 600 0.75rem/1 var(--font-sans, 'Space Grotesk', system-ui, sans-serif); letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background-color 200ms, border-color 200ms, color 200ms; } .ds-lb svg { transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-lb:hover svg { transform: translateX(4px); } .ds-lb--primary { background: var(--color-markup, #7fff00); border-color: var(--color-markup, #7fff00); color: var(--color-on-markup, #1a1a1a); } .ds-lb--primary:hover { background: var(--color-ink, #1a1a1a); border-color: var(--color-ink, #1a1a1a); color: var(--color-paper, #f9f6ee); } .ds-lb:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; }"
+    },
+    {
+      "name": "Link Button Outline",
+      "kind": "button",
+      "refersTo": "link-button-outline",
+      "description": "Acción secundaria del sitio: filete de control; al pasar, lima llena.",
+      "html": "<a class=\"ds-lbo\" href=\"#\">Cómo funciona<svg width=\"15\" height=\"15\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"24\" stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M40 128h176M144 56l72 72-72 72\"/></svg></a>",
+      "css": ".ds-lbo { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; border: 1px solid var(--color-line-strong, #77756a); border-radius: 0; color: var(--color-ink, #1a1a1a); font: 600 0.75rem/1 var(--font-sans, 'Space Grotesk', system-ui, sans-serif); letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background-color 200ms, border-color 200ms, color 200ms; } .ds-lbo svg { transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-lbo:hover { background: var(--color-markup, #7fff00); border-color: var(--color-markup, #7fff00); color: var(--color-on-markup, #1a1a1a); } .ds-lbo:hover svg { transform: translateX(4px); } .ds-lbo:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; }"
+    },
+    {
+      "name": "Tool Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Acción principal: tinta; al pasar, la lima con la tinta encima.",
-      "html": "<button class=\"ds-btn-primary\">Extraer grafo</button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; padding: 0 14px; border: 0; border-radius: 3px; background: var(--color-ink, #1a1a1a); color: var(--color-paper, #ede8d0); font: 500 14px/20px var(--font-sans, Geist, system-ui, sans-serif); cursor: pointer; transition: background-color 150ms ease-out, color 150ms ease-out, transform 150ms ease-out; } .ds-btn-primary:hover { background: var(--color-markup, #7fff00); color: var(--color-ink, #1a1a1a); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; } .ds-btn-primary:disabled { background: var(--color-paper-2, #e4dfc8); color: var(--color-ink-3, #5e5c54); cursor: not-allowed; transform: none; }"
+      "description": "Acción principal de la herramienta: tinta llena y cuadrada, 36 px. El hover a lima del código está pendiente de decidir y no se reproduce aquí.",
+      "html": "<button class=\"ds-btn-primary\">Preguntar</button> <button class=\"ds-btn-primary\" disabled>Preguntar</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 36px; padding: 0 14px; border: 1px solid var(--color-ink, #1a1a1a); border-radius: 0; background: var(--color-ink, #1a1a1a); color: var(--color-paper, #f9f6ee); font: 600 0.7rem/1 var(--font-sans, 'Space Grotesk', system-ui, sans-serif); letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: transform 150ms ease-out; } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; } .ds-btn-primary:disabled { background: var(--color-paper-2, #f0ece2); border-color: var(--color-line-strong, #77756a); color: var(--color-ink-3, #5e5c54); cursor: not-allowed; transform: none; }"
     },
     {
-      "name": "Secondary Button",
+      "name": "Tool Secondary Button",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Acción secundaria: transparente con filete de control.",
-      "html": "<button class=\"ds-btn-secondary\">Reintentar</button>",
-      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 12px; border: 1px solid var(--color-line-strong, #77756a); border-radius: 3px; background: transparent; color: var(--color-ink, #1a1a1a); font: 500 14px/20px var(--font-sans, Geist, system-ui, sans-serif); cursor: pointer; transition: background-color 150ms ease-out, transform 150ms ease-out; } .ds-btn-secondary:hover { background: var(--color-paper-2, #e4dfc8); } .ds-btn-secondary:active { transform: translateY(1px); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; }"
+      "description": "Acción secundaria de la herramienta: solo el filete; al pasar, filete de tinta y banda.",
+      "html": "<button class=\"ds-btn-secondary\">Cancelar</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 12px; border: 1px solid var(--color-line-strong, #77756a); border-radius: 0; background: transparent; color: var(--color-ink, #1a1a1a); font: 600 0.7rem/1 var(--font-sans, 'Space Grotesk', system-ui, sans-serif); letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background-color 150ms ease-out, border-color 150ms ease-out, transform 150ms ease-out; } .ds-btn-secondary:hover { border-color: var(--color-ink, #1a1a1a); background: var(--color-paper-2, #f0ece2); } .ds-btn-secondary:active { transform: translateY(1px); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; }"
     },
     {
-      "name": "Band Toggle",
+      "name": "Section Head",
+      "kind": "custom",
+      "refersTo": "section-index",
+      "description": "Cabecera de sección: índice lima en mono y nombre a la izquierda; titular en una frase con su palabra marcada a la derecha.",
+      "html": "<header class=\"ds-sh\"><div class=\"ds-sh-l\"><span class=\"ds-sh-i\">02</span><span class=\"ds-sh-n\">Cómo funciona</span></div><div class=\"ds-sh-r\"><h2>Cuatro pasos. Dos, <span class=\"ds-mark\">sin modelo</span>.</h2></div></header>",
+      "css": ".ds-sh { display: grid; grid-template-columns: 3fr 9fr; border-top: 1px solid var(--color-line-strong, #77756a); color: var(--color-ink, #1a1a1a); font-family: var(--font-sans, 'Space Grotesk', system-ui, sans-serif); } .ds-sh-l { display: flex; align-items: flex-start; gap: 12px; padding: 24px; border-right: 1px solid var(--color-line-strong, #77756a); } .ds-sh-i { background: var(--color-markup, #7fff00); color: var(--color-on-markup, #1a1a1a); padding: 2px 6px; font: 600 12px/1.33 var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; } .ds-sh-n { padding-top: 1px; font-size: 0.7rem; line-height: 1.4; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; } .ds-sh-r { padding: 24px 24px 80px; } .ds-sh h2 { margin: 0; max-width: 17ch; font-size: 3.75rem; line-height: 1; font-weight: 600; letter-spacing: -0.045em; } .ds-mark { background: var(--color-markup, #7fff00); color: var(--color-on-markup, #1a1a1a); padding: 0 0.1em; margin: 0 -0.02em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }"
+    },
+    {
+      "name": "Site Navigation",
       "kind": "nav",
-      "refersTo": "toggle-band",
-      "description": "Conmutador cuadrado de las bandas de cabecera (Lámina / Lista); pulsado en tinta.",
-      "html": "<div class=\"ds-toggle\" role=\"group\" aria-label=\"Vista\"><button aria-pressed=\"true\">Lámina</button><button aria-pressed=\"false\">Lista</button></div>",
-      "css": ".ds-toggle { display: inline-flex; border: 1px solid var(--color-line-strong, #77756a); } .ds-toggle button { height: 28px; padding: 0 8px; border: 0; border-radius: 0; background: transparent; color: var(--color-ink-2, #4d4b46); font: 500 11px/1 var(--font-sans, Geist, system-ui, sans-serif); letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; } .ds-toggle button + button { border-left: 1px solid var(--color-line-strong, #77756a); } .ds-toggle button:hover { background: var(--color-paper, #ede8d0); } .ds-toggle button[aria-pressed=\"true\"] { background: var(--color-ink, #1a1a1a); color: var(--color-paper, #ede8d0); } .ds-toggle button:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; }"
-    },
-    {
-      "name": "Citation Chip",
-      "kind": "chip",
-      "refersTo": "chip-citation",
-      "description": "Nota de cita en la respuesta: número en tinta sobre lima; sin respaldo, borde discontinuo y «?».",
-      "html": "<p class=\"ds-answer\">Armstrong pisó la Luna<button class=\"ds-cite\">2</button> y Collins quedó en órbita<button class=\"ds-cite ds-cite--unbacked\">5?</button>.</p>",
-      "css": ".ds-answer { font: 400 14px/1.65 var(--font-sans, Geist, system-ui, sans-serif); color: var(--color-ink, #1a1a1a); } .ds-cite { display: inline-flex; align-items: center; justify-content: center; height: 1.2rem; min-width: 1.2rem; margin: 0 0.15em; padding: 0 4px; border: 0; border-radius: 3px; background: var(--color-markup, #7fff00); color: var(--color-ink, #1a1a1a); font: 600 11px/1 var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; vertical-align: 0.08em; cursor: pointer; transition: transform 150ms ease-out; } .ds-cite:hover { transform: translateY(-1px); } .ds-cite:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; } .ds-cite--unbacked { background: transparent; border: 1px dashed var(--color-ink, #1a1a1a); }"
+      "refersTo": "link-button-outline",
+      "description": "Cabecera fija: marca con punto-nodo, navegación con raya lima bajo la sección activa, conmutador sol/luna y barra de lectura lima.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-mark\" href=\"#\">lum<span class=\"ds-dot\"></span></a><nav><a href=\"#\" aria-current=\"location\">Lienzo<i></i></a><a href=\"#\">Cómo funciona<i></i></a><a href=\"#\">Evals<i></i></a></nav><div class=\"ds-theme\" role=\"group\" aria-label=\"Tema\"><button aria-pressed=\"true\" aria-label=\"Tema claro\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 256 256\"><circle cx=\"128\" cy=\"128\" r=\"56\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"24\"/><path stroke=\"currentColor\" stroke-width=\"24\" stroke-linecap=\"round\" d=\"M128 16v16M128 224v16M16 128h16M224 128h16\"/></svg></button><button aria-pressed=\"false\" aria-label=\"Tema oscuro\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 256 256\"><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"24\" stroke-linejoin=\"round\" d=\"M216 152A88 88 0 0 1 104 40a88 88 0 1 0 112 112Z\"/></svg></button></div><span class=\"ds-progress\"></span></header>",
+      "css": ".ds-nav { position: relative; display: flex; align-items: stretch; height: 64px; border-bottom: 1px solid var(--color-line-strong, #77756a); background: var(--color-paper, #f9f6ee); color: var(--color-ink, #1a1a1a); font-family: var(--font-sans, 'Space Grotesk', system-ui, sans-serif); } .ds-nav-mark { display: flex; align-items: baseline; align-self: center; padding: 0 24px; font-size: 1.9rem; font-weight: 700; line-height: 1; letter-spacing: -0.06em; color: inherit; text-decoration: none; } .ds-dot { display: inline-block; width: 0.2em; height: 0.2em; margin-left: 0.06em; border-radius: 9999px; background: var(--color-markup, #7fff00); box-shadow: 0 0 0 0.045em var(--color-ink, #1a1a1a); } .ds-nav nav { display: flex; margin-left: auto; } .ds-nav nav a { position: relative; display: flex; align-items: center; padding: 0 16px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-ink-2, #4d4b46); text-decoration: none; } .ds-nav nav a:hover, .ds-nav nav a[aria-current] { color: var(--color-ink, #1a1a1a); } .ds-nav nav a i { position: absolute; left: 16px; right: 16px; bottom: 12px; height: 3px; background: var(--color-markup, #7fff00); transform: scaleX(0); transform-origin: left; transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav nav a:hover i, .ds-nav nav a[aria-current] i { transform: scaleX(1); } .ds-nav a:focus-visible, .ds-theme button:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; } .ds-theme { display: flex; align-self: center; margin: 0 16px; border: 1px solid var(--color-line-strong, #77756a); } .ds-theme button { display: grid; place-items: center; width: 32px; height: 32px; border: 0; background: transparent; color: var(--color-ink-2, #4d4b46); cursor: pointer; } .ds-theme button + button { border-left: 1px solid var(--color-line-strong, #77756a); } .ds-theme button:hover { background: var(--color-paper-2, #f0ece2); color: var(--color-ink, #1a1a1a); } .ds-theme button[aria-pressed='true'] { background: var(--color-markup, #7fff00); color: var(--color-on-markup, #1a1a1a); } .ds-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--color-markup, #7fff00); transform: scaleX(0.35); transform-origin: left; }"
     },
     {
       "name": "Field",
       "kind": "input",
       "refersTo": "field",
-      "description": "Campo de texto: papel, filete de control, esquinas vivas y etiqueta de campo encima.",
+      "description": "Campo de la herramienta: hueso, filete de control, esquinas vivas y etiqueta de campo encima.",
       "html": "<label class=\"ds-field\"><span>Tu pregunta</span><textarea rows=\"2\" placeholder=\"Pregunta sobre el texto\"></textarea></label>",
-      "css": ".ds-field { display: block; } .ds-field span { display: block; font: 400 11px/1.4 var(--font-sans, Geist, system-ui, sans-serif); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3, #5e5c54); } .ds-field textarea { display: block; width: 100%; margin-top: 4px; padding: 8px 10px; resize: none; border: 1px solid var(--color-line-strong, #77756a); border-radius: 0; background: var(--color-paper, #ede8d0); color: var(--color-ink, #1a1a1a); caret-color: var(--color-ink, #1a1a1a); font: 400 14px/1.375 var(--font-sans, Geist, system-ui, sans-serif); } .ds-field textarea::placeholder { color: var(--color-ink-3, #5e5c54); } .ds-field textarea:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 0; }"
+      "css": ".ds-field { display: block; } .ds-field span { display: block; font: 400 11px/1.4 var(--font-sans, 'Space Grotesk', system-ui, sans-serif); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3, #5e5c54); } .ds-field textarea { display: block; width: 100%; margin-top: 4px; padding: 8px 10px; resize: none; border: 1px solid var(--color-line-strong, #77756a); border-radius: 0; background: var(--color-paper, #f9f6ee); color: var(--color-ink, #1a1a1a); caret-color: var(--color-ink, #1a1a1a); font: 400 14px/1.375 var(--font-sans, 'Space Grotesk', system-ui, sans-serif); } .ds-field textarea::placeholder { color: var(--color-ink-3, #5e5c54); } .ds-field textarea:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 0; } .ds-field textarea:disabled { opacity: 0.6; }"
     },
     {
-      "name": "Panel Header",
-      "kind": "card",
-      "refersTo": "panel-header",
-      "description": "Banda de 40 px que abre cada celda: título en mayúsculas, dato en mono y herramientas.",
-      "html": "<div class=\"ds-band\"><h2>Grafo</h2><p>31 entidades · 38 relaciones</p></div>",
-      "css": ".ds-band { display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 6px 0 12px; background: var(--color-paper-2, #e4dfc8); border-bottom: 1px solid var(--color-line, rgb(26 26 26 / 0.24)); } .ds-band h2 { margin: 0; font: 600 11px/1 var(--font-sans, Geist, system-ui, sans-serif); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink, #1a1a1a); } .ds-band p { margin: 0; font: 400 11px/1 var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; color: var(--color-ink-3, #5e5c54); }"
+      "name": "Citation Chip",
+      "kind": "chip",
+      "refersTo": "chip-citation",
+      "description": "Nota de cita en la respuesta: número en tinta fija sobre lima, 3 px; sin respaldo del recorrido, borde discontinuo y sin lima.",
+      "html": "<p class=\"ds-answer\">Armstrong pisó la Luna<button class=\"ds-cite\">2</button> y Collins quedó en órbita<button class=\"ds-cite ds-cite--unbacked\">5</button>.</p>",
+      "css": ".ds-answer { font: 400 14px/1.625 var(--font-sans, 'Space Grotesk', system-ui, sans-serif); color: var(--color-ink, #1a1a1a); } .ds-cite { display: inline-flex; align-items: center; justify-content: center; height: 1.2rem; min-width: 1.2rem; margin: 0 0.15em; padding: 0 4px; border: 0; border-radius: 3px; background: var(--color-markup, #7fff00); color: var(--color-on-markup, #1a1a1a); font: 600 11px/1 var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-variant-numeric: tabular-nums; vertical-align: 0.08em; cursor: pointer; transition: transform 150ms ease-out; } .ds-cite:hover { transform: translateY(-1px); } .ds-cite:focus-visible { outline: 2px solid var(--color-ink, #1a1a1a); outline-offset: 2px; } .ds-cite--unbacked { background: transparent; border: 1px dashed var(--color-ink, #1a1a1a); color: var(--color-ink, #1a1a1a); }"
+    },
+    {
+      "name": "Entity Symbols and State Rings",
+      "kind": "custom",
+      "refersTo": "entity-symbol-agent",
+      "description": "Fichas redondas con icono: llena (persona, organización) y hueca (resto); estados por tipo de línea: doble = semilla, discontinuo = recorrido, continuo grueso con halo lima = citado.",
+      "html": "<div class=\"ds-syms\"><svg width=\"48\" height=\"48\" viewBox=\"-24 -24 48 48\" aria-label=\"Persona, semilla\"><g fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"1\"><circle r=\"15.5\"/><circle r=\"18.5\"/></g><circle r=\"10.25\" fill=\"#1a1a1a\" stroke=\"#1a1a1a\" stroke-width=\"1.5\"/><circle cy=\"-2.5\" r=\"3\" fill=\"none\" stroke=\"#f9f6ee\" stroke-width=\"1.8\"/><path d=\"M-5 5.5a5.5 5.5 0 0 1 10 0\" fill=\"none\" stroke=\"#f9f6ee\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></svg><svg width=\"48\" height=\"48\" viewBox=\"-24 -24 48 48\" aria-label=\"Lugar, recorrido\"><circle r=\"16.5\" fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"1.25\" stroke-dasharray=\"2.5 2\"/><circle r=\"10.25\" fill=\"#f9f6ee\" stroke=\"#1a1a1a\" stroke-width=\"1.5\"/><path d=\"M0 6s-4.5-4-4.5-7a4.5 4.5 0 0 1 9 0c0 3-4.5 7-4.5 7Z\" fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"1.6\" stroke-linejoin=\"round\"/></svg><svg width=\"56\" height=\"56\" viewBox=\"-28 -28 56 56\" aria-label=\"Artefacto, citado\"><circle r=\"22\" fill=\"#7fff00\"/><circle r=\"18.5\" fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"2\"/><circle r=\"12.25\" fill=\"#f9f6ee\" stroke=\"#1a1a1a\" stroke-width=\"1.5\"/><path d=\"M-5 -3 0 -6 5 -3V3L0 6-5 3Z M-5 -3 0 0 5 -3M0 0V6\" fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/></svg></div>",
+      "css": ".ds-syms { display: flex; align-items: center; gap: 20px; padding: 16px; background-color: var(--color-paper, #f9f6ee); background-image: radial-gradient(circle at center, rgb(26 26 26 / 0.13) 1px, transparent 1.3px); background-size: 22px 22px; background-position: 11px 11px; }"
     },
     {
       "name": "Title Block",
       "kind": "custom",
       "refersTo": "title-block-status-active",
-      "description": "Cajetín del plano; la celda ESTADO se rellena de lima mientras la IA trabaja, con la palabra en tinta.",
-      "html": "<section class=\"ds-cajetin\" aria-label=\"Cajetín\"><div class=\"ds-c ds-c--doc\"><span>Documento</span><b>Apolo 11 (muestra grabada)</b></div><div class=\"ds-c ds-c--status\" role=\"status\"><span>Estado</span><b>RECORRIENDO</b></div><div class=\"ds-c\"><span>Entidades</span><b class=\"ds-mono\">31</b></div><div class=\"ds-c\"><span>Relaciones</span><b class=\"ds-mono\">38</b></div><div class=\"ds-c\"><span>Modelo</span><b class=\"ds-mono\">gemini-3.5-flash</b></div><div class=\"ds-c\"><span>Revisión</span><b class=\"ds-mono\">R1</b></div></section>",
-      "css": ".ds-cajetin { display: grid; grid-template-columns: 4.5rem 5rem minmax(0,1fr) 7.25rem; width: 28rem; max-width: 100%; border: 1px solid var(--color-line-strong, #77756a); background: var(--color-paper, #ede8d0); font-family: var(--font-sans, Geist, system-ui, sans-serif); } .ds-c { min-width: 0; padding: 4px 8px; border-right: 1px solid var(--color-line, rgb(26 26 26 / 0.24)); } .ds-c:last-child { border-right: 0; } .ds-c--doc { grid-column: span 3; border-bottom: 1px solid var(--color-line, rgb(26 26 26 / 0.24)); } .ds-c--status { border-right: 0; border-bottom: 1px solid var(--color-line, rgb(26 26 26 / 0.24)); background: var(--color-markup, #7fff00); } .ds-c span { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3, #5e5c54); } .ds-c--status span { color: var(--color-ink, #1a1a1a); } .ds-c b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 500; color: var(--color-ink, #1a1a1a); } .ds-c--status b { font-weight: 600; letter-spacing: 0.04em; } .ds-mono { font-family: var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-weight: 400 !important; font-variant-numeric: tabular-nums; }"
+      "description": "Cajetín de la lámina; la celda ESTADO se llena de lima mientras la IA trabaja, con la palabra en tinta fija.",
+      "html": "<section class=\"ds-cajetin\" aria-label=\"Cajetín\"><div class=\"ds-c ds-c--doc\"><span>Documento</span><b>Apolo 11 (muestra grabada)</b></div><div class=\"ds-c ds-c--status\" role=\"status\"><span>Estado</span><b>RECORRIENDO</b></div><div class=\"ds-c\"><span>Entidades</span><b class=\"ds-mono\">26</b></div><div class=\"ds-c\"><span>Relaciones</span><b class=\"ds-mono\">33</b></div><div class=\"ds-c\"><span>Modelo</span><b class=\"ds-mono\">gemini-3.5-flash</b></div><div class=\"ds-c ds-c--last\"><span>Revisión</span><b class=\"ds-mono\">R1</b></div></section>",
+      "css": ".ds-cajetin { display: grid; grid-template-columns: 4.5rem 5rem minmax(0,1fr) 7.25rem; width: 28rem; max-width: 100%; border: 1px solid var(--color-line-strong, #77756a); background: var(--color-paper, #f9f6ee); font-family: var(--font-sans, 'Space Grotesk', system-ui, sans-serif); } .ds-c { min-width: 0; padding: 4px 8px; border-right: 1px solid var(--color-line, rgb(26 26 26 / 0.2)); } .ds-c--last { border-right: 0; } .ds-c--doc { grid-column: span 3; border-bottom: 1px solid var(--color-line, rgb(26 26 26 / 0.2)); } .ds-c--status { border-right: 0; border-bottom: 1px solid var(--color-line, rgb(26 26 26 / 0.2)); background: var(--color-markup, #7fff00); } .ds-c span { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3, #5e5c54); } .ds-c--status span, .ds-c--status b { color: var(--color-on-markup, #1a1a1a); } .ds-c b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 500; color: var(--color-ink, #1a1a1a); } .ds-c--status b { font-weight: 600; letter-spacing: 0.04em; } .ds-mono { font-family: var(--font-mono, 'Geist Mono', ui-monospace, monospace); font-weight: 400 !important; font-variant-numeric: tabular-nums; }"
     },
     {
-      "name": "Node State Rings",
+      "name": "Lime Footer",
       "kind": "custom",
-      "refersTo": "markup",
-      "description": "Estados del nodo por tipo de línea: doble = semilla, discontinuo = recorrido, continuo grueso = citado (con halo lima).",
-      "html": "<div class=\"ds-rings\"><svg width=\"40\" height=\"40\" viewBox=\"-20 -20 40 40\"><g fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"1\"><circle r=\"10.5\"/><circle r=\"13.5\"/></g><circle r=\"6\" fill=\"#1a1a1a\"/></svg><svg width=\"40\" height=\"40\" viewBox=\"-20 -20 40 40\"><circle r=\"11.5\" fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"1.25\" stroke-dasharray=\"2.5 2\"/><circle r=\"6\" fill=\"#1a1a1a\"/></svg><svg width=\"40\" height=\"40\" viewBox=\"-20 -20 40 40\"><circle r=\"15\" fill=\"#7fff00\"/><circle r=\"11.5\" fill=\"none\" stroke=\"#1a1a1a\" stroke-width=\"2\"/><circle r=\"6\" fill=\"#1a1a1a\"/></svg></div>",
-      "css": ".ds-rings { display: flex; gap: 16px; padding: 12px; background: var(--color-paper, #ede8d0); }"
+      "refersTo": "footer",
+      "description": "Pie lima a sangre con tinta fija en los dos temas: frase fija, acción en tinta llena y barra final con la marca de punto de tinta.",
+      "html": "<footer class=\"ds-footer\"><div class=\"ds-f-top\"><p>Lo que se ilumina<br>es verdad.</p><a class=\"ds-f-btn\" href=\"#\">Abrir el lienzo</a></div><div class=\"ds-f-bar\"><span class=\"ds-f-mark\">lum<i></i></span><small>© 2026 Adrián Martínez Panés</small></div></footer>",
+      "css": ".ds-footer { background: var(--color-markup, #7fff00); color: var(--color-on-markup, #1a1a1a); font-family: var(--font-sans, 'Space Grotesk', system-ui, sans-serif); } .ds-f-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 56px 24px; border-bottom: 1px solid rgb(26 26 26 / 0.25); } .ds-f-top p { margin: 0; font-size: 4rem; font-weight: 700; line-height: 0.92; letter-spacing: -0.05em; } .ds-f-btn { display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border: 1px solid var(--color-on-markup, #1a1a1a); background: var(--color-on-markup, #1a1a1a); color: var(--color-markup, #7fff00); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background-color 200ms, color 200ms; } .ds-f-btn:hover { background: transparent; color: var(--color-on-markup, #1a1a1a); } .ds-f-btn:focus-visible { outline: 2px solid var(--color-on-markup, #1a1a1a); outline-offset: 2px; } .ds-f-bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; } .ds-f-mark { display: inline-flex; align-items: baseline; font-size: 1.875rem; font-weight: 700; line-height: 1; letter-spacing: -0.06em; } .ds-f-mark i { display: inline-block; width: 0.2em; height: 0.2em; margin-left: 0.06em; border-radius: 9999px; background: var(--color-on-markup, #1a1a1a); } .ds-f-bar small { font-size: 0.65rem; line-height: 1.5; letter-spacing: 0.18em; text-transform: uppercase; }"
     }
   ],
   "narrative": {
-    "northStar": "Plano técnico (Heron real)",
-    "overview": "La interfaz es una lámina de delineante: papel beige, tinta casi negra y una sola marca de revisión en lima. El grafo se dibuja como un plano, con reglas A-H por 1-6 en el borde, retícula de zonas muy tenue, símbolos de entidad por forma y un cajetín abajo a la derecha. La IA actúa como el revisor que marca la lámina: la lima solo aparece donde el recuperador pasó o donde la respuesta cita, igual que la marca en rojo de un revisor de planos.\n\nLa densidad es la de una herramienta de trabajo: la primera pantalla es la herramienta entera, enmarcada a 0,8 rem del borde de la ventana y dividida en celdas por filetes de 1 px. Debajo, la lámina de lectura («Cómo funciona», «Lo que se mide», «Límites» y el pie) reutiliza la misma retícula de filetes con más aire y títulos grandes en mayúsculas. Todo es plano, de esquinas vivas y tinta sobre papel; la profundidad solo existe para lo que flota.\n\nRechazos confirmados en la dirección: el bento redondeado de SaaS y la constelación oscura con neón y cristal.",
+    "northStar": "El rotulador sobre la trama",
+    "overview": "LUM es una hoja de trabajo en blanco hueso con una trama de puntos fija debajo de todo, como la pizarra donde se dibuja un grafo. Sobre esa trama, la estructura se traza con filetes de 1 px: cabecera fija, secciones en rejilla de 12 columnas (4 en móvil) y celdas separadas por filetes de control. La lima es un rotulador: subraya la palabra clave de cada titular, numera las secciones, llena la acción principal, avanza como barra de lectura bajo la cabecera y cubre el pie entero. Siempre va debajo de la tinta, nunca escrita sobre el hueso.\n\nDentro de la herramienta, la misma lima cambia de oficio y se vuelve evidencia: en la lámina, en la vista 3D y en la lista, solo marca lo que el recuperador recorrió y lo que la respuesta cita. El estado de cada nodo se dibuja además con un tipo de línea, y el tipo de entidad, con una ficha redonda (llena para quien actúa, hueca para el resto) que lleva un icono derivado del propio texto. Al pasar el ratón, el vecindario queda delante y el resto se aparta; el hover no usa lima.\n\nHay dos temas, claro (de partida) y oscuro; el oscuro invierte hueso y tinta y deja la lima y la tinta sobre lima iguales. Todo es plano y de esquinas vivas; la única sombra es dura y solo la llevan las piezas que flotan. El vídeo de la portada (Remotion) usa la misma paleta, los mismos titulares con rotulador y las mismas fichas.",
     "keyCharacteristics": [
-      "Papel, tinta y una sola marca lima que nunca es texto.",
-      "El estado se dibuja con tipos de línea (doble, discontinua, continua gruesa), no con color.",
-      "Celdas separadas por filetes de 1 px; esquinas a 0 px en paneles y campos, 3 px en botones y chips.",
-      "Geist en mayúsculas apretadas para títulos; Geist Mono con cifras tabulares para ids, zonas y cifras.",
-      "Una sola sombra dura, sin desenfoque, solo en lo que flota.",
-      "Solo tema claro."
+      "Trama de puntos fija de 22 px bajo toda la página; estructura en filetes de 1 px sobre 12 columnas (4 en móvil).",
+      "Rotulador lima en una sola palabra de cada titular, con la tinta fija encima.",
+      "Space Grotesk para todo lo que se lee; Geist Mono con cifras tabulares para ids, zonas, cifras de dato y modelos.",
+      "Lima en el sitio como superficie (acción principal, índices, pie, cifras); en la lámina, solo como evidencia.",
+      "Fichas de entidad redondas con icono del texto: llenas para personas y organizaciones, huecas para el resto.",
+      "Esquinas a 0 px; 3 px solo en el chip de cita; círculos solo en fichas, nodos del pipeline y el punto de la marca.",
+      "Una sola sombra dura, solo en lo que flota."
     ],
     "rules": [
-      { "name": "The Lime-Under-Ink Rule", "body": "La lima nunca es texto ni la única señal de un estado: es un relleno bajo o tras la tinta (chips con texto en tinta, la celda ESTADO, halos, bandas bajo aristas, marcas de evidencia en la fuente y el hover del botón principal). Todo lo que la lima marca lleva además una señal en tinta: anillo, palabra, número o tipo de línea.", "section": "colors" },
-      { "name": "The Reviewer's Mark Rule", "body": "En reposo, solo lo citado conserva la lima. Mientras se traza un recorrido, todo lo visitado (semilla, recorrido y citado) se marca en lima; al terminar, la lima se retira de lo que no se citó.", "section": "colors" },
-      { "name": "The Measured Tint Rule", "body": "Los grises son tinta con alfa resuelta sobre el papel, con contraste medido: ink-2 7,1:1, ink-3 5,4:1. Un gris nuevo entra solo con su contraste medido sobre paper y paper-2.", "section": "colors" },
-      { "name": "The Data Is Mono Rule", "body": "Lo que es un identificador, una zona o una cifra va en Geist Mono con cifras tabulares; la prosa nunca.", "section": "typography" },
-      { "name": "The Field Label Rule", "body": "Las etiquetas en mayúsculas pequeñas existen solo como nombre de un campo o de una celda (cajetín, pie, columnas de tabla, campos de formulario), nunca como titular encima de un título.", "section": "typography" },
-      { "name": "The Only Floating Shadow Rule", "body": "Una sola sombra, dura y desplazada 0,6 rem al 6 %, y solo en elementos flotantes. Nada que forme parte de la lámina lleva sombra.", "section": "elevation" },
-      { "name": "The State Is A Line Type Rule", "body": "El estado de un nodo lo lleva el anillo: doble de 1 px para la semilla, discontinuo (1,25 px, trazo 2,5/2) para lo recorrido y continuo grueso (2 px) para lo citado. Las aristas siguen la misma gramática: discontinuas (4/3) cuando se recorren y continuas más gruesas (1,6 px) cuando unen dos citadas. La lima acompaña, nunca sustituye.", "section": "shapes" },
-      { "name": "The Hairline Rule", "body": "Los paneles se separan con filetes de 1 px de tinta al 24 %; los controles se bordean con el filete de control. Solo el pie usa un filete de 2 px de tinta para cerrar la lámina.", "section": "shapes" }
+      { "name": "The Lime-Under-Ink Rule", "body": "La lima nunca es texto, icono ni filete fino sobre el hueso (1,20:1): va debajo de la tinta fija (on-markup) como rotulador o como superficie llena. Texto lima solo sobre la tinta fija `on-markup`, nunca sobre la tinta del tema (en oscuro, la tinta es hueso: 1,15:1 sobre lima).", "section": "colors" },
+      { "name": "The Evidence Rule", "body": "En la lámina (2D, 3D y lista), la lima significa una sola cosa: lo que el recuperador recorrió y lo que la respuesta cita. Mientras se recorre, todo lo visitado lleva lima; en reposo, solo lo citado. El hover y la selección nunca encienden lima: se marcan con tinta (esquineras, vecindario delante).", "section": "colors" },
+      { "name": "The Two Themes Rule", "body": "El tema claro es el de partida; el oscuro solo invierte hueso y tinta. Todo color nuevo entra con su valor en los dos temas y su contraste medido en ambos.", "section": "colors" },
+      { "name": "The One Marked Word Rule", "body": "Cada titular es una frase completa en caja de oración con punto final, y una sola palabra (o grupo corto) lleva el rotulador lima. Sin JavaScript ya está marcada; con el observador, el trazo entra 0,25 s después que el titular.", "section": "typography" },
+      { "name": "The Data Is Mono Rule", "body": "Lo que es un identificador, una zona, un predicado de ruta, un modelo o un recuento va en Geist Mono con cifras tabulares; las cifras grandes de exhibición van en Space Grotesk tabular. La prosa nunca va en mono.", "section": "typography" },
+      { "name": "The Measured Fade Rule", "body": "El texto atenuado por opacidad no baja del 70 % de la tinta (6,2:1 sobre el hueso). Por debajo se usa ink-3. Los rótulos que se apartan en la lámina no se atenúan: se ocultan.", "section": "typography" },
+      { "name": "The Only Floating Shadow Rule", "body": "Una sola sombra, desplazada 0,6 rem y sin desenfoque, solo en piezas que flotan sobre la página o la lámina. Nada fijo en la página la lleva, tampoco la cabecera.", "section": "elevation" },
+      { "name": "The State Is A Line Type Rule", "body": "El estado de un nodo lo lleva el anillo: doble de 1 px para la semilla, discontinuo (1,25 px, trazo 2,5/2) para lo recorrido y continuo de 2 px para lo citado. Las aristas siguen la misma gramática: discontinuas (4/3) al recorrerse y continuas de 1,6 px cuando unen dos citadas. Sobre lima, anillos y aristas pasan a la tinta fija. La lima acompaña, nunca sustituye.", "section": "shapes" },
+      { "name": "The Agent Is Filled Rule", "body": "Quien actúa (persona u organización) va en ficha llena de tinta con el icono en hueso; el resto, en ficha hueca. El icono sale de lo que el texto dice de la entidad y, si no hay pistas, del tipo. Ningún tipo tiene color propio.", "section": "shapes" },
+      { "name": "The Hairline Rule", "body": "La estructura del sitio se dibuja con el filete de control; las divisiones internas de la herramienta, con el filete; sobre el pie lima, con la tinta fija al 25 %.", "section": "shapes" }
     ],
     "dos": [
-      "**Do** poner la lima solo como relleno bajo texto o líneas en tinta (#1a1a1a sobre #7fff00, 14,8:1).",
-      "**Do** acompañar cada marca lima con una señal en tinta: anillo doble, discontinuo o continuo grueso, palabra de estado o número.",
-      "**Do** separar celdas con filetes de 1 px de tinta al 24 % y bordear controles con #77756a.",
-      "**Do** dejar paneles y campos a 0 px y botones y chips a 3 px.",
-      "**Do** escribir ids, zonas y cifras en Geist Mono con cifras tabulares.",
-      "**Do** limitar el movimiento a cambios de estado, con la curva cubic-bezier(0.16, 1, 0.3, 1)."
+      "**Do** poner la lima siempre debajo de la tinta fija `on-markup` (13,4:1), en los dos temas.",
+      "**Do** marcar una sola palabra de cada titular con el rotulador y cerrar la frase con punto.",
+      "**Do** abrir cada sección con el índice lima en mono, el nombre en Eyebrow y el titular en Headline.",
+      "**Do** reservar la lima de la lámina a lo recorrido y lo citado, y acompañarla siempre de una señal en tinta: anillo, línea discontinua o continua, número o palabra de estado.",
+      "**Do** marcar el foco y la selección de la lámina con tinta (esquineras, vecindario delante), nunca con lima.",
+      "**Do** distinguir quién actúa con la ficha llena y el resto con la ficha hueca; el icono, del texto.",
+      "**Do** dar a todo color nuevo su valor en el tema claro y en el oscuro, con el contraste medido en ambos.",
+      "**Do** dejar botones, campos, paneles y celdas a 0 px; 3 px solo para el chip de cita.",
+      "**Do** escribir ids, zonas, modelos, revisiones y recuentos en Geist Mono con cifras tabulares."
     ],
     "donts": [
-      "**Don't** usar la lima como color de texto, de icono o de borde fino sobre el papel: da 1,05:1.",
-      "**Don't** dejar en lima, en reposo, nada que no esté citado.",
-      "**Don't** usar otra sombra que `0.6rem 0.6rem 0 rgb(26 26 26 / 0.06)`, ni ponerla en algo que no flote.",
-      "**Don't** añadir un tema oscuro: el papel beige está fijado.",
-      "**Don't** distinguir tipos de entidad por color; el tipo es la forma del símbolo.",
-      "**Don't** redondear paneles ni montar tarjetas tipo bento.",
-      "**Don't** poner etiquetas en mayúsculas encima de los títulos de sección."
+      "**Don't** usar la lima como texto, icono o filete fino sobre el hueso: da 1,20:1.",
+      "**Don't** poner texto lima sobre la tinta del tema: en oscuro es hueso y da 1,15:1.",
+      "**Don't** encender lima en la lámina por hover, selección o decoración.",
+      "**Don't** usar otra sombra que la flotante, ni ponerla en algo que no flote.",
+      "**Don't** dar color propio a un tipo de entidad.",
+      "**Don't** redondear botones, paneles ni tarjetas.",
+      "**Don't** atenuar texto por debajo del 70 % de la tinta.",
+      "**Don't** volver a los rasgos de la referencia retirados: cinta de relojes, carrusel, menú a pantalla completa, contador de precarga y marca gigante cortada."
     ]
   }
 }

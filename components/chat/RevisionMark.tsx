@@ -5,11 +5,11 @@ export function RevisionMark({ number, active }: { number: number; active: boole
       <polygon
         points="12,1 23,20 1,20"
         fill={active ? 'var(--color-markup)' : 'var(--color-paper)'}
-        stroke="var(--color-ink)"
+        stroke={active ? 'var(--color-on-markup)' : 'var(--color-ink)'}
         strokeWidth={1.25}
         strokeLinejoin="round"
       />
-      <text x={12} y={16.5} textAnchor="middle" fontSize={9} fontWeight={600} fill="var(--color-ink)" fontFamily="var(--font-mono)">
+      <text x={12} y={16.5} textAnchor="middle" fontSize={9} fontWeight={600} fill={active ? 'var(--color-on-markup)' : 'var(--color-ink)'} fontFamily="var(--font-mono)">
         {number}
       </text>
     </svg>

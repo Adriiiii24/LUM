@@ -1,0 +1,29 @@
+{
+  "name": "lum-intro-video",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vídeo de introducción de LUM, hecho con Remotion a partir de la muestra grabada.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts LumIntro ../public/video/lum-intro.mp4 --codec=h264 --crf=20 --color-space=bt709",
+    "render:webm": "remotion render src/index.ts LumIntro ../public/video/lum-intro.webm --codec=vp9 --crf=34 --color-space=bt709",
+    "poster": "remotion still src/index.ts LumIntro ../public/video/lum-intro-poster.jpg --frame=450 --image-format=jpeg --jpeg-quality=82",
+    "render:dark": "remotion render src/index.ts LumIntro ../public/video/lum-intro-dark.mp4 --codec=h264 --crf=20 --color-space=bt709 --props=props/dark.json",
+    "render:dark-webm": "remotion render src/index.ts LumIntro ../public/video/lum-intro-dark.webm --codec=vp9 --crf=34 --color-space=bt709 --props=props/dark.json",
+    "poster:dark": "remotion still src/index.ts LumIntro ../public/video/lum-intro-dark-poster.jpg --frame=450 --image-format=jpeg --jpeg-quality=82 --props=props/dark.json",
+    "build": "npm run render && npm run render:webm && npm run poster && npm run render:dark && npm run render:dark-webm && npm run poster:dark",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "2.1.10",
+    "@remotion/cli": "4.0.535",
+    "@remotion/google-fonts": "4.0.535",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.535"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "^5.9.3"
+  }
+}

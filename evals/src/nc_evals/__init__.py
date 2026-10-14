@@ -1,1 +1,1 @@
-"""Banco de evaluación de la extracción de Neural Canvas."""
+"""Banco de evaluación de la extracción de LUM."""

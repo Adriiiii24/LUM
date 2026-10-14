@@ -1,6 +1,6 @@
 'use client';
-import { useEffect, useMemo, useRef } from 'react';
-import { ReactFlow, useNodesState, useReactFlow, useStore as useFlowStore, useStoreApi, type FitViewOptions, type NodeTypes, type EdgeTypes } from '@xyflow/react';
+import { useEffect, useMemo, useState } from 'react';
+import { ReactFlow, useNodesState, useReactFlow, useStore as useFlowStore, type FitViewOptions, type NodeTypes, type EdgeTypes } from '@xyflow/react';
 import { useReducedMotion } from 'motion/react';
 import { CornersOut, MagnifyingGlassMinus, MagnifyingGlassPlus, TextAlignLeft } from '@phosphor-icons/react/dist/ssr';
 import { useWorkbench } from '@/lib/state/workbench';
@@ -15,10 +15,17 @@ import { Legend } from './Legend';
 import { EntityCard } from './EntityCard';
 import { EntityList } from './EntityList';
 import { ExtractingOverlay } from './ExtractingOverlay';
+import { Graph3D } from './Graph3D';
+import type { View } from '@/lib/state/workbench';
 import { LabelLayer } from './LabelLayer';
 import type { EntityFlowNode, RelationFlowEdge } from './flow-types';
 
 const nodeTypes: NodeTypes = { entity: EntityNode };
+const VIEWS: Array<[View, string]> = [
+  ['sheet', 'Lámina'],
+  ['space', '3D'],
+  ['list', 'Lista'],
+];
 const edgeTypes: EdgeTypes = { relation: RelationEdge };
 /**
  * Encaje con hueco para lo que flota encima: reglas arriba y a la izquierda, y abajo la fila del
@@ -36,20 +43,6 @@ function useFit(): FitViewOptions {
   );
 }
 
-/**
- * Publica el zoom como variable CSS sin volver a renderizar los nodos: las etiquetas la usan
- * para no encogerse por debajo de un tamaño legible cuando la lámina se aleja.
- */
-function useZoomVariable() {
-  const store = useStoreApi();
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const apply = (zoom: number) => ref.current?.style.setProperty('--nc-zoom', String(zoom));
-    apply(store.getState().transform[2]);
-    return store.subscribe((state) => apply(state.transform[2]));
-  }, [store]);
-  return ref;
-}
 /** Ritmo del trazado: cada salto se dibuja en 280 ms y el siguiente arranca a los 420. */
 const STEP_MS = 420;
 
@@ -81,7 +74,6 @@ function Sheet() {
   const select = useWorkbench((s) => s.select);
   const { fitView } = useReactFlow();
   const fit = useFit();
-  const zoomRef = useZoomVariable();
 
   const zones = useMemo(() => (layout ? zonesFor(layout.bounds) : null), [layout]);
   const initial = useMemo<EntityFlowNode[]>(() => {
@@ -122,7 +114,7 @@ function Sheet() {
 
   if (!zones) return null;
   return (
-    <div ref={zoomRef} className="absolute inset-0">
+    <div className="absolute inset-0">
       <ReactFlow<EntityFlowNode, RelationFlowEdge>
         nodes={nodes}
         edges={edges}
@@ -163,6 +155,8 @@ export function GraphCanvas() {
   const { zoomIn, zoomOut, fitView } = useReactFlow();
   const fit = useFit();
   const toggle = 'h-7 px-2 text-[11px] font-medium uppercase tracking-[0.06em]';
+  // La ficha se pone del lado contrario al puntero, para no tapar el nodo ni su vecindario.
+  const [side, setSide] = useState<'left' | 'right'>('left');
 
   return (
     <div className="flex h-full min-h-0 flex-col">
@@ -174,21 +168,19 @@ export function GraphCanvas() {
           aria-controls="celda-source"
           onClick={() => setSourceOpen(!sourceOpen)}
           className={`${toggle} mr-1 inline-flex items-center gap-1.5 border border-line-strong max-md:hidden xl:hidden ${
-            sourceOpen ? 'bg-ink text-paper' : 'text-ink-2 hover:bg-paper'
+            sourceOpen ? 'bg-ink text-paper' : 'text-ink-2 hover:bg-paper-2'
           }`}
         >
           <TextAlignLeft size={13} aria-hidden="true" />
           Fuente
         </button>
         <div role="group" aria-label="Vista" className="mr-1 flex border border-line-strong">
-          <button type="button" aria-pressed={view === 'sheet'} onClick={() => setView('sheet')}
-            className={`${toggle} ${view === 'sheet' ? 'bg-ink text-paper' : 'text-ink-2 hover:bg-paper'}`}>
-            Lámina
-          </button>
-          <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')}
-            className={`${toggle} border-l border-line-strong ${view === 'list' ? 'bg-ink text-paper' : 'text-ink-2 hover:bg-paper'}`}>
-            Lista
-          </button>
+          {VIEWS.map(([id, label], i) => (
+            <button key={id} type="button" aria-pressed={view === id} onClick={() => setView(id)}
+              className={`${toggle} ${i > 0 ? 'border-l border-line-strong' : ''} ${view === id ? 'bg-ink text-paper' : 'text-ink-2 hover:bg-paper-2'}`}>
+              {label}
+            </button>
+          ))}
         </div>
         <ToolButton aria-label="Alejar" onClick={() => void zoomOut({ duration: 200 })} disabled={view !== 'sheet'}>
           <MagnifyingGlassMinus size={16} aria-hidden="true" />
@@ -201,14 +193,23 @@ export function GraphCanvas() {
         </ToolButton>
       </PanelHeader>
 
-      <div className="@container relative min-h-0 flex-1">
+      <div
+        className="@container relative min-h-0 flex-1"
+        onPointerMove={(e) => {
+          const box = e.currentTarget.getBoundingClientRect();
+          const next = e.clientX - box.left < box.width / 2 ? 'right' : 'left';
+          if (next !== side) setSide(next);
+        }}
+      >
         <TraceDirector />
         {view === 'list' ? (
           <EntityList />
         ) : (
           <>
-            <Sheet />
-            <div className="pointer-events-none absolute left-7 top-7 z-20 @max-[36rem]:right-3">
+            {view === 'space' ? <Graph3D /> : <Sheet />}
+            <div
+              className={`pointer-events-none absolute z-20 ${side === 'left' ? 'left-7 @max-[36rem]:right-3' : 'right-7 @max-[36rem]:left-3'} ${view === 'space' && side === 'right' ? 'top-24' : 'top-7'}`}
+            >
               <EntityCard />
             </div>
             <div className="pointer-events-none absolute inset-x-3 bottom-3 z-20 flex items-end justify-between gap-3">

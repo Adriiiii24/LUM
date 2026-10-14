@@ -8,6 +8,9 @@ import type { TraceStep } from '../graph/retrieve.ts';
 import type { ApiErrorCode } from '../chat/types.ts';
 import type { SampleFile } from '../sample/types.ts';
 
+/** Lámina 2D, espacio 3D o lista accesible. */
+export type View = 'sheet' | 'space' | 'list';
+
 export type NodeVisual = 'idle' | 'dim' | 'seed' | 'traversed' | 'cited';
 export type EdgeVisual = 'idle' | 'dim' | 'traversed' | 'cited';
 
@@ -61,7 +64,12 @@ export type WorkbenchState = Derived & {
   revealed: number;
   focusNode: NodeId | null;
   selectedNode: NodeId | null;
-  view: 'sheet' | 'list';
+  /**
+   * Vecindario del nodo en foco (o del seleccionado): él y sus vecinos directos. Mientras existe,
+   * la lámina atenúa todo lo demás para que se lea qué toca ese nodo. null sin foco.
+   */
+  hood: Partial<Record<NodeId, true>> | null;
+  view: View;
   /** En móvil: grafo y preguntas a la vez, o la fuente. En tableta: si la fuente está desplegada. */
   mobilePanel: 'sheet' | 'source';
   sourceOpen: boolean;
@@ -76,10 +84,21 @@ export type WorkbenchState = Derived & {
   revealAll: () => void;
   setFocus: (id: NodeId | null) => void;
   select: (id: NodeId | null) => void;
-  setView: (view: 'sheet' | 'list') => void;
+  setView: (view: View) => void;
   setMobilePanel: (panel: 'sheet' | 'source') => void;
   setSourceOpen: (open: boolean) => void;
 };
+
+/** El nodo y sus vecinos directos en el grafo. */
+function hoodOf(graph: KnowledgeGraph | null, id: NodeId | null): WorkbenchState['hood'] {
+  if (!graph || !id) return null;
+  const hood: Partial<Record<NodeId, true>> = { [id]: true };
+  for (const r of graph.relations) {
+    if (r.source === id) hood[r.target] = true;
+    if (r.target === id) hood[r.source] = true;
+  }
+  return hood;
+}
 
 const EMPTY_DERIVED: Derived = { nodeVisual: {}, edgeVisual: {}, nodeStep: {}, citationIndex: {}, tracing: false };
 
@@ -134,6 +153,7 @@ export function createWorkbenchStore(sample: SampleFile): StoreApi<WorkbenchStat
     revealed: 0,
     focusNode: null,
     selectedNode: null,
+    hood: null,
     view: 'sheet',
     mobilePanel: 'sheet',
     sourceOpen: false,
@@ -148,6 +168,7 @@ export function createWorkbenchStore(sample: SampleFile): StoreApi<WorkbenchStat
         revealed: 0,
         focusNode: null,
         selectedNode: null,
+        hood: null,
         extraction: { phase: 'idle' },
         ...EMPTY_DERIVED,
       })),
@@ -162,6 +183,7 @@ export function createWorkbenchStore(sample: SampleFile): StoreApi<WorkbenchStat
         revealed: 0,
         focusNode: null,
         selectedNode: null,
+        hood: null,
         extraction: { phase: 'idle' },
         ...EMPTY_DERIVED,
       })),
@@ -196,8 +218,8 @@ export function createWorkbenchStore(sample: SampleFile): StoreApi<WorkbenchStat
       set({ revealed: highlight.steps.length, ...derive(graph, highlight, highlight.steps.length) });
     },
 
-    setFocus: (focusNode) => set({ focusNode }),
-    select: (selectedNode) => set({ selectedNode }),
+    setFocus: (focusNode) => set((s) => ({ focusNode, hood: hoodOf(s.graph, focusNode ?? s.selectedNode) })),
+    select: (selectedNode) => set((s) => ({ selectedNode, hood: hoodOf(s.graph, s.focusNode ?? selectedNode) })),
     setView: (view) => set({ view }),
     setMobilePanel: (mobilePanel) => set({ mobilePanel }),
     setSourceOpen: (sourceOpen) => set({ sourceOpen }),

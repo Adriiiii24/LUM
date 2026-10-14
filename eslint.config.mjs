@@ -14,6 +14,8 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     ".scratch/**",
     "evals/**",
+    // El vídeo de Remotion es un proyecto aparte, con su propio package.json.
+    "video/**",
   ]),
 ]);
 

@@ -32,6 +32,14 @@ function RelationEdgeView(props: EdgeProps<RelationFlowEdge>) {
     const f = s.focusNode ?? s.selectedNode;
     return f === source || f === target;
   });
+  // Con foco, las aristas que no tocan el nodo se apartan casi del todo.
+  const away = useWorkbench((s) => s.hood !== null) && !touched;
+  // El predicado solo se rotula al seleccionar un nodo con pocas relaciones: con muchas se pisan y la ficha ya las lista.
+  const labelled = useWorkbench((s) => {
+    const sel = s.selectedNode;
+    if (!sel || (sel !== source && sel !== target)) return false;
+    return (s.graph?.relations.filter((r) => r.source === sel || r.target === sel).length ?? 0) <= 4;
+  });
   const tracing = useWorkbench((s) => s.tracing);
   const reduced = useReducedMotion();
   if (!from || !to) return null;
@@ -55,15 +63,16 @@ function RelationEdgeView(props: EdgeProps<RelationFlowEdge>) {
   const visited = visual === 'traversed' || visual === 'cited';
   // Banda lima: todo lo recorrido mientras se recorre; en reposo, solo lo que une entidades citadas.
   const band = visual === 'cited' || (tracing && visual === 'traversed');
-  const inkOpacity = visited || touched ? 1 : visual === 'dim' ? 0.14 : 0.42;
+  const inkOpacity = away ? 0.06 : visited || touched ? 1 : visual === 'dim' ? 0.14 : 0.55;
   const head = `${x2 + cos * 1},${y2 + sin * 1} ${x2 - cos * 6.5 - sin * 3.2},${y2 - sin * 6.5 + cos * 3.2} ${x2 - cos * 6.5 + sin * 3.2},${y2 - sin * 6.5 - cos * 3.2}`;
-  const showLabel = touched;
+  const showLabel = labelled;
   const lit = visited;
 
   return (
     <>
       {band && (
         <motion.path
+          opacity={away ? 0.25 : 1}
           d={drawPath}
           fill="none"
           stroke="var(--color-markup)"
@@ -76,16 +85,16 @@ function RelationEdgeView(props: EdgeProps<RelationFlowEdge>) {
       <path
         d={path}
         fill="none"
-        stroke="var(--color-ink)"
+        stroke={band ? 'var(--color-on-markup)' : 'var(--color-ink)'}
         strokeOpacity={inkOpacity}
-        strokeWidth={visual === 'cited' ? 1.6 : lit ? 1.25 : 1}
+        strokeWidth={visual === 'cited' ? 1.6 : lit || touched ? 1.4 : 1}
         strokeDasharray={visual === 'traversed' ? '4 3' : undefined}
       />
-      <polygon points={head} fill="var(--color-ink)" fillOpacity={inkOpacity} />
+      <polygon points={head} fill={band ? 'var(--color-on-markup)' : 'var(--color-ink)'} fillOpacity={inkOpacity} />
       {showLabel && data && (
         <EdgeLabelRenderer>
           <div
-            className="pointer-events-none absolute bg-paper px-1 font-mono text-[10px] leading-4 text-ink-2"
+            className="pointer-events-none absolute border border-line bg-paper px-1.5 text-[11px] leading-4 text-ink"
             style={{ transform: `translate(-50%, -50%) translate(${(x1 + x2) / 2}px, ${(y1 + y2) / 2}px)` }}
           >
             {data.relation.predicate}

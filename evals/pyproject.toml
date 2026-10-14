@@ -1,7 +1,7 @@
 [project]
 name = "nc-evals"
 version = "0.1.0"
-description = "Banco de evaluación de la extracción de Neural Canvas: entidades, relaciones, anclaje y esquema."
+description = "Banco de evaluación de la extracción de LUM: entidades, relaciones, anclaje y esquema."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

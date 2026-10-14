@@ -80,7 +80,7 @@ export function SourceText() {
                 <mark
                   key={i}
                   data-focus={piece.mark === 'focus' ? '' : undefined}
-                  className={`bg-markup text-ink [box-decoration-break:clone] ${piece.mark === 'focus' ? 'outline outline-ink' : ''}`}
+                  className={`bg-markup text-on-markup [box-decoration-break:clone] ${piece.mark === 'focus' ? 'outline outline-on-markup' : ''}`}
                 >
                   {piece.text}
                 </mark>

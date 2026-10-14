@@ -21,14 +21,14 @@ function MobileTabs() {
   const panel = useWorkbench((s) => s.mobilePanel);
   const setPanel = useWorkbench((s) => s.setMobilePanel);
   return (
-    <div role="group" aria-label="Vista" className="grid shrink-0 grid-cols-2 border-b border-line md:hidden">
+    <div role="group" aria-label="Vista" className="grid shrink-0 grid-cols-2 border-b border-line-strong md:hidden">
       {TABS.map((t, i) => (
         <button
           key={t.id}
           type="button"
           aria-pressed={panel === t.id}
           onClick={() => setPanel(t.id)}
-          className={`h-10 text-[11px] font-semibold uppercase tracking-[0.08em] ${i > 0 ? 'border-l border-line' : ''} ${
+          className={`eyebrow h-10 ${i > 0 ? 'border-l border-line-strong' : ''} ${
             panel === t.id ? 'bg-ink text-paper' : 'text-ink-2 hover:bg-paper-2'
           }`}
         >
@@ -71,7 +71,7 @@ function Cells() {
 
   return (
     <div
-      className={`relative grid min-h-0 flex-1 grid-cols-1 md:grid-cols-[minmax(0,1fr)_20rem] md:grid-rows-1 xl:grid-cols-[22rem_minmax(0,1fr)_24rem] ${
+      className={`relative grid min-h-0 flex-1 grid-cols-1 md:grid-cols-[minmax(0,1fr)_20rem] md:grid-rows-1 xl:grid-cols-[minmax(20rem,25%)_minmax(0,1fr)_minmax(22rem,25%)] ${
         panel === 'sheet' ? 'grid-rows-[minmax(0,1.15fr)_minmax(0,1fr)]' : 'grid-rows-1'
       }`}
     >
@@ -84,7 +84,7 @@ function Cells() {
           'min-h-0 flex-col bg-paper',
           'md:absolute md:inset-y-0 md:left-0 md:z-40 md:w-[22rem] md:max-w-[85%] md:border-r md:border-line-strong md:shadow-float',
           sourceOpen ? 'md:flex' : 'md:hidden',
-          'xl:static xl:z-auto xl:flex xl:w-auto xl:max-w-none xl:border-line xl:shadow-none',
+          'xl:static xl:z-auto xl:flex xl:w-auto xl:max-w-none xl:border-line-strong xl:shadow-none',
         ].join(' ')}
       >
         <SourcePanel onClose={close} />
@@ -95,7 +95,7 @@ function Cells() {
       <section
         id="celda-chat"
         aria-labelledby="panel-preguntas"
-        className={`${onMobile('sheet')} min-h-0 flex-col border-t border-line md:flex md:border-l md:border-t-0`}
+        className={`${onMobile('sheet')} min-h-0 flex-col border-t border-line-strong md:flex md:border-l md:border-t-0`}
       >
         <ChatPanel />
       </section>
@@ -103,22 +103,27 @@ function Cells() {
   );
 }
 
-/** La lámina completa: cabecera y tres celdas, en un marco a 0,8 rem del borde de la ventana. */
-export function Workbench({ sample, masthead }: { sample: SampleFile; masthead: ReactNode }) {
+/**
+ * El almacén del lienzo envuelve toda la página: la cinta de la cabecera lee su estado en vivo.
+ * Un almacén por visita; nada se comparte entre peticiones en el servidor.
+ */
+export function WorkbenchProvider({ sample, children }: { sample: SampleFile; children: ReactNode }) {
   const [store] = useState(() => createWorkbenchStore(sample));
   return (
     <WorkbenchContext.Provider value={store}>
       <ReactFlowProvider>
-        <MotionConfig reducedMotion="user">
-          <div className="h-dvh min-h-[38rem] md:p-[0.8rem]">
-            <div className="flex h-full flex-col border-line-strong bg-paper md:border">
-              {masthead}
-              <MobileTabs />
-              <Cells />
-            </div>
-          </div>
-        </MotionConfig>
+        <MotionConfig reducedMotion="user">{children}</MotionConfig>
       </ReactFlowProvider>
     </WorkbenchContext.Provider>
+  );
+}
+
+/** La lámina: tres celdas a sangre, con la altura de la ventana bajo la cabecera fija. */
+export function Workbench() {
+  return (
+    <div className="flex h-[calc(100svh-3.5rem)] min-h-[38rem] flex-col bg-paper md:h-[calc(100svh-4rem)]">
+      <MobileTabs />
+      <Cells />
+    </div>
   );
 }

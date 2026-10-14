@@ -25,7 +25,7 @@ export function ExtractingOverlay() {
   return (
     <div className="absolute inset-0 z-30 grid place-items-center bg-paper/75">
       <div className="absolute inset-x-0 top-0 h-px overflow-hidden bg-line">
-        <div className="h-full w-1/3 animate-[nc-scan_1.4s_cubic-bezier(0.16,1,0.3,1)_infinite] bg-ink motion-reduce:animate-none" />
+        <div className="h-full w-1/3 animate-[lum-scan_1.4s_cubic-bezier(0.16,1,0.3,1)_infinite] bg-ink motion-reduce:animate-none" />
       </div>
       <div className="mx-4 max-w-xs border border-line-strong bg-paper px-4 py-3 text-sm text-ink shadow-float">
         <p className="font-medium">Extrayendo entidades y relaciones</p>

@@ -9,6 +9,6 @@ export type RelationEdgeData = { relation: Relation };
 export type RelationFlowEdge = Edge<RelationEdgeData, 'relation'>;
 
 /** Caja del nodo en la lámina: cuadrada y centrada en su posición (nodeOrigin 0,5). */
-export const NODE_BOX = 34;
+export const NODE_BOX = 44;
 
 export const symbolSize = (entity: Entity): number => SYMBOL_SIZES[degreeTier(entity.degree)];

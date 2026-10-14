@@ -60,7 +60,7 @@ export function ChatPanel() {
   const [transport] = useState(() => new NeuralTransport(store));
   const { messages, sendMessage, status, error, stop, setMessages, regenerate, clearError } = useChat<NCMessage>({
     // Id fijo: sin él, useChat genera uno aleatorio durante el prerender y Next lo rechaza.
-    id: 'neural-canvas',
+    id: 'lum',
     transport,
     experimental_throttle: 40,
   });
@@ -231,7 +231,7 @@ export function ChatPanel() {
                       <span>{r.segmented.cited.length} citadas</span>
                       <span>{meta.model}</span>
                       {meta.recordedAt && (
-                        <span className="rounded-xs bg-markup px-1 text-ink">
+                        <span className="bg-markup px-1 text-on-markup">
                           grabada {new Date(meta.recordedAt).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })}
                         </span>
                       )}

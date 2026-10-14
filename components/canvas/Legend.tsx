@@ -16,8 +16,8 @@ function RingSample({ kind }: { kind: 'seed' | 'traversed' | 'cited' }) {
         </g>
       )}
       {kind === 'traversed' && <circle r={8.5} fill="none" stroke="var(--color-ink)" strokeWidth={1.25} strokeDasharray="2.5 2" />}
-      {kind === 'cited' && <circle r={8.5} fill="none" stroke="var(--color-ink)" strokeWidth={2} />}
-      <circle r={3.5} fill="var(--color-ink)" />
+      {kind === 'cited' && <circle r={8.5} fill="none" stroke="var(--color-on-markup)" strokeWidth={2} />}
+      <circle r={3.5} fill={kind === 'cited' ? 'var(--color-on-markup)' : 'var(--color-ink)'} />
     </svg>
   );
 }
@@ -32,11 +32,14 @@ export function Legend() {
   return (
     <section aria-label="Leyenda" className="pointer-events-auto relative">
       {open && (
-        <div id={panelId} className="absolute bottom-full left-0 mb-1 w-[17.5rem] border border-line-strong bg-paper px-2 pb-2 pt-1.5 shadow-float">
-          <ul className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-xs text-ink-2">
+        <div id={panelId} className="absolute bottom-full left-0 mb-1 w-[18.5rem] border border-line-strong bg-paper px-2 pb-2 pt-1.5 shadow-float">
+          <p className="mb-1.5 text-[11px] leading-snug text-ink-3">
+            El icono sale de lo que el texto dice de cada entidad (un cohete, la Luna, un país). Sin pistas, el de su tipo:
+          </p>
+          <ul className="grid grid-cols-2 gap-x-3 gap-y-1 text-xs text-ink-2">
             {ENTITY_TYPES.map((t) => (
               <li key={t} className="flex items-center gap-1.5">
-                <SymbolGlyph type={t} size={9} />
+                <SymbolGlyph type={t} size={16} />
                 {TYPE_LABEL[t]}
               </li>
             ))}
@@ -56,7 +59,7 @@ export function Legend() {
             </li>
           </ul>
           <p className="mt-2 border-t border-line pt-1.5 text-[11px] leading-snug text-ink-3">
-            En lima: lo visitado mientras se recorre y, al terminar, solo lo citado. Tamaño: conexiones. Zoom: Ctrl y rueda.
+            Ficha llena: quien actúa (persona u organización). En lima: lo visitado mientras se recorre y, al terminar, solo lo citado. Tamaño: conexiones. Zoom: Ctrl y rueda.
           </p>
         </div>
       )}

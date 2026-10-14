@@ -31,8 +31,8 @@ function CitationChip({ id, index, inContext }: { id: NodeId; index: number; inC
         setMobilePanel('sheet');
         if (position) void flow.setCenter(position.x, position.y, { zoom: Math.max(flow.getZoom(), 1.1), duration: 400 });
       }}
-      className={`mx-[0.15em] inline-flex h-[1.2rem] min-w-[1.2rem] items-center justify-center rounded-xs px-1 align-[0.08em] font-mono text-[11px] font-semibold leading-none tabular text-ink transition-transform duration-150 hover:-translate-y-px ${
-        inContext ? 'bg-markup' : 'border border-dashed border-ink'
+      className={`mx-[0.15em] inline-flex h-[1.2rem] min-w-[1.2rem] items-center justify-center rounded-xs px-1 align-[0.08em] font-mono text-[11px] font-semibold leading-none tabular transition-transform duration-150 hover:-translate-y-px ${
+        inContext ? 'bg-markup text-on-markup' : 'border border-dashed border-ink text-ink'
       }`}
     >
       {index}

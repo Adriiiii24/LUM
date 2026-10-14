@@ -14,7 +14,7 @@ export type NCMetadata = {
 /** Partes de datos del stream: cada paso del recorrido viaja como `data-trace`. */
 export type NCDataParts = { trace: TraceStep };
 
-/** Mensaje tipado de Neural Canvas. */
+/** Mensaje tipado de LUM. */
 export type NCMessage = UIMessage<NCMetadata, NCDataParts>;
 
 /** Códigos de error que las rutas devuelven y la interfaz traduce a texto. */

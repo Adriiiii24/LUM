@@ -30,6 +30,8 @@ function EntityNodeView({ data }: NodeProps<EntityFlowNode>) {
   const setFocus = useWorkbench((s) => s.setFocus);
   const select = useWorkbench((s) => s.select);
   const tracing = useWorkbench((s) => s.tracing);
+  // Con un nodo en foco, lo que no es su vecindario se aparta para que se lea qué toca.
+  const away = useWorkbench((s) => s.hood !== null && !s.hood[id]);
 
   const size = symbolSize(entity);
   const r = size / 2;
@@ -38,6 +40,8 @@ function EntityNodeView({ data }: NodeProps<EntityFlowNode>) {
   // La lima marca lo visitado mientras se recorre; en reposo, solo lo citado.
   const lit = visual === 'cited' || (tracing && visited);
   const active = focused || selected;
+  // Los anillos caen dentro del halo: sobre lima, tinta fija (en el tema oscuro la tinta es hueso).
+  const ring = lit ? 'var(--color-on-markup)' : 'var(--color-ink)';
   // Los rótulos viven en LabelLayer, por encima de todos los símbolos y con control de colisiones.
 
   const onKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
@@ -56,7 +60,7 @@ function EntityNodeView({ data }: NodeProps<EntityFlowNode>) {
   const state = { idle: '', dim: '', seed: ', semilla del recorrido', traversed: ', recorrida', cited: `, citada (${index ?? ''})` }[visual];
 
   return (
-    <div className="relative" style={{ width: NODE_BOX, height: NODE_BOX }}>
+    <div className="relative transition-opacity duration-200" style={{ width: NODE_BOX, height: NODE_BOX, opacity: away ? 0.16 : 1 }}>
       <svg
         className="pointer-events-none absolute inset-0 overflow-visible"
         width={NODE_BOX}
@@ -75,16 +79,16 @@ function EntityNodeView({ data }: NodeProps<EntityFlowNode>) {
           />
         )}
         {visual === 'seed' && (
-          <g fill="none" stroke="var(--color-ink)" strokeWidth={1}>
+          <g fill="none" stroke={ring} strokeWidth={1}>
             <circle r={r + 4.5} />
             <circle r={r + 7.5} />
           </g>
         )}
         {visual === 'traversed' && (
-          <circle r={r + 5.5} fill="none" stroke="var(--color-ink)" strokeWidth={1.25} strokeDasharray="2.5 2" />
+          <circle r={r + 5.5} fill="none" stroke={ring} strokeWidth={1.25} strokeDasharray="2.5 2" />
         )}
-        {visual === 'cited' && <circle r={r + 5.5} fill="none" stroke="var(--color-ink)" strokeWidth={2} />}
-        <EntitySymbol type={entity.type} size={size} opacity={dim ? 0.28 : 1} />
+        {visual === 'cited' && <circle r={r + 5.5} fill="none" stroke={ring} strokeWidth={2} />}
+        <EntitySymbol entity={entity} size={size} opacity={dim ? 0.32 : 1} lit={lit} />
         {active && (
           <g fill="var(--color-ink)">
             {[-1, 1].flatMap((sx) => [-1, 1].map((sy) => (
@@ -100,7 +104,7 @@ function EntityNodeView({ data }: NodeProps<EntityFlowNode>) {
         tabIndex={isTabStop ? 0 : -1}
         aria-label={`${entity.name}, ${TYPE_LABEL[entity.type].toLowerCase()}, ${entity.degree} ${entity.degree === 1 ? 'conexión' : 'conexiones'}, zona ${zone}${state}`}
         aria-pressed={selected}
-        className="absolute inset-0 rounded-full focus-visible:outline-none"
+        className="absolute inset-0 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-dashed focus-visible:outline-ink"
         onMouseEnter={() => setFocus(id)}
         onMouseLeave={() => setFocus(null)}
         onFocus={() => setFocus(id)}

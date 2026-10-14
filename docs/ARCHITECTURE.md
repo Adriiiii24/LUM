@@ -1,10 +1,10 @@
-# Neural Canvas: arquitectura
+# LUM: arquitectura
 
 Versión 1.0, 2026-10-08: lo construido. El plan de la Fase 0 (2026-10-07) está en el historial de este fichero. Producto y principios en [`PRODUCT.md`](../PRODUCT.md).
 
 ## 1. Qué está verificado
 
-- **Pruebas en TypeScript:** 12, con `node --test`. Cubren normalización, anclaje de citas, recuperación (semillas, saltos, presupuestos, palabra entera, caso sin coincidencias), contexto, layout determinista y parser de citas en streaming.
+- **Pruebas en TypeScript:** 18, con `node --test`. Cubren normalización y anclaje de citas (también con caracteres que cambian de longitud al pasar a minúsculas), recuperación (semillas, saltos, presupuestos, palabra entera, caso sin coincidencias), contexto, iconos, layout 2D y 3D deterministas y parser de citas en streaming.
 - **Pruebas en Python:** 8 del banco de evals, con `pytest`.
 - **Compilación y estilo:** `tsc --noEmit` en modo estricto (con `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `verbatimModuleSyntax` y `erasableSyntaxOnly`), ESLint con las reglas del compilador de React y `next build`.
 - **Llamadas reales a Gemini:**
@@ -39,31 +39,34 @@ Una llamada a Gemini por extracción y otra por pregunta. El servidor no guarda 
 | Esquema | Plano, sin uniones, opcionales ni `maxItems` | Gemini rechaza `maxItems` altos con 400. Los límites van en el prompt y en `normalize`. |
 | Iluminación | Recorrido del recuperador + citas en el texto | El modelo no expone qué usa; solo se ilumina lo que se puede demostrar. |
 | Almacén | Zustand por instancia (contexto de React), en el navegador | Sin estado compartido entre peticiones en el servidor. Neo4j AuraDB Free se pausa a las 72 h. |
-| Estética | «Plano técnico (Heron real)» | Elección del usuario: esquinas rectas, filetes de 1 px, lima solo como marca de revisión. |
+| Estética | Plano técnico: esquinas rectas, filetes de 1 px, lima como rotulador | Elección del usuario. El rediseño del 2026-10-13 mantiene el sistema (ver PRODUCT.md y DESIGN.md). |
 
 ## 4. Repositorio
 
 ```
 app/
-  layout.tsx, page.tsx, globals.css (tokens @theme), icon.svg (provisional)
+  layout.tsx, page.tsx, globals.css (tokens @theme), icon.svg y apple-icon.png (logotipo definitivo)
   api/extract/route.ts            POST { text } -> { graph, text }
   api/chat/route.ts               POST { messages, graph, source } -> stream UI con data-trace
 components/
-  workbench/                      Workbench (marco y celdas), Masthead, PanelHeader
+  workbench/                      Workbench (marco y celdas), PanelHeader
   canvas/                         GraphCanvas, EntityNode, RelationEdge, LabelLayer, Rulers, TitleBlock,
-                                  Legend, EntityCard, EntityList, ExtractingOverlay, EntitySymbol
+                                  Legend, EntityCard, EntityList, ExtractingOverlay, EntitySymbol, Graph3D (vista 3D)
   source/                         SourcePanel (editor y vista), SourceText (citas marcadas)
   chat/                           ChatPanel, AnswerText (notas de cita), RevisionMark
-  explain/                        HowItWorks, Evals, Limits, SiteFooter, SectionHead
+  explain/                        HowItWorks, Evals, Limits
+  site/                           SiteHeader (con Logo, el monograma), Hero, ToolSection, TryIt, SiteFooter,
+                                  Wordmark (marca de texto), Preloader, IntroVideo, LinkButton, Grid, Reveal,
+                                  SmoothScroll (Lenis, scroll suave con la rueda)
   ui/Button.tsx
 lib/
-  graph/   schema.ts, normalize.ts, retrieve.ts, layout.ts, text.ts (+ graph.test.ts)
+  graph/   schema.ts, normalize.ts, retrieve.ts, layout.ts, layout3d.ts, icons.ts, text.ts (+ tests)
   chat/    citations.ts (+ test), transport.ts (muestra grabada o en vivo), types.ts, error-copy.ts
   ai/      models.ts, prompts.ts, errors.ts, stream-with-fallback.ts
   state/   workbench.ts
   sample/  types.ts, load.ts
   server/  rate-limit.ts
-  evals/types.ts, site.ts
+  evals/types.ts, site.ts, theme.ts
 data/sample/                      source.txt, sample.json (grabado), ATTRIBUTION.md
 scripts/                          record-sample.ts, relayout-sample.ts, export-eval-runs.ts
 evals/                            banco de evals en Python (uv)
@@ -134,7 +137,7 @@ Está en [`lib/graph/schema.ts`](../lib/graph/schema.ts) y tiene dos capas:
   - Una sola capa sobre todos los símbolos, con fondo de papel que interrumpe las aristas.
   - Un planificador coloca por prioridad: citados, foco, semillas, el nodo principal, recorridos y el resto.
   - Prueba ocho posiciones y, si el nombre completo no cabe, el alias más corto. Nunca sale de la zona visible.
-  - Su tamaño en pantalla nunca baja de unos 11 px (`--nc-zoom`).
+  - Su tamaño en pantalla nunca baja de unos 11 px: el planificador lo compensa al alejar la lámina (`scale` en `planLabels`).
 - **Lámina:**
   - reglas A-H × 1-6 y retícula de zonas que siguen el pan y el zoom;
   - cajetín ancho y bajo, con la celda ESTADO;
@@ -205,5 +208,6 @@ Son provisionales: la referencia no está revisada y la web no los publica (`gol
 ## 14. Pendientes
 
 - **Revisión del gold set:** revisar los tres textos de referencia (`"reviewed": true`) y añadir más, de 10 a 15.
-- **GitHub:** crear el repositorio `Adriiiii24/neural-canvas`; `lib/site.ts` ya lo enlaza.
-- **Por decidir:** destino de despliegue, licencia del código, protección compartida de la cuota e icono definitivo (el actual es provisional).
+- **GitHub:** el repositorio es [`Adriiiii24/LUM`](https://github.com/Adriiiii24/LUM), público; `lib/site.ts` lo enlaza.
+- **Por decidir:** destino de despliegue, licencia del código, protección compartida de la cuota y si el lima de la web (`#7FFF00`) pasa al del logotipo (`#9DF912`). Ese cambio obliga a volver a renderizar el vídeo de portada (`video/`).
+- **Logotipo:** adoptado el 2026-10-14, solo en la cabecera y como icono. El maestro es `public/brand/lum-logo.svg`; `components/site/Logo.tsx` y `app/icon.svg` repiten sus formas, así que si cambia, cambian los tres.

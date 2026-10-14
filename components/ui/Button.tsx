@@ -3,24 +3,26 @@ import type { ButtonHTMLAttributes, ReactNode } from 'react';
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & { children: ReactNode };
 
 const base =
-  'inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-xs text-sm font-medium transition-[background-color,color,transform] duration-150 ease-out active:translate-y-px disabled:cursor-not-allowed disabled:active:translate-y-0';
+  'inline-flex items-center justify-center gap-1.5 whitespace-nowrap transition-[background-color,border-color,color,transform] duration-150 ease-out active:translate-y-px disabled:cursor-not-allowed disabled:active:translate-y-0';
+const caps = 'text-[0.7rem] font-semibold uppercase tracking-[0.14em]';
 
-/** Acción principal: tinta; al pasar, la marca lima con la tinta encima (14,8:1). */
+/** Acción principal: tinta llena; al pasar, la lima con la tinta fija encima (13,4:1). */
 export function PrimaryButton({ className = '', type = 'button', ...props }: Props) {
   return (
     <button
       type={type}
-      className={`${base} h-9 bg-ink px-3.5 text-paper hover:bg-markup hover:text-ink disabled:bg-paper-2 disabled:text-ink-3 ${className}`}
+      className={`${base} ${caps} h-9 border border-ink bg-ink px-3.5 text-paper hover:border-markup hover:bg-markup hover:text-on-markup disabled:border-line-strong disabled:bg-paper-2 disabled:text-ink-3 ${className}`}
       {...props}
     />
   );
 }
 
+/** Acción secundaria: solo el filete, como los botones de la web. */
 export function SecondaryButton({ className = '', type = 'button', ...props }: Props) {
   return (
     <button
       type={type}
-      className={`${base} h-9 border border-line-strong bg-transparent px-3 text-ink hover:bg-paper-2 disabled:text-ink-3 ${className}`}
+      className={`${base} ${caps} h-9 border border-line-strong bg-transparent px-3 text-ink hover:border-ink hover:bg-paper-2 disabled:text-ink-3 ${className}`}
       {...props}
     />
   );
@@ -31,7 +33,7 @@ export function ToolButton({ className = '', type = 'button', ...props }: Props 
   return (
     <button
       type={type}
-      className={`${base} size-7 text-ink-2 hover:bg-paper hover:text-ink disabled:text-ink-3/60 ${className}`}
+      className={`${base} size-7 text-ink-2 hover:bg-paper-2 hover:text-ink disabled:text-ink-3/60 ${className}`}
       {...props}
     />
   );

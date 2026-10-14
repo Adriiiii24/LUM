@@ -30,7 +30,7 @@ Secundario: cualquiera que quiera convertir un texto (un manual técnico, un rel
 
 ## Product Purpose
 
-Neural Canvas convierte un texto pegado en un grafo de conocimiento. Gemini extrae entidades y relaciones con salida estructurada, la app lo dibuja como una constelación interactiva y un chat en streaming responde preguntas sobre él, enseñando en el propio grafo qué conocimiento recorrió y cuál citó.
+LUM convierte un texto pegado en un grafo de conocimiento. Gemini extrae entidades y relaciones con salida estructurada, la app lo dibuja como una constelación interactiva y un chat en streaming responde preguntas sobre él, enseñando en el propio grafo qué conocimiento recorrió y cuál citó.
 
 Éxito:
 
@@ -42,7 +42,7 @@ Neural Canvas convierte un texto pegado en un grafo de conocimiento. Gemini extr
 
 Recuperación explicable. Lo que se ilumina en el lienzo es literalmente el recorrido del recuperador, salto a salto y en streaming, y las citas que el modelo escribe en la respuesta, que encienden su nodo mientras se escriben. Cada nodo y cada relación remite a la frase del texto de la que salió. La calidad de la extracción está medida con un banco de evaluación en Python sobre textos anotados a mano.
 
-Vecino más cercano: Neo4j LLM Knowledge Graph Builder. Ya extrae grafos con LLMs y su chat GraphRAG devuelve metadatos de las fuentes usadas. Lo que Neural Canvas reclama como propio es la traza en vivo sobre el lienzo, la trazabilidad a la frase de origen y la calidad medida. No se ha comprobado en detalle cómo presenta Graph Builder esos metadatos.
+Vecino más cercano: Neo4j LLM Knowledge Graph Builder. Ya extrae grafos con LLMs y su chat GraphRAG devuelve metadatos de las fuentes usadas. Lo que LUM reclama como propio es la traza en vivo sobre el lienzo, la trazabilidad a la frase de origen y la calidad medida. No se ha comprobado en detalle cómo presenta Graph Builder esos metadatos.
 
 ## Operating Context
 
@@ -84,20 +84,33 @@ Terminología: nodo = entidad; arista = relación; recorrido = la traza de la re
 
 Fijado por el usuario en el brief del 2026-10-07 y registrado sin ampliar:
 
-- Nombre: Neural Canvas.
+- Nombre: Neural Canvas. Sustituido el 2026-10-13: el nombre definitivo es **LUM** (marca dibujada «lum» con un nodo citado por punto).
 - Fondo principal `#EDE8D0`. Acento `#7FFF00` «de forma quirúrgica»: botón principal, badges de estado, brillo de los nodos activos y microinteracciones. Tinta `#0F0F0F` o `#1A1A1A` para texto, bordes y tipografía.
 - Referencia: Heron AI (heronaiapp.com), por su sofisticación, su minimalismo corporativo y su fluidez.
 - Tarjetas tipo bento con esquinas suavemente redondeadas, sombras muy sutiles y bordes de 1 px semitransparentes. Grano de ruido si mejora el resultado.
 - Sans geométrica de alta legibilidad: Geist Sans, Inter o Satoshi.
 
-Pendiente: el brief describe Heron como un bento redondeado con sombra suave. El Heron real usa esquinas de 0 a 3 px, filetes de 1 px, sombras duras sin desenfoque y un único acento que marca lo que ha encontrado la IA. Hay que decidir qué lectura manda; se decide en la ronda de dirección visual.
+Rediseño del 2026-10-13, a petición del usuario: la web toma la estructura y el estilo de mijobello.com (rejilla de 12 columnas con filetes, Space Grotesk, antetítulo y titular en minúscula con punto, cintas, menú a pantalla completa, conmutador claro/oscuro y pie a sangre). Los colores siguen siendo el hueso y la lima, con la tinta para el texto; la lima pasa a superficie llena en el pie y en los estados activos.  La portada abre con un vídeo hecho con Remotion a partir de la muestra grabada, y la herramienta pasa a la segunda sección. Ninguna imagen ni vídeo de la referencia se usa.
+
+Segunda ronda del 2026-10-13, a petición del usuario:
+
+- Nombre definitivo: LUM. Desaparece «Neural Canvas» de la web y de la documentación.
+- Menos parecido a la referencia: se sustituyen sus rasgos más reconocibles (precargador de sala con contador, cinta de relojes en la cabecera, antetítulo más palabra con punto, carrusel de trabajos, cinta «view all», menú a pantalla completa y marca gigante cortada en el pie) por motivos propios: lienzo de puntos, rotulador lima en la palabra clave de cada titular, cabeceras con índice, pipeline de nodos, lectura del lienzo en la cabecera y precargador con un recorrido en miniatura.
+- Fondo en blanco hueso `#F9F6EE` en lugar del crema `#EDE8D0`.
+- Más presencia de la lima en el sitio (acción principal, índices, rotulador, barra de progreso, cifras de la muestra, pie). En el lienzo la lima sigue reservada a lo recorrido y lo citado.
+- Grafo más legible al pasar el ratón (se aparta lo que no es el vecindario y las relaciones se leen en la ficha), iconos que salen del texto y vista 3D.
+- El vídeo de la portada arranca solo, también con movimiento reducido; conserva el botón de pausa.
+
+Logo definitivo, 2026-10-14, a petición del usuario: el monograma L-U-M con un punto citado, en lima `#9DF912` y tinta `#0E0C0D` (`public/brand/lum-logo.svg`). Por decisión del usuario, el logotipo va solo en la cabecera de la web (y su cajón en móvil) y como icono de la pestaña y de Apple. La portada, el precargador, el pie y el vídeo de introducción siguen con la marca de texto «lum». El acento de la web sigue en `#7FFF00`; si debe pasar al tono del logotipo, queda por decidir (afecta al CSS, al DESIGN.md y al vídeo).
+
+Histórico: el brief describe Heron como un bento redondeado con sombra suave. El Heron real usa esquinas de 0 a 3 px, filetes de 1 px, sombras duras sin desenfoque y un único acento que marca lo que ha encontrado la IA. Hay que decidir qué lectura manda; se decide en la ronda de dirección visual.
 
 ## Evidence on Hand
 
 - **Muestra grabada:** `data/sample/sample.json`, con 26 entidades, 33 relaciones y tres respuestas de Gemini reales.
 - **Conjunto de referencia:** tres textos originales anotados en `evals/gold/`. Son borradores, sin la revisión de Adrián.
 - **Primera ejecución de evals:** provisional y sin publicar (ver `docs/ARCHITECTURE.md`).
-- **Ausencias:** no hay logo definitivo (el icono es provisional) ni capturas para el README.
+- **Ausencias:** no hay capturas para el README. El logo definitivo está adoptado desde el 2026-10-14 (ver Brand Commitments).
 
 No se inventan métricas, usuarios ni benchmarks. La web solo publica resultados de evals con la referencia revisada.
 
@@ -112,6 +125,6 @@ No se inventan métricas, usuarios ni benchmarks. La web solo publica resultados
 ## Accessibility & Inclusion
 
 - WCAG 2.2 AA.
-- Restricción medida: `#7FFF00` sobre `#EDE8D0` da 1,05:1. La lima no puede ser texto ni la única señal de un estado sobre el fondo. La tinta sobre lima da 14,8:1 y la tinta sobre el fondo, 15,6:1. Todo estado iluminado necesita además una señal que no dependa del color.
+- Restricción medida: `#7FFF00` sobre `#EDE8D0` da 1,05:1. La lima no puede ser texto ni la única señal de un estado sobre el fondo. La tinta sobre lima da 13,4:1 y la tinta sobre el fondo, 14,1:1. Todo estado iluminado necesita además una señal que no dependa del color.
 - El grafo tiene que poder recorrerse con teclado y tener una alternativa no visual: la lista de entidades y relaciones, y las citas de la respuesta como enlaces que enfocan su nodo.
 - Con movimiento reducido, el recorrido se muestra como cambios de estado, sin animación.

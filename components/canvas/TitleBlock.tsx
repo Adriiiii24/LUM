@@ -21,8 +21,8 @@ export function TitleBlock({ compact = false }: { compact?: boolean }) {
 
   const status = (
     <div className={`${cell} ${active ? 'bg-markup' : ''}`} role="status">
-      <span className={active ? 'block text-[10px] uppercase tracking-[0.08em] text-ink' : label}>Estado</span>
-      <span className="block text-xs font-semibold tracking-[0.04em] text-ink">{word}</span>
+      <span className={active ? 'block text-[10px] uppercase tracking-[0.08em] text-on-markup' : label}>Estado</span>
+      <span className={`block text-xs font-semibold tracking-[0.04em] ${active ? 'text-on-markup' : 'text-ink'}`}>{word}</span>
     </div>
   );
   const rev = (

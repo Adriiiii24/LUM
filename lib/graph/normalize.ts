@@ -22,8 +22,10 @@ export function foldWithMap(text: string): FoldedText {
       if ('“”«»„"'.includes(ch)) ch = '"';
       else if ('‘’´`'.includes(ch)) ch = "'";
     }
-    folded += ch.toLowerCase();
-    map.push(i);
+    // Algún carácter crece al pasar a minúsculas («İ» son dos unidades): cada unidad apunta al mismo original.
+    const lower = ch.toLowerCase();
+    folded += lower;
+    for (let k = 0; k < lower.length; k++) map.push(i);
   }
   return { folded, map };
 }

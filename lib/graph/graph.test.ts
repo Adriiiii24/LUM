@@ -58,6 +58,19 @@ test('normalize: ancla cada cita en el texto, tolerando comillas y saltos de lí
   assert.ok(sorbona?.evidence, 'la cita cruza un salto de línea en el original');
 });
 
+test('normalize: un carácter que crece al pasar a minúsculas no desplaza las citas', () => {
+  // «İ» (U+0130) pasa a dos unidades en minúsculas («i» y un punto combinado): el mapa de posiciones tiene que seguirlo.
+  const text = 'İzmir es una ciudad. Marie Curie nació en Varsovia.';
+  const g = normalizeExtraction(
+    { entities: [{ key: 'varsovia', name: 'Varsovia', type: 'lugar', aliases: [], description: 'Ciudad natal de Curie.', evidence: 'nació en Varsovia' }], relations: [] },
+    text,
+    { model: 'test', createdAt: '2026-10-07T00:00:00.000Z' },
+  );
+  const span = g.entities[0]?.evidence;
+  assert.ok(span, 'la cita tiene que anclarse aunque haya un «İ» antes');
+  assert.equal(text.slice(span.start, span.end), 'nació en Varsovia');
+});
+
 test('normalize: una cita que no está en el texto queda sin anclaje', () => {
   const first = RAW.entities[0];
   assert.ok(first);

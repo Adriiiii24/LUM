@@ -46,7 +46,7 @@ export function EntityList() {
           {rows.map(({ e, zone }) => {
             const v = visual[e.id] ?? 'idle';
             return (
-              <tr key={e.id} className={v === 'cited' ? 'bg-markup' : selected === e.id ? 'bg-paper-2' : ''}>
+              <tr key={e.id} className={v === 'cited' ? 'bg-markup **:text-on-markup!' : selected === e.id ? 'bg-paper-2' : ''}>
                 <td className={`${td} font-mono tabular text-ink-3`}>{zone}</td>
                 <td className={td}>
                   <button
@@ -61,7 +61,7 @@ export function EntityList() {
                 </td>
                 <td className={td}>
                   <span className="inline-flex items-center gap-1.5 text-ink-2">
-                    <SymbolGlyph type={e.type} size={9} />
+                    <SymbolGlyph type={e.type} entity={e} size={16} />
                     {TYPE_LABEL[e.type]}
                   </span>
                 </td>

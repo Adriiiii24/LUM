@@ -81,6 +81,7 @@ function planLabels(
   visual: Partial<Record<NodeId, NodeVisual>>,
   citation: Partial<Record<NodeId, number>>,
   focus: NodeId | null,
+  hood: Partial<Record<NodeId, true>> | null,
 ): Planned[] {
   const scale = Math.max(1, 0.9 / zoom);
   // Obstáculos: cada símbolo con su anillo y, si está en juego, con su halo; más 4 px de margen
@@ -99,6 +100,7 @@ function planLabels(
     const v = visual[id] ?? 'idle';
     if (v === 'cited') return 0;
     if (id === focus) return 1;
+    if (hood?.[id]) return 1.5;
     if (v === 'seed') return 2;
     if (id === hub) return 3;
     if (v === 'traversed') return 4;
@@ -112,7 +114,11 @@ function planLabels(
   for (const n of ordered) {
     const { entity } = n.data;
     const v = visual[entity.id] ?? 'idle';
-    const forced = v === 'cited' || v === 'seed' || entity.id === focus || entity.id === hub;
+    // Con foco, solo se rotula su vecindario (y lo citado): el resto se aparta sin nombre.
+    const outside = hood !== null && !hood[entity.id];
+    if (outside && v !== 'cited') continue;
+    const neighbour = hood !== null && !!hood[entity.id];
+    const forced = v === 'cited' || v === 'seed' || entity.id === focus || neighbour || (hood === null && entity.id === hub);
     const inPlay = forced || v === 'traversed';
     if (!inPlay && zoom < FULL_LABELS_ZOOM && entity.degree < 3) continue;
 
@@ -146,7 +152,7 @@ function planLabels(
       top: chosen.top,
       pos: chosen.pos,
       scale,
-      kind: v === 'cited' ? 'cited' : entity.id === focus ? 'active' : v === 'dim' ? 'dim' : 'normal',
+      kind: v === 'cited' ? 'cited' : neighbour ? 'active' : v === 'dim' ? 'dim' : 'normal',
       index: citation[entity.id],
     });
   }
@@ -168,12 +174,13 @@ function LabelLayerView({ nodes }: { nodes: EntityFlowNode[] }) {
   const visual = useWorkbench((s) => s.nodeVisual);
   const citation = useWorkbench((s) => s.citationIndex);
   const focus = useWorkbench((s) => s.focusNode ?? s.selectedNode);
+  const hood = useWorkbench((s) => s.hood);
   const plan = useMemo(() => {
     const view: Rect = width > 0
       ? { x1: (RULER - tx) / zoom, y1: (RULER - ty) / zoom, x2: (width - tx) / zoom, y2: (height - ty) / zoom }
       : { x1: -Infinity, y1: -Infinity, x2: Infinity, y2: Infinity };
-    return planLabels(nodes, zoom, view, visual, citation, focus);
-  }, [nodes, zoom, tx, ty, width, height, visual, citation, focus]);
+    return planLabels(nodes, zoom, view, visual, citation, focus, hood);
+  }, [nodes, zoom, tx, ty, width, height, visual, citation, focus, hood]);
 
   return (
     <ViewportPortal>
@@ -184,7 +191,7 @@ function LabelLayerView({ nodes }: { nodes: EntityFlowNode[] }) {
             className={[
               'absolute w-max max-w-[120px] text-center text-xs leading-tight',
               l.kind === 'cited'
-                ? 'rounded-xs bg-markup px-1 py-px font-medium text-ink'
+                ? 'bg-markup px-1 py-px font-medium text-on-markup'
                 : l.kind === 'active'
                   ? 'bg-paper px-0.5 font-medium text-ink'
                   : l.kind === 'dim'

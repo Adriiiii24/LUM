@@ -105,7 +105,7 @@ export function SourcePanel({ onClose }: { onClose?: () => void }) {
           <button
             type="button"
             onClick={() => setMode('edit')}
-            className="h-7 rounded-xs px-2 text-[11px] font-medium uppercase tracking-[0.06em] text-ink-2 hover:bg-paper hover:text-ink"
+            className="h-7 px-2 text-[11px] font-medium uppercase tracking-[0.06em] text-ink-2 hover:bg-paper-2 hover:text-ink"
           >
             Nuevo texto
           </button>

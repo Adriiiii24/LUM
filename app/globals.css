@@ -1,23 +1,29 @@
 @import "tailwindcss";
 @import "@xyflow/react/dist/base.css";
+/* Lenis (scroll suave): sus reglas para pararse y para las zonas con scroll propio. */
+@import "lenis/dist/lenis.css";
 
 /*
- * Neural Canvas: una lámina técnica.
- * Papel, tinta y una sola marca de revisión en lima. La lima nunca escribe: sobre el papel
- * da 1,05:1, así que siempre va bajo o tras la tinta (tinta sobre lima: 14,8:1).
+ * LUM: un lienzo de puntos en blanco hueso, tinta y lima.
+ * La lima nunca escribe sobre el hueso (1,20:1): va bajo la tinta (13,4:1) como un rotulador,
+ * o como superficie llena con la tinta encima. `on-markup` es esa tinta y no cambia con el tema,
+ * porque sobre lima siempre hace falta oscuro. Contrastes medidos sobre el fondo de cada tema.
  */
 @theme {
   --color-*: initial;
-  --color-paper: #ede8d0;
-  --color-paper-2: #e4dfc8;
-  --color-ink: #1a1a1a;
-  --color-ink-2: #4d4b46; /* tinta al 76 %: 7,1:1 sobre el papel */
-  --color-ink-3: #5e5c54; /* tinta al 68 %: 5,4:1 sobre el papel, 5,0:1 sobre paper-2 */
-  --color-line: rgb(26 26 26 / 0.24); /* filetes decorativos */
-  --color-line-strong: #77756a; /* bordes de controles: 3,8:1 */
+  --color-paper: #f9f6ee; /* blanco hueso */
+  --color-paper-2: #f0ece2;
+  --color-ink: #1a1a1a; /* 16,1:1 */
+  --color-ink-2: #4d4b46; /* 8,1:1 */
+  --color-ink-3: #5e5c54; /* 6,2:1; 5,7:1 sobre paper-2 */
+  --color-line: rgb(26 26 26 / 0.2); /* filetes decorativos */
+  --color-line-strong: #77756a; /* filetes de sección y bordes de controles: 4,3:1 */
+  --color-grid: rgb(26 26 26 / 0.13); /* puntos del lienzo de fondo */
   --color-markup: #7fff00;
+  --color-on-markup: #1a1a1a;
+  --color-bone: #f9f6ee; /* hueso fijo: el relleno de los símbolos huecos sobre lima */
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 
   --text-2xs: 0.6875rem;
@@ -28,12 +34,31 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Tema oscuro: tinta casi negra de fondo y el hueso como tinta; la lima no cambia. */
+:root[data-theme="dark"] {
+  --color-paper: #151514;
+  --color-paper-2: #1f1f1d;
+  --color-ink: #f4f1e8; /* 16,2:1 */
+  --color-ink-2: #c9c6bb; /* 10,7:1 */
+  --color-ink-3: #a19e93; /* 6,8:1 */
+  --color-line: rgb(244 241 232 / 0.18);
+  --color-line-strong: #85837a; /* 4,8:1 */
+  --color-grid: rgb(244 241 232 / 0.1);
+  --shadow-float: 0.6rem 0.6rem 0 rgb(0 0 0 / 0.35);
+  color-scheme: dark;
+}
+
 @layer base {
   html {
     color-scheme: light;
-    background: var(--color-paper);
+    scroll-behavior: smooth;
+    scroll-padding-top: 3.5rem;
+    @media (width >= 48rem) {
+      scroll-padding-top: 4rem;
+    }
   }
 
+  /* El fondo va en el body para que se propague al lienzo y la trama fija (z negativo) quede encima. */
   body {
     background: var(--color-paper);
     color: var(--color-ink);
@@ -44,7 +69,7 @@
 
   ::selection {
     background: var(--color-markup);
-    color: var(--color-ink);
+    color: var(--color-on-markup);
   }
 
   :focus-visible {
@@ -75,7 +100,7 @@
 }
 
 /* Línea de espera de la extracción: un tercio de tinta que cruza el filete. */
-@keyframes nc-scan {
+@keyframes lum-scan {
   from {
     transform: translateX(-100%);
   }
@@ -88,6 +113,44 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Etiqueta de sección: pequeña, en negrita y muy espaciada. */
+@utility eyebrow {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Versales finas: listas, datos, pies. */
+@utility caps {
+  font-size: 0.65rem;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Lienzo de puntos: la trama de fondo de toda la página, fija y sin eventos. */
+@utility dot-grid {
+  background-image: radial-gradient(circle at center, var(--color-grid) 1px, transparent 1.3px);
+  background-size: 22px 22px;
+  background-position: 11px 11px;
+}
+
+/*
+ * Fondo del vídeo de portada donde la columna es más alta que el vídeo: el mismo papel y la misma
+ * trama que el vídeo, a su escala, para que no se vea marco. El vídeo (1920 x 1080) pone un punto
+ * cada 44 px desde su esquina; aquí una unidad del vídeo es 100cqw / 1920. En horizontal la trama
+ * empieza en el borde; en vertical se centra como el vídeo (su punto central está 12 unidades arriba).
+ */
+@utility video-letterbox {
+  --u: calc(100cqw / 1920);
+  background-color: var(--color-paper);
+  background-image: radial-gradient(circle at center, var(--color-grid) calc(var(--u) * 2), transparent calc(var(--u) * 2.6));
+  background-size: calc(var(--u) * 44) calc(var(--u) * 44);
+  background-position: calc(var(--u) * -22) calc(50% - var(--u) * 12);
+}
+
 /* Grano de papel: fijo y sin eventos, nunca sobre un contenedor que hace scroll. */
 @utility paper-grain {
   &::after {
@@ -95,10 +158,134 @@
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 60;
-    opacity: 0.045;
+    z-index: 80;
+    opacity: 0.035;
     mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 0 0.1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+}
+
+/*
+ * Rotulador lima: la palabra clave de cada titular se marca como se marcan las frases de
+ * evidencia en la fuente. Con el observador montado, el trazo entra al aparecer el titular;
+ * sin JavaScript, ya está marcada.
+ */
+.mark {
+  background-image: linear-gradient(var(--color-markup), var(--color-markup));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: var(--color-on-markup);
+  padding: 0 0.1em;
+  margin: 0 -0.02em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition:
+    background-size 0.9s var(--ease-out-expo) 0.25s,
+    color 0.3s ease 0.35s;
+}
+
+/* Titulares que entran al aparecer. Solo se esconden con el observador montado (`reveal-ready`). */
+.reveal-inner {
+  display: inline-block;
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo);
+}
+
+.reveal-ready [data-reveal]:not(.is-in) .reveal-inner {
+  opacity: 0;
+  transform: translateY(0.35em);
+}
+
+.reveal-ready [data-reveal]:not(.is-in) .mark {
+  background-size: 0% 100%;
+  color: inherit;
+}
+
+/* Marca de la portada: sube letra a letra, tras el precargador si lo hay. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.25em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-letter {
+  display: inline-block;
+  animation: rise 0.9s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i, 0) * 80ms + var(--after-preload, 1500ms));
+}
+
+.lum-no-preloader {
+  --after-preload: 120ms;
+}
+
+.lum-no-preloader [data-preloader] {
+  display: none;
+}
+
+/*
+ * Precargador: un recorrido en miniatura. Las aristas se dibujan, los nodos se encienden en lima
+ * uno tras otro y la cortina se desvanece sola a los 1,4 s, aunque falle el JavaScript.
+ */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes light {
+  to {
+    fill: var(--color-markup);
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+[data-preloader] {
+  animation: fade-out 0.5s ease 1.4s forwards;
+}
+
+[data-preloader] line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 0.5s var(--ease-out-expo) forwards;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+[data-preloader] .pre-node {
+  animation: light 0.25s ease forwards;
+  animation-delay: calc(var(--d, 0) * 1ms);
+}
+
+/* Progreso de lectura: una raya lima bajo la cabecera que crece con el desplazamiento. */
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.scroll-progress {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: grow-x linear both;
+    animation-timeline: scroll(root);
   }
 }
 
@@ -146,5 +333,10 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /* La barra de progreso sigue al desplazamiento: no es una animación en el tiempo. */
+  .scroll-progress {
+    animation-duration: auto !important;
   }
 }
