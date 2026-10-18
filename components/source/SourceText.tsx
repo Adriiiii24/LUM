@@ -30,7 +30,8 @@ function piecesOf(text: string, offset: number, marks: Mark[]): Piece[] {
 
 /**
  * El texto fuente con sus marcas: en lima las frases de origen de lo citado en la revisión
- * activa, y con recuadro de tinta la del nodo con el foco. Todo remite a su origen.
+ * activa, y con recuadro de tinta la del nodo con el foco. Todo remite a su origen. La lima no
+ * va sola (sobre el hueso da 1,20:1): cada marca lleva además un filete de tinta debajo.
  */
 export function SourceText() {
   const text = useWorkbench((s) => s.source?.text ?? '');
@@ -80,7 +81,7 @@ export function SourceText() {
                 <mark
                   key={i}
                   data-focus={piece.mark === 'focus' ? '' : undefined}
-                  className={`bg-markup text-on-markup [box-decoration-break:clone] ${piece.mark === 'focus' ? 'outline outline-on-markup' : ''}`}
+                  className={`border-b-2 border-ink bg-markup text-on-markup [box-decoration-break:clone] ${piece.mark === 'focus' ? 'outline outline-on-markup' : ''}`}
                 >
                   {piece.text}
                 </mark>

@@ -62,11 +62,11 @@ export function Evals() {
         <aside aria-label="Estado del banco" className="flex flex-col gap-8 border-b border-line-strong p-4 py-8 md:col-span-4 md:border-b-0 md:border-r md:p-6 lg:col-span-3">
           <p className="eyebrow">Estado del banco</p>
           <dl className="grid gap-6">
+            {/* La etiqueta visible es el término (se lee una vez y antes que la cifra); se pinta debajo. */}
             {facts.map(([n, label]) => (
-              <div key={label}>
-                <dt className="sr-only">{label}</dt>
+              <div key={label} className="flex flex-col-reverse">
+                <dt className="caps mt-2 max-w-[30ch] text-ink-3">{label}</dt>
                 <dd className="text-6xl font-bold leading-[0.85] tabular tracking-[-0.06em]">{n}</dd>
-                <dd className="caps mt-2 max-w-[30ch] text-ink-3">{label}</dd>
               </div>
             ))}
           </dl>

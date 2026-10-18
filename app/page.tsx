@@ -25,7 +25,8 @@ export default function Page() {
       <Preloader />
       <BackgroundGrid />
       <SiteHeader />
-      <main className="pt-14 md:pt-16">
+      {/* Destino del enlace de salto: recibe el foco, pero no es un control y no lleva contorno. */}
+      <main id="contenido" tabIndex={-1} className="pt-14 focus-visible:outline-none md:pt-16">
         <Hero />
         <ToolSection />
         <HowItWorks sample={sample} />

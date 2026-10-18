@@ -118,10 +118,25 @@ export function WorkbenchProvider({ sample, children }: { sample: SampleFile; ch
   );
 }
 
+/**
+ * La única región de estado del banco de trabajo: siempre montada (también con la fuente a la
+ * vista en móvil), dice un grafo nuevo, el principio y el final de una extracción y de cada
+ * respuesta. La clave cambia con cada anuncio para que se lea aunque el texto se repita.
+ */
+function StatusRegion() {
+  const { text, n } = useWorkbench((s) => s.announcement);
+  return (
+    <p role="status" className="sr-only">
+      <span key={n}>{text}</span>
+    </p>
+  );
+}
+
 /** La lámina: tres celdas a sangre, con la altura de la ventana bajo la cabecera fija. */
 export function Workbench() {
   return (
     <div className="flex h-[calc(100svh-3.5rem)] min-h-[38rem] flex-col bg-paper md:h-[calc(100svh-4rem)]">
+      <StatusRegion />
       <MobileTabs />
       <Cells />
     </div>
