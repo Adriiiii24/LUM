@@ -2,22 +2,33 @@
 import { X } from '@phosphor-icons/react/dist/ssr';
 import { useWorkbench } from '@/lib/state/workbench';
 import { zoneOf, zonesFor } from '@/lib/graph/layout';
+import type { NodeId } from '@/lib/graph/schema';
 import { SymbolGlyph, TYPE_LABEL } from './EntitySymbol';
 
 /**
- * Ficha de la entidad en foco o seleccionada: qué es, de qué frase sale y con qué se relaciona.
- * Al pasar por un nodo sale como vista previa; al pulsarlo se fija. Las relaciones se leen aquí
- * y no sobre las aristas, donde en un nodo con muchas se pisaban.
+ * Ficha de una entidad: qué es, de qué frase sale y con qué se relaciona. En la lámina y en 3D
+ * flota como vista previa al pasar o enfocar un nodo y se fija al pulsarlo; en la lista va dentro
+ * de la tabla, tras la fila elegida (`inline`). Las relaciones se leen aquí y no sobre las
+ * aristas, donde en un nodo con muchas se pisaban. Quien la muestra decide adónde va el foco al
+ * cerrarla o al saltar a una relación, porque el control que lo tenía puede desaparecer.
  */
-export function EntityCard() {
+export function EntityCard({
+  id,
+  inline = false,
+  onClose,
+  onPick,
+}: {
+  id: NodeId | null;
+  inline?: boolean;
+  onClose: () => void;
+  onPick: (other: NodeId) => void;
+}) {
   const selected = useWorkbench((s) => s.selectedNode);
-  const shown = useWorkbench((s) => s.focusNode ?? s.selectedNode);
   const graph = useWorkbench((s) => s.graph);
   const layout = useWorkbench((s) => s.layout);
   const text = useWorkbench((s) => s.source?.text ?? '');
-  const select = useWorkbench((s) => s.select);
-  const entity = graph?.entities.find((e) => e.id === shown);
-  const pinned = shown === selected;
+  const entity = graph?.entities.find((e) => e.id === id);
+  const pinned = id === selected;
   if (!graph || !layout || !entity) return null;
 
   const position = layout.positions[entity.id];
@@ -33,12 +44,16 @@ export function EntityCard() {
   return (
     <section
       aria-label={`Ficha de ${entity.name}`}
-      className="pointer-events-auto w-[19rem] max-w-[calc(100%-2rem)] border border-line-strong bg-paper shadow-float"
+      className={
+        inline
+          ? 'w-full max-w-[34rem] border border-line-strong bg-paper'
+          : 'pointer-events-auto w-[19rem] max-w-[calc(100%-2rem)] border border-line-strong bg-paper shadow-float'
+      }
     >
       <header className="flex items-start gap-2 border-b border-line px-3 py-2">
         <SymbolGlyph type={entity.type} entity={entity} size={20} className="shrink-0" />
         <div className="min-w-0 flex-1">
-          <h3 className="text-sm font-semibold leading-snug text-ink">{entity.name}</h3>
+          <h4 className="text-sm font-semibold leading-snug text-ink">{entity.name}</h4>
           <p className="text-[11px] text-ink-3">
             {TYPE_LABEL[entity.type]} en <span className="font-mono">{zone}</span>, {entity.degree}{' '}
             {entity.degree === 1 ? 'conexión' : 'conexiones'}
@@ -46,7 +61,7 @@ export function EntityCard() {
         </div>
         {pinned ? <button
           type="button"
-          onClick={() => select(null)}
+          onClick={onClose}
           aria-label="Cerrar la ficha"
           className="-mr-1 grid size-7 shrink-0 place-items-center text-ink-2 hover:bg-paper-2 hover:text-ink"
         >
@@ -67,7 +82,7 @@ export function EntityCard() {
           <ul className="divide-y divide-line border-t border-line text-xs">
             {links.map((l) => (
               <li key={l.id}>
-                <button type="button" onClick={() => select(l.other)} className="w-full py-1 text-left hover:bg-paper-2">
+                <button type="button" onClick={() => onPick(l.other)} className="w-full py-1 text-left hover:bg-paper-2">
                   {l.before && <span className="font-medium text-ink">{l.before} </span>}
                   <span className="text-ink-2">{l.predicate}</span>
                   {l.after && <span className="font-medium text-ink"> {l.after}</span>}

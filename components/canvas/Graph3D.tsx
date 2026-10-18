@@ -1,15 +1,19 @@
 'use client';
 import { useEffect, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent, type WheelEvent } from 'react';
 import { useReducedMotion } from 'motion/react';
-import { ArrowCounterClockwise, MagnifyingGlassMinus, MagnifyingGlassPlus, Pause, Play } from '@phosphor-icons/react/dist/ssr';
+import {
+  ArrowCounterClockwise, CaretDown, CaretLeft, CaretRight, CaretUp, MagnifyingGlassMinus, MagnifyingGlassPlus, Pause, Play,
+} from '@phosphor-icons/react/dist/ssr';
 import { useWorkbench } from '@/lib/state/workbench';
 import { layout3D } from '@/lib/graph/layout3d';
 import { iconFor } from '@/lib/graph/icons';
 import type { NodeId } from '@/lib/graph/schema';
 import { EntitySymbol } from './EntitySymbol';
-import { symbolSize } from './flow-types';
+import { FADED, symbolSize } from './flow-types';
 
 const START = { yaw: -0.55, pitch: 0.32 };
+/** Lo que gira cada pulsación de flecha o de botón de giro. */
+const TURN = 0.15;
 /** Distancia de la cámara en radios del grafo: más cerca, más perspectiva. */
 const CAMERA = 3.2;
 const LABEL_FONT = 12;
@@ -40,10 +44,10 @@ function ring(axis: 'y' | 'x', yaw: number, pitch: number, cx: number, cy: numbe
 
 /**
  * Vista 3D del grafo: el mismo grafo, los mismos símbolos y la misma gramática de estado (halo
- * lima, anillos, bandas en las aristas recorridas), en un espacio que se gira arrastrando o con
- * las flechas. Gira sola despacio salvo con movimiento reducido, mientras se arrastra o con un
- * nodo en foco. Es una vista para mirar; para recorrer nodo a nodo con teclado están la lámina y
- * la lista.
+ * lima, anillos, bandas en las aristas recorridas), en un espacio que se gira arrastrando, con
+ * las flechas o con los botones de giro (sin arrastrar, WCAG 2.5.7). Gira sola despacio salvo con
+ * movimiento reducido, mientras se arrastra o con un nodo en foco. Es una vista para mirar; para
+ * recorrer nodo a nodo con teclado están la lámina y la lista.
  */
 export function Graph3D() {
   const graph = useWorkbench((s) => s.graph);
@@ -186,13 +190,15 @@ export function Graph3D() {
     ev.preventDefault();
     setZoom((z) => Math.max(0.5, Math.min(2.4, z * (ev.deltaY < 0 ? 1.1 : 0.9))));
   };
+  /** Gira la vista un paso: lo mismo con las flechas que con los botones de giro. */
+  const turn = (yaw: number, pitch: number) =>
+    setAngle((a) => ({ yaw: a.yaw + yaw, pitch: Math.max(-1.3, Math.min(1.3, a.pitch + pitch)) }));
   const onKey = (ev: KeyboardEvent<HTMLDivElement>) => {
-    const step = 0.15;
     const moves: Record<string, () => void> = {
-      ArrowLeft: () => setAngle((a) => ({ ...a, yaw: a.yaw - step })),
-      ArrowRight: () => setAngle((a) => ({ ...a, yaw: a.yaw + step })),
-      ArrowUp: () => setAngle((a) => ({ ...a, pitch: Math.max(-1.3, a.pitch - step) })),
-      ArrowDown: () => setAngle((a) => ({ ...a, pitch: Math.min(1.3, a.pitch + step) })),
+      ArrowLeft: () => turn(-TURN, 0),
+      ArrowRight: () => turn(TURN, 0),
+      ArrowUp: () => turn(0, -TURN),
+      ArrowDown: () => turn(0, TURN),
       '+': () => setZoom((z) => Math.min(2.4, z * 1.15)),
       '-': () => setZoom((z) => Math.max(0.5, z / 1.15)),
       ' ': () => setSpin((s) => !s),
@@ -203,7 +209,7 @@ export function Graph3D() {
     run();
   };
   const tool =
-    'grid size-8 place-items-center border-l border-line-strong text-ink-2 first:border-l-0 hover:bg-paper-2 hover:text-ink';
+    'grid size-8 place-items-center border-l border-line-strong text-ink-2 first:border-l-0 hover:bg-paper-2 hover:text-ink disabled:text-ink-3/60 disabled:hover:bg-transparent';
 
   return (
     <div
@@ -263,10 +269,12 @@ export function Graph3D() {
             const s = symbolSize(e) * p.f * Math.max(0.8, Math.min(1.4, zoom));
             const r = s / 2;
             const ring = lit ? 'var(--color-on-markup)' : 'var(--color-ink)';
-            const fade = away ? 0.14 : v === 'dim' ? 0.45 : 0.7 + 0.3 * near(p.depth);
+            // Lo apartado no baja del mínimo que deja su filete a 3:1, como en la lámina.
+            const fade = away || v === 'dim' ? FADED : 0.7 + 0.3 * near(p.depth);
             return (
               <g
                 key={e.id}
+                data-node-id={e.id}
                 transform={`translate(${p.x.toFixed(1)} ${p.y.toFixed(1)})`}
                 opacity={fade}
                 className="cursor-pointer"
@@ -319,8 +327,31 @@ export function Graph3D() {
         </svg>
       )}
       <div className="absolute right-3 top-3 z-10 flex border border-line-strong bg-paper" onPointerDown={(ev) => ev.stopPropagation()}>
-        <button type="button" className={tool} aria-label={spin ? 'Parar el giro' : 'Girar sola'} aria-pressed={spin} onClick={() => setSpin(!spin)}>
+        {/*
+         * Conmutador con nombre fijo: el estado lo dice aria-pressed, que solo está pulsado si de
+         * verdad gira. Con movimiento reducido no gira nunca, así que no se ofrece.
+         */}
+        <button
+          type="button"
+          className={tool}
+          aria-label="Giro automático"
+          aria-pressed={spin && !reduced}
+          disabled={!!reduced}
+          onClick={() => setSpin(!spin)}
+        >
           {spin && !reduced ? <Pause size={14} weight="bold" aria-hidden="true" /> : <Play size={14} weight="bold" aria-hidden="true" />}
+        </button>
+        <button type="button" className={tool} aria-label="Girar a la izquierda" onClick={() => turn(-TURN, 0)}>
+          <CaretLeft size={14} weight="bold" aria-hidden="true" />
+        </button>
+        <button type="button" className={tool} aria-label="Girar a la derecha" onClick={() => turn(TURN, 0)}>
+          <CaretRight size={14} weight="bold" aria-hidden="true" />
+        </button>
+        <button type="button" className={tool} aria-label="Girar hacia arriba" onClick={() => turn(0, -TURN)}>
+          <CaretUp size={14} weight="bold" aria-hidden="true" />
+        </button>
+        <button type="button" className={tool} aria-label="Girar hacia abajo" onClick={() => turn(0, TURN)}>
+          <CaretDown size={14} weight="bold" aria-hidden="true" />
         </button>
         <button type="button" className={tool} aria-label="Alejar" onClick={() => setZoom((z) => Math.max(0.5, z / 1.15))}>
           <MagnifyingGlassMinus size={15} aria-hidden="true" />

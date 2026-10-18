@@ -6,6 +6,7 @@ import { useWorkbench, useWorkbenchApi } from '@/lib/state/workbench';
 import { NeuralTransport } from '@/lib/chat/transport';
 import { segmentAnswer, type SegmentedAnswer } from '@/lib/chat/citations';
 import { ERROR_COPY, errorCodeOf } from '@/lib/chat/error-copy';
+import { chatAnnouncement } from '@/lib/state/announce';
 import type { NCMessage } from '@/lib/chat/types';
 import type { TraceStep } from '@/lib/graph/retrieve';
 import type { NodeId } from '@/lib/graph/schema';
@@ -76,12 +77,15 @@ export function ChatPanel() {
   const setMobilePanel = useWorkbench((s) => s.setMobilePanel);
   const setHighlight = useWorkbench((s) => s.setHighlight);
   const replayHighlight = useWorkbench((s) => s.replayHighlight);
+  const announce = useWorkbench((s) => s.announce);
 
   const [draft, setDraft] = useState('');
   // La revisión fijada pertenece a un documento: al cambiar de documento deja de valer sola.
   const [pin, setPin] = useState<{ doc: number; id: string } | null>(null);
   const pinned = pin?.doc === documentId ? pin.id : null;
   const thread = useRef<HTMLDivElement>(null);
+  // Preguntar y Detener son el mismo botón: nunca se desmonta y recoge el foco de lo que desaparece.
+  const action = useRef<HTMLButtonElement>(null);
   const fieldId = useId();
   const hintId = useId();
 
@@ -116,15 +120,16 @@ export function ChatPanel() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [highlightKey, setHighlight]);
 
-  // Anuncio para lectores de pantalla: se deriva del estado, la región viva lee cada cambio.
+  // Anuncio para lectores de pantalla: se deriva del estado y lo lee la región de estado del banco
+  // de trabajo, la única, que sigue montada aunque en móvil se vea la fuente.
   const last = revisions.at(-1);
-  const citedCount = last?.segmented.cited.length ?? 0;
-  const announcement =
-    status === 'submitted'
-      ? 'Recorriendo el grafo.'
-      : status === 'ready' && last?.done && last.answer
-        ? `Respuesta R${last.number} lista, con ${citedCount} ${citedCount === 1 ? 'cita' : 'citas'}.`
-        : '';
+  const announcement = chatAnnouncement(
+    status,
+    last && { number: last.number, done: last.done, answered: last.answer !== null, cited: last.segmented.cited.length },
+  );
+  useEffect(() => {
+    if (announcement) announce(announcement);
+  }, [announcement, announce]);
 
   // Mientras se escribe, la respuesta sigue al final; al terminar, se muestra el final de la última
   // respuesta (su pie), no el final de la lista con las preguntas pendientes.
@@ -169,7 +174,14 @@ export function ChatPanel() {
     <div className="flex h-full min-h-0 flex-col">
       <PanelHeader id="panel-preguntas" title="Preguntas" meta={shown ? `R${shown.number} en la lámina` : undefined} />
 
-      <div ref={thread} className="min-h-0 flex-1 overflow-y-auto">
+      {/* Zona con scroll propio: enfocable para poder recorrerla con el teclado (WCAG 2.1.1). */}
+      <div
+        ref={thread}
+        role="region"
+        aria-label="Conversación"
+        tabIndex={0}
+        className="min-h-0 flex-1 overflow-y-auto focus-visible:outline-offset-[-2px]"
+      >
         {revisions.length === 0 && (
           <div className="px-4 pb-2 pt-4 max-md:hidden">
             <p className="max-w-[46ch] text-[14px] leading-relaxed text-ink-2">
@@ -246,7 +258,15 @@ export function ChatPanel() {
         {error && (
           <div role="alert" className="mx-4 my-3 border border-ink px-3 py-2 text-[13px] leading-snug text-ink">
             <p>{ERROR_COPY[errorCodeOf(error)]}</p>
-            <SecondaryButton className="mt-2 h-8" onClick={() => { clearError(); void regenerate(); }}>
+            <SecondaryButton
+              className="mt-2 h-8"
+              onClick={(e) => {
+                // El aviso desaparece al reintentar: el foco pasa al botón de la pregunta.
+                if (document.activeElement === e.currentTarget) action.current?.focus();
+                clearError();
+                void regenerate();
+              }}
+            >
               <ArrowClockwise size={14} aria-hidden="true" />
               Reintentar
             </SecondaryButton>
@@ -255,16 +275,21 @@ export function ChatPanel() {
 
         {pending.length > 0 && !streaming && (
           <section aria-labelledby="sugeridas" className="px-4 pb-4 pt-3">
-            <h3 id="sugeridas" className="text-[11px] uppercase tracking-[0.08em] text-ink-3">
+            <h4 id="sugeridas" className="text-[11px] uppercase tracking-[0.08em] text-ink-3">
               {source?.kind === 'sample' ? 'Preguntas con respuesta grabada' : 'Para empezar'}
-            </h3>
+            </h4>
             <ul className="mt-1.5 border-t border-line">
               {pending.map((q) => (
                 <li key={q} className="border-b border-line">
                   <button
                     type="button"
                     disabled={!canAsk}
-                    onClick={() => ask(q)}
+                    onClick={(e) => {
+                      // La sugerida sale de la lista al preguntarla (y la lista se oculta mientras se
+                      // responde): el foco pasa al botón Preguntar/Detener, que no se desmonta.
+                      if (document.activeElement === e.currentTarget) action.current?.focus();
+                      ask(q);
+                    }}
                     className="flex w-full items-center justify-between gap-3 py-2 text-left text-[14px] leading-snug text-ink hover:bg-paper-2 disabled:text-ink-3"
                   >
                     {q}
@@ -278,13 +303,13 @@ export function ChatPanel() {
       </div>
 
       <form
-        className="shrink-0 border-t border-line px-4 pb-3 pt-2.5 max-md:flex max-md:items-end max-md:gap-2 max-md:py-2"
+        className="shrink-0 border-t border-line px-4 pb-3 pt-2.5 max-md:flex max-md:flex-wrap max-md:items-end max-md:gap-x-2 max-md:gap-y-1 max-md:py-2"
         onSubmit={(e) => {
           e.preventDefault();
           ask(draft);
         }}
       >
-        <label htmlFor={fieldId} className="text-[11px] uppercase tracking-[0.08em] text-ink-3 max-md:sr-only">
+        <label htmlFor={fieldId} className="text-[11px] uppercase tracking-[0.08em] text-ink-3 max-md:basis-full">
           Pregunta
         </label>
         <textarea
@@ -302,23 +327,31 @@ export function ChatPanel() {
           <p id={hintId} className="text-xs text-ink-3 max-md:sr-only">
             Enter envía; Mayús y Enter, salto de línea.
           </p>
-          {streaming ? (
-            <SecondaryButton onClick={() => void stop()}>
-              <Stop size={14} weight="fill" aria-hidden="true" />
-              Detener
-            </SecondaryButton>
-          ) : (
-            <PrimaryButton type="submit" disabled={!canAsk || draft.trim() === ''}>
-              Preguntar
-              <PaperPlaneRight size={14} aria-hidden="true" />
-            </PrimaryButton>
-          )}
+          {/*
+           * Un solo botón que cambia de texto y de función: si fueran dos, el que tiene el foco se
+           * desmontaría al empezar y al terminar cada respuesta. Sin pregunta que enviar queda
+           * aria-disabled (no disabled), para no soltar el foco; ask() ya no hace nada entonces.
+           */}
+          <PrimaryButton
+            ref={action}
+            type={streaming ? 'button' : 'submit'}
+            onClick={streaming ? () => void stop() : undefined}
+            aria-disabled={!streaming && (!canAsk || draft.trim() === '')}
+          >
+            {streaming ? (
+              <>
+                <Stop size={14} weight="fill" aria-hidden="true" />
+                Detener
+              </>
+            ) : (
+              <>
+                Preguntar
+                <PaperPlaneRight size={14} aria-hidden="true" />
+              </>
+            )}
+          </PrimaryButton>
         </div>
       </form>
-
-      <p className="sr-only" aria-live="polite">
-        {announcement}
-      </p>
     </div>
   );
 }

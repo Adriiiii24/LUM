@@ -73,6 +73,11 @@ export type WorkbenchState = Derived & {
   /** En móvil: grafo y preguntas a la vez, o la fuente. En tableta: si la fuente está desplegada. */
   mobilePanel: 'sheet' | 'source';
   sourceOpen: boolean;
+  /**
+   * Lo último que dice la región de estado del banco de trabajo. `n` cambia con cada anuncio:
+   * así se vuelve a leer aunque el texto se repita.
+   */
+  announcement: { text: string; n: number };
 
   showSample: () => void;
   setDocument: (source: SourceDoc, graph: KnowledgeGraph, layout: GraphLayout) => void;
@@ -87,6 +92,7 @@ export type WorkbenchState = Derived & {
   setView: (view: View) => void;
   setMobilePanel: (panel: 'sheet' | 'source') => void;
   setSourceOpen: (open: boolean) => void;
+  announce: (text: string) => void;
 };
 
 /** El nodo y sus vecinos directos en el grafo. */
@@ -157,6 +163,7 @@ export function createWorkbenchStore(sample: SampleFile): StoreApi<WorkbenchStat
     view: 'sheet',
     mobilePanel: 'sheet',
     sourceOpen: false,
+    announcement: { text: '', n: 0 },
 
     showSample: () =>
       set((s) => ({
@@ -223,6 +230,7 @@ export function createWorkbenchStore(sample: SampleFile): StoreApi<WorkbenchStat
     setView: (view) => set({ view }),
     setMobilePanel: (mobilePanel) => set({ mobilePanel }),
     setSourceOpen: (sourceOpen) => set({ sourceOpen }),
+    announce: (text) => set((s) => ({ announcement: { text, n: s.announcement.n + 1 } })),
   }));
 }
 

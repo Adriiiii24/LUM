@@ -23,7 +23,8 @@ export function SectionHead({ id, index, label, intro, children }: { id: string;
         <span className="eyebrow pt-px">{label}</span>
       </div>
       <div className="col-span-4 px-4 pb-12 pt-8 md:col-span-9 md:px-6 md:pb-20 md:pt-6">
-        <h2 id={id} className="max-w-[17ch] text-[2.6rem] font-semibold leading-[1] tracking-[-0.045em] md:text-6xl lg:text-7xl">
+        {/* Admite el foco por código: ahí lo deja el menú del móvil al saltar a la sección. */}
+        <h2 id={id} tabIndex={-1} className="max-w-[17ch] text-[2.6rem] font-semibold leading-[1] tracking-[-0.045em] md:text-6xl lg:text-7xl">
           <Reveal>{children}</Reveal>
         </h2>
         {intro && <p className="mt-6 max-w-[56ch] text-lg leading-snug tracking-[0.005em] text-ink-2 md:text-xl">{intro}</p>}

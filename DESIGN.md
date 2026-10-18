@@ -389,9 +389,10 @@ Cuatro pasos unidos por un filete horizontal a la altura del nodo: círculo de 4
 
 ### Lámina, vista 3D y ficha
 - **Nodo:** ficha de entidad; halo lima de radio +9 px si está encendido (entra en 220 ms); esquineras de tinta de 4 px en foco o selección.
-- **Vecindario:** con un nodo en foco, lo demás baja al 16 % (aristas al 6 %), y solo se rotula el vecindario y lo citado.
+- **Vecindario:** con un nodo en foco, lo demás baja al 50 % (aristas al 6 %), y solo se rotula el vecindario y lo citado. Lo que queda fuera del recorrido, también al 50 %, sin multiplicarse: los nodos siguen siendo controles y su filete no baja de 3:1 (3,3:1 en claro, 4,8:1 en oscuro).
 - **Rótulos:** 12 px sobre hueso que corta las aristas, ink-2 en reposo, tinta y 500 en el vecindario, lima con el número en mono si está citado; colisiones resueltas en ocho posiciones y alias corto si no cabe.
-- **Ficha de entidad:** 19 rem, flotante, con la frase de origen tras un filete de tinta y las relaciones listadas como botones.
+- **Ficha de entidad:** 19 rem, flotante, con la frase de origen tras un filete de tinta y las relaciones listadas como botones. Va en la mitad contraria a su nodo; como vista previa se queda mientras el puntero esté sobre la lámina o sobre ella y Escape la descarta. En la lista se despliega bajo la fila elegida, sin sombra.
+- **Evidencia en la fuente:** lima con la tinta fija encima y un filete de tinta de 2 px debajo, para no depender del color.
 - **3D:** los mismos símbolos, anillos, halos y bandas; anillos guía discontinuos al 12 %; gira sola salvo con movimiento reducido, al arrastrar o con un nodo en foco.
 - **Cajetín:** abajo a la derecha, celdas con label-field; la celda ESTADO se llena de lima mientras la IA trabaja.
 

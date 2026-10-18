@@ -4,7 +4,7 @@ import { Handle, Position, type NodeProps } from '@xyflow/react';
 import { motion } from 'motion/react';
 import { useWorkbench } from '@/lib/state/workbench';
 import { EntitySymbol, TYPE_LABEL } from './EntitySymbol';
-import { NODE_BOX, symbolSize, type EntityFlowNode } from './flow-types';
+import { FADED, NODE_BOX, symbolSize, type EntityFlowNode } from './flow-types';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const ARROW_STEP: Record<string, number> = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
@@ -60,7 +60,7 @@ function EntityNodeView({ data }: NodeProps<EntityFlowNode>) {
   const state = { idle: '', dim: '', seed: ', semilla del recorrido', traversed: ', recorrida', cited: `, citada (${index ?? ''})` }[visual];
 
   return (
-    <div className="relative transition-opacity duration-200" style={{ width: NODE_BOX, height: NODE_BOX, opacity: away ? 0.16 : 1 }}>
+    <div className="relative transition-opacity duration-200" style={{ width: NODE_BOX, height: NODE_BOX, opacity: away ? FADED : 1 }}>
       <svg
         className="pointer-events-none absolute inset-0 overflow-visible"
         width={NODE_BOX}
@@ -88,7 +88,7 @@ function EntityNodeView({ data }: NodeProps<EntityFlowNode>) {
           <circle r={r + 5.5} fill="none" stroke={ring} strokeWidth={1.25} strokeDasharray="2.5 2" />
         )}
         {visual === 'cited' && <circle r={r + 5.5} fill="none" stroke={ring} strokeWidth={2} />}
-        <EntitySymbol entity={entity} size={size} opacity={dim ? 0.32 : 1} lit={lit} />
+        <EntitySymbol entity={entity} size={size} opacity={dim && !away ? FADED : 1} lit={lit} />
         {active && (
           <g fill="var(--color-ink)">
             {[-1, 1].flatMap((sx) => [-1, 1].map((sy) => (
@@ -101,6 +101,7 @@ function EntityNodeView({ data }: NodeProps<EntityFlowNode>) {
       <button
         type="button"
         data-node-order={order}
+        data-node-id={id}
         tabIndex={isTabStop ? 0 : -1}
         aria-label={`${entity.name}, ${TYPE_LABEL[entity.type].toLowerCase()}, ${entity.degree} ${entity.degree === 1 ? 'conexión' : 'conexiones'}, zona ${zone}${state}`}
         aria-pressed={selected}

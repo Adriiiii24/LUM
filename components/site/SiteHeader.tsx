@@ -16,7 +16,8 @@ const LINKS = [
 
 /**
  * Lectura del lienzo en la cabecera, con las celdas del cajetín: estado (en lima), grafo, modelo
- * y revisión. Es la misma información que el cajetín, que es el que la anuncia; aquí no se lee.
+ * y revisión. Es la misma información que el cajetín; los cambios los anuncia la región de estado
+ * del banco de trabajo, así que aquí no se lee.
  */
 function Readout({ className = '' }: { className?: string }) {
   const { word } = useStatusWord();
@@ -90,9 +91,16 @@ function useActiveSection(): string | null {
   return active;
 }
 
-/** Cajón lateral del móvil: enlaces y tema. Escape lo cierra y el foco no se escapa. */
+/**
+ * Cajón lateral del móvil: enlaces y tema. El foco no se escapa; al cerrarlo sin navegar (Escape,
+ * el velo o la X) vuelve al botón que lo abrió, y al navegar, al titular de la sección.
+ */
 function Drawer({ open, onClose, toggleRef }: { open: boolean; onClose: () => void; toggleRef: RefObject<HTMLButtonElement | null> }) {
   const panel = useRef<HTMLDivElement>(null);
+  const dismiss = useCallback(() => {
+    onClose();
+    toggleRef.current?.focus();
+  }, [onClose, toggleRef]);
 
   useEffect(() => {
     if (!open) return;
@@ -102,8 +110,7 @@ function Drawer({ open, onClose, toggleRef }: { open: boolean; onClose: () => vo
     panel.current?.querySelector<HTMLElement>('nav a')?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
-        toggleRef.current?.focus();
+        dismiss();
         return;
       }
       if (e.key !== 'Tab' || !panel.current) return;
@@ -118,26 +125,31 @@ function Drawer({ open, onClose, toggleRef }: { open: boolean; onClose: () => vo
       root.style.overflow = previous;
       window.removeEventListener('keydown', onKey);
     };
-  }, [open, onClose, toggleRef]);
+  }, [open, dismiss]);
 
   // Con el documento bloqueado el salto del ancla no se movería: se cierra y luego se desplaza.
+  // El foco va al titular de la sección (como tras un salto de ancla), no se queda en el cajón cerrado.
   const go = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
     onClose();
     requestAnimationFrame(() => {
-      document.querySelector(href)?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      const section = document.querySelector<HTMLElement>(href);
+      if (!section) return;
+      section.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
       history.replaceState(null, '', href);
+      const heading = document.getElementById(section.getAttribute('aria-labelledby') ?? '');
+      (heading ?? section).focus({ preventScroll: true });
     });
   };
   const row = 'flex items-center gap-4 px-4 py-4 text-2xl font-semibold tracking-[-0.03em] hover:bg-markup hover:text-on-markup';
 
   return (
     <div id="menu-movil" hidden={!open} className="fixed inset-0 z-50 lg:hidden">
-      <div aria-hidden="true" onClick={onClose} className="absolute inset-0 bg-ink/30" />
+      <div aria-hidden="true" onClick={dismiss} className="absolute inset-0 bg-ink/30" />
       <div ref={panel} role="dialog" aria-modal="true" aria-label="Menú" className="absolute inset-y-0 right-0 flex w-[min(22rem,100%)] flex-col border-l border-line-strong bg-paper shadow-float">
         <div className="flex h-14 items-center justify-between border-b border-line-strong pl-4 md:h-16">
           <LumLogo className="size-9 md:size-10" />
-          <button type="button" onClick={onClose} aria-label="Cerrar el menú" className="grid size-14 place-items-center border-l border-line-strong hover:bg-paper-2 md:size-16">
+          <button type="button" onClick={dismiss} aria-label="Cerrar el menú" className="grid size-14 place-items-center border-l border-line-strong hover:bg-paper-2 focus-visible:outline-offset-[-2px] md:size-16">
             <X size={20} aria-hidden="true" />
           </button>
         </div>
@@ -178,11 +190,14 @@ export function SiteHeader() {
   const toggleRef = useRef<HTMLButtonElement>(null);
   const close = useCallback(() => setOpen(false), []);
   const active = useActiveSection();
+  // Los controles a toda la altura de la cabecera llevan el foco por dentro: por fuera, el borde
+  // de la ventana se comería el contorno de arriba (y el de un lado en los extremos).
+  const inset = 'focus-visible:outline-offset-[-2px]';
 
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-40 flex h-14 items-stretch border-b border-line-strong bg-paper md:h-16">
-        <a href="#inicio" className="flex items-center border-r border-line-strong px-3 md:px-4">
+        <a href="#inicio" className={`flex items-center border-r border-line-strong px-3 md:px-4 ${inset}`}>
           <LumLogo className="size-9 md:size-11" />
         </a>
         <Readout className="hidden xl:flex" />
@@ -192,7 +207,7 @@ export function SiteHeader() {
               key={l.href}
               href={l.href}
               aria-current={active === l.href ? 'location' : undefined}
-              className="group relative flex items-center px-4 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink-2 hover:text-ink aria-[current]:font-bold aria-[current]:text-ink"
+              className={`group relative flex items-center px-4 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink-2 hover:text-ink aria-[current]:font-bold aria-[current]:text-ink ${inset}`}
             >
               {l.label}
               <span
@@ -207,7 +222,7 @@ export function SiteHeader() {
             href={SITE.repoUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 border-l border-line-strong px-4 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink-2 hover:bg-markup hover:text-on-markup"
+            className={`flex items-center gap-1.5 border-l border-line-strong px-4 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink-2 hover:bg-markup hover:text-on-markup ${inset}`}
           >
             Código
             <ArrowUpRight size={13} weight="bold" aria-hidden="true" />
@@ -222,7 +237,7 @@ export function SiteHeader() {
             aria-controls="menu-movil"
             aria-label="Abrir el menú"
             onClick={() => setOpen(true)}
-            className="grid size-14 place-items-center border-l border-line-strong hover:bg-markup hover:text-on-markup md:size-16 lg:hidden"
+            className={`grid size-14 place-items-center border-l border-line-strong hover:bg-markup hover:text-on-markup md:size-16 lg:hidden ${inset}`}
           >
             <List size={22} aria-hidden="true" />
           </button>

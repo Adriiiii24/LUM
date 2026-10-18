@@ -36,7 +36,8 @@ export function Hero() {
         </div>
         <p className="caps text-ink-3">Muestra grabada · sin cuota · sin clave</p>
       </div>
-      <div className="@container relative col-span-4 aspect-video overflow-hidden border-t border-line-strong md:col-span-7 md:aspect-auto md:border-t-0">
+      {/* En móvil sin recorte: la transcripción abierta alarga la celda en vez de quedar cortada. */}
+      <div className="@container relative col-span-4 aspect-video border-t border-line-strong md:col-span-7 md:aspect-auto md:overflow-hidden md:border-t-0">
         <IntroVideo />
       </div>
     </section>

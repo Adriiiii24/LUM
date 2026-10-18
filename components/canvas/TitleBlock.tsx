@@ -9,7 +9,8 @@ const cell = 'min-w-0 px-2 py-1';
 /**
  * Cajetín de la lámina, ancho y bajo como el de un plano: qué documento es, qué contiene, con
  * qué modelo se extrajo y en qué estado está. La celda ESTADO se marca en lima mientras la IA
- * trabaja. En una lámina estrecha queda en una sola fila con lo esencial.
+ * trabaja. En una lámina estrecha queda en una sola fila con lo esencial. No es una región
+ * viva: los cambios los anuncia la región de estado del banco de trabajo, una sola vez.
  */
 export function TitleBlock({ compact = false }: { compact?: boolean }) {
   const source = useWorkbench((s) => s.source);
@@ -20,7 +21,7 @@ export function TitleBlock({ compact = false }: { compact?: boolean }) {
   const { word, active } = useStatusWord();
 
   const status = (
-    <div className={`${cell} ${active ? 'bg-markup' : ''}`} role="status">
+    <div className={`${cell} ${active ? 'bg-markup' : ''}`}>
       <span className={active ? 'block text-[10px] uppercase tracking-[0.08em] text-on-markup' : label}>Estado</span>
       <span className={`block text-xs font-semibold tracking-[0.04em] ${active ? 'text-on-markup' : 'text-ink'}`}>{word}</span>
     </div>

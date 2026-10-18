@@ -28,7 +28,8 @@ export function ToolSection() {
           </li>
         ))}
       </ol>
-      <div id="herramienta" className="border-y border-line-strong">
+      {/* Destino de «Saltar al lienzo» y de los enlaces «Abrir el lienzo»: recibe el foco, sin contorno. */}
+      <div id="herramienta" tabIndex={-1} className="border-y border-line-strong focus-visible:outline-none">
         <Workbench />
       </div>
     </section>

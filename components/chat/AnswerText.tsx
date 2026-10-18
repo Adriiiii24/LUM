@@ -20,6 +20,7 @@ function CitationChip({ id, index, inContext }: { id: NodeId; index: number; inC
   return (
     <button
       type="button"
+      data-node-id={id}
       title={inContext ? `${name}${zone}` : `${name}${zone}: no estaba en el contexto recuperado`}
       aria-label={inContext ? `Cita ${index}: ${name}${zone}` : `Cita ${index}: ${name}${zone}, fuera del contexto recuperado`}
       onMouseEnter={() => setFocus(id)}
